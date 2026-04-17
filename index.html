@@ -52,12 +52,13 @@
             font-size: 0.7rem;
             color: #6b6b76;
         }
-        /* artist row */
+        /* artist row with scroll animation */
         .artist {
             display: flex;
             align-items: center;
             gap: 16px;
             margin-bottom: 48px;
+            transition: all 0.2s ease;
         }
         .avatar {
             width: 56px;
@@ -94,7 +95,7 @@
             font-size: 0.7rem;
             margin-left: 8px;
         }
-        /* invitation card – minimal */
+        /* invitation card with typing animation */
         .invite {
             text-align: center;
             margin: 32px 0 48px;
@@ -114,6 +115,18 @@
             letter-spacing: -1px;
             color: #fff;
             margin-bottom: 16px;
+            min-height: 70px;
+        }
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            margin-left: 4px;
+            background: #d4af37;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
         .invite p {
             color: #a0a0ac;
@@ -121,18 +134,26 @@
             max-width: 480px;
             margin: 0 auto;
         }
-        /* section titles */
+        /* section titles - gold */
         .section-title {
             font-size: 0.7rem;
             letter-spacing: 2px;
             color: #d4af37;
             text-transform: uppercase;
             margin: 48px 0 20px 0;
+            border-left: 2px solid #d4af37;
+            padding-left: 12px;
         }
         .section-title:first-of-type {
             margin-top: 0;
         }
-        /* track list – spotify style */
+        /* defined divider */
+        .divider {
+            height: 1px;
+            background: #1e1e24;
+            margin: 48px 0;
+        }
+        /* track list */
         .track-list {
             display: flex;
             flex-direction: column;
@@ -160,7 +181,7 @@
             color: #d4af37;
             font-size: 0.85rem;
         }
-        /* chart - detailed */
+        /* chart wrapper */
         .chart-wrapper {
             margin: 40px 0;
         }
@@ -191,7 +212,7 @@
             padding-top: 16px;
             margin-top: 16px;
         }
-        /* stats cards – clean */
+        /* stats cards */
         .stats-grid {
             display: flex;
             gap: 12px;
@@ -217,7 +238,7 @@
             margin-top: 8px;
             letter-spacing: 1px;
         }
-        /* venues – minimal list */
+        /* venues */
         .venue-list {
             display: flex;
             flex-direction: column;
@@ -251,7 +272,7 @@
             font-weight: 500;
             color: #d4af37;
         }
-        /* gift section – professional sizing */
+        /* gift section */
         .gift-box {
             margin: 48px 0;
             padding: 24px 0;
@@ -324,7 +345,7 @@
             display: block;
             margin-bottom: 6px;
         }
-        /* location link – small, bottom */
+        /* location footer */
         .location-footer {
             text-align: center;
             margin: 32px 0 24px;
@@ -335,7 +356,6 @@
             text-decoration: none;
             border-bottom: 1px dotted rgba(212, 175, 55, 0.4);
         }
-        /* cta */
         .cta-btn {
             width: 100%;
             background: #d4af37;
@@ -388,7 +408,7 @@
         <div class="ref">ETX-2026-117</div>
     </div>
 
-    <div class="artist">
+    <div class="artist" id="artistSection">
         <div class="avatar">H</div>
         <div class="artist-info">
             <h2><a href="https://soundcloud.com/highk3yz" target="_blank">@highk3yz</a></h2>
@@ -398,11 +418,11 @@
 
     <div class="invite">
         <div class="invite-eyebrow">Official Invitation</div>
-        <h3>You're invited.</h3>
+        <h3 id="typingTitle"></h3>
         <p>Elevate Collective has identified you as a priority emerging artist in East Texas. We'd like to discuss representation and paid performance opportunities.</p>
     </div>
 
-    <!-- Top tracks (with features) -->
+    <!-- Top tracks -->
     <div class="section-title">🎧 Your top tracks · last 30 days</div>
     <div class="track-list">
         <div class="track-row"><div><div class="track-name">TMR</div><div class="track-feat">solo</div></div><div class="track-plays">846</div></div>
@@ -415,14 +435,18 @@
         <div class="track-row"><div><div class="track-name">bender freestyle</div><div class="track-feat">ft. kidzeus</div></div><div class="track-plays">7</div></div>
     </div>
 
-    <!-- Detailed graph -->
+    <div class="divider"></div>
+
+    <!-- Chart -->
     <div class="chart-wrapper">
         <div class="chart-header"><span>📈 30-day play trend</span><span>rolling average</span></div>
         <canvas id="trendChart"></canvas>
         <div class="chart-note">+312% growth on "TMR" — regional breakout detected</div>
     </div>
 
-    <!-- Catalog stats -->
+    <div class="divider"></div>
+
+    <!-- Stats -->
     <div class="stats-grid">
         <div class="stat-card"><div class="stat-number" id="stat1">0</div><div class="stat-label">TMR</div></div>
         <div class="stat-card"><div class="stat-number" id="stat2">0</div><div class="stat-label">Splinter</div></div>
@@ -430,7 +454,9 @@
         <div class="stat-card"><div class="stat-number" id="stat4">0</div><div class="stat-label">Total tracks</div></div>
     </div>
 
-    <!-- Partner venues -->
+    <div class="divider"></div>
+
+    <!-- Venues -->
     <div class="section-title">✨ Partner venues · Tyler, TX</div>
     <div class="venue-list">
         <div class="venue-item selected" data-venue="The Foundry"><div><div class="venue-name">The Foundry</div><div class="venue-address">Downtown · 300 cap</div></div><div class="venue-pay">$500–750</div></div>
@@ -439,7 +465,9 @@
         <div class="venue-item" data-venue="Brick Street Bar"><div><div class="venue-name">Brick Street Bar</div><div class="venue-address">Downtown · 400 cap</div></div><div class="venue-pay">$900+</div></div>
     </div>
 
-    <!-- Free gift + sizing -->
+    <div class="divider"></div>
+
+    <!-- Gift section -->
     <div class="gift-box">
         <div class="section-title" style="margin-top:0;">🎁 Free artist gift</div>
         <div class="size-table">
@@ -455,20 +483,44 @@
         <div class="form-row"><div class="form-group"><label>City</label><input type="text" id="cityInput"></div><div class="form-group"><label>State</label><input type="text" id="stateInput"></div><div class="form-group"><label>ZIP</label><input type="text" id="zipInput"></div></div>
     </div>
 
+    <div class="divider"></div>
+
+    <!-- Contact Information section header (gold) -->
+    <div class="section-title">📞 Contact information</div>
+
     <!-- Form fields -->
     <div class="form-row"><div class="form-group"><label>First name</label><input type="text" id="firstNameInput"></div><div class="form-group"><label>Last name</label><input type="text" id="lastNameInput"></div></div>
     <div class="form-group"><label>Email</label><input type="email" id="emailInput"></div>
     <div class="form-group"><label>Phone</label><input type="tel" id="phoneInput"></div>
-    <div class="form-row"><div class="form-group"><label>Preferred month</label><select id="monthSelect"><option>June 2026</option><option>July 2026</option></select></div><div class="form-group"><label>Preferred day</label><select id="daySelect"><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option></select></div></div>
 
-    <!-- Location request – bottom, small -->
+    <!-- More date options (May–September, 1–31) -->
+    <div class="form-row">
+        <div class="form-group"><label>Preferred month</label>
+            <select id="monthSelect">
+                <option>May 2026</option><option selected>June 2026</option><option>July 2026</option>
+                <option>August 2026</option><option>September 2026</option>
+            </select>
+        </div>
+        <div class="form-group"><label>Preferred day</label>
+            <select id="daySelect">
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                <option>11</option><option>12</option><option>13</option><option>14</option><option selected>15</option>
+                <option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
+                <option>21</option><option>22</option><option>23</option><option>24</option><option>25</option>
+                <option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Location request at bottom -->
     <div class="location-footer"><a id="locationPromptLink">Allow location access for exclusive showcase opportunities</a></div>
 
     <button class="cta-btn" id="submitBtn">Accept invitation →</button>
     <div class="footer-note">Elevate Collective · Tyler, TX · This invitation is non-binding. Free gift shipped within US only.</div>
 </div>
 
-<!-- Signing deal popup (minimal, professional) -->
+<!-- Signing deal popup -->
 <div id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;">
     <div style="background: #0a0a0c; border: 1px solid #d4af37; border-radius: 32px; max-width: 400px; width: 100%; padding: 32px 28px; text-align: center;">
         <button id="popupClose" style="float: right; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">&times;</button>
@@ -490,7 +542,35 @@
 (function() {
     emailjs.init('0pn8P18xI5m0VVW8U');
     
-    // detailed chart
+    // Typing animation for "You're invited!"
+    const titleEl = document.getElementById('typingTitle');
+    const fullText = "You're invited.";
+    let i = 0;
+    function typeWriter() {
+        if (i < fullText.length) {
+            titleEl.innerHTML = fullText.substring(0, i+1) + '<span class="cursor">|</span>';
+            i++;
+            setTimeout(typeWriter, 80);
+        } else {
+            titleEl.innerHTML = fullText;
+        }
+    }
+    typeWriter();
+    
+    // Scroll animation: artist info subtly scales/glows on scroll
+    const artistSection = document.getElementById('artistSection');
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 100) {
+            artistSection.style.transform = 'scale(0.98)';
+            artistSection.style.opacity = '0.9';
+        } else {
+            artistSection.style.transform = 'scale(1)';
+            artistSection.style.opacity = '1';
+        }
+    });
+    
+    // Detailed chart
     const ctx = document.getElementById('trendChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',
@@ -523,7 +603,7 @@
         }
     });
     
-    // animate stats on scroll
+    // Animate stats on scroll
     function animateNumber(el, target) {
         let current = 0;
         const step = () => {
@@ -549,7 +629,7 @@
     }, { threshold: 0.3 });
     statsObserver.observe(document.querySelector('.stats-grid'));
     
-    // venue selection
+    // Venue selection
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
         item.addEventListener('click', function() {
@@ -564,7 +644,7 @@
         });
     });
     
-    // location prompt (bottom)
+    // Location prompt (small, bottom)
     document.getElementById('locationPromptLink').addEventListener('click', (e) => {
         e.preventDefault();
         if (navigator.geolocation) {
@@ -577,7 +657,7 @@
         }
     });
     
-    // popup logic
+    // Popup logic
     const popup = document.getElementById('signingPopup');
     const submitBtn = document.getElementById('submitBtn');
     submitBtn.addEventListener('click', (e) => {
@@ -653,7 +733,7 @@ PROMO CODE: ${code}`;
         }
     });
     
-    // fake live counter
+    // Live counter
     let viewers = 3;
     setInterval(() => {
         viewers = Math.floor(Math.random() * 4) + 2;
