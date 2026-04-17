@@ -383,97 +383,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Giveaway popup - fixed close button position */
-        .giveaway-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 400;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0.2s, opacity 0.2s;
-        }
-        .giveaway-overlay.active {
-            visibility: visible;
-            opacity: 1;
-        }
-        .giveaway-card {
-            position: relative;
-            background: #0f0f12;
-            border-radius: 20px;
-            max-width: 340px;
-            width: 90%;
-            padding: 28px 24px 28px 24px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            border: 1px solid #2a2a30;
-        }
-        .giveaway-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 500;
-            letter-spacing: -0.3px;
-            color: #fff;
-            margin-bottom: 12px;
-            margin-top: 0;
-        }
-        .giveaway-card p {
-            font-size: 0.85rem;
-            color: #bbb;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-        .giveaway-card .prize-list {
-            font-size: 0.8rem;
-            color: #d4af37;
-            margin-bottom: 24px;
-            letter-spacing: 0.3px;
-            font-weight: 500;
-        }
-        .giveaway-card input {
-            width: 100%;
-            background: #1a1a20;
-            border: 1px solid #2a2a30;
-            border-radius: 40px;
-            padding: 12px 16px;
-            font-size: 0.85rem;
-            margin-bottom: 16px;
-            color: #fff;
-        }
-        .giveaway-card button {
-            width: 100%;
-            background: #d4af37;
-            color: #0a0a0c;
-            border: none;
-            border-radius: 40px;
-            padding: 12px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .giveaway-card button:hover {
-            background: #e6c34a;
-        }
-        .giveaway-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 20px;
-            cursor: pointer;
-            line-height: 1;
-            padding: 4px;
-        }
         @media (max-width: 550px) {
             .form-row { flex-direction: column; gap: 0; }
         }
@@ -646,19 +555,7 @@
     <div class="footer-note">Elevate Collective · Tyler, TX · This invitation is non-binding. Free gift shipped within US only.</div>
 </div>
 
-<!-- Giveaway Popup - fixed close button position -->
-<div id="giveawayOverlay" class="giveaway-overlay">
-    <div class="giveaway-card">
-        <button class="giveaway-close" id="giveawayClose">✕</button>
-        <h3>Giveaway</h3>
-        <p>Enter your email for a chance to win monthly prizes:</p>
-        <div class="prize-list">Cash · Studio sessions · Limited merch</div>
-        <input type="email" id="giveawayEmail" placeholder="Your email address">
-        <button id="giveawaySubmit">Enter giveaway</button>
-    </div>
-</div>
-
-<!-- Signing deal popup -->
+<!-- Signing deal popup (only remaining popup) -->
 <div id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;">
     <div style="background: #0a0a0c; border: 1px solid #d4af37; border-radius: 32px; max-width: 400px; width: 100%; padding: 32px 28px; text-align: center;">
         <button id="popupClose" style="float: right; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">&times;</button>
@@ -806,28 +703,6 @@
             );
         } else {
             alert("Geolocation not supported.");
-        }
-    });
-    
-    const giveawayOverlay = document.getElementById('giveawayOverlay');
-    setTimeout(() => { giveawayOverlay.classList.add('active'); }, 8000);
-    document.getElementById('giveawayClose').addEventListener('click', () => { giveawayOverlay.classList.remove('active'); });
-    document.getElementById('giveawaySubmit').addEventListener('click', async () => {
-        const email = document.getElementById('giveawayEmail').value.trim();
-        if (!email.includes('@')) { alert("Enter a valid email."); return; }
-        try {
-            await emailjs.send('service_cyval67', 'template_35yqug3', {
-                name: "Giveaway Entry",
-                email: email,
-                message: `New giveaway entry from ${email}`,
-                selected_date: 'Giveaway',
-                reply_to: email
-            });
-            alert("You've been entered! Winners announced monthly.");
-            giveawayOverlay.classList.remove('active');
-        } catch(err) {
-            alert("Thanks for entering! We'll contact you if you win.");
-            giveawayOverlay.classList.remove('active');
         }
     });
     
