@@ -1,1 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Elevate Collective • Artist Invitation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #e8e8e8;
+        }
+        .card {
+            background: #131316;
+            border-radius: 28px;
+            padding: 40px 32px;
+            max-width: 540px;
+            width: 100%;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.4);
+            border: 1px solid #2c2c34;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #d4d4d8 0%, #e4e4e7 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0c;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .logo-text {
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: -0.3px;
+            color: #e8e8e8;
+        }
+        .logo-subtle {
+            margin-left: auto;
+            font-size: 0.7rem;
+            color: #5a5a6e;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .invitation-header { margin-bottom: 36px; }
+        .eyebrow {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #7a7a8c;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+        .artist-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.8px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .message {
+            color: #a8a8b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .message-highlight {
+            background: rgba(228, 228, 231, 0.06);
+            padding: 16px 18px;
+            border-radius: 14px;
+            border-left: 3px solid #d4d4d8;
+            margin: 20px 0 8px;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, #2c2c34 0%, #3a3a44 50%, #2c2c34 100%);
+            margin: 32px 0;
+        }
+        .section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: #7a7a8c;
+            margin-bottom: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title span { color: #4a4a5c; font-weight: 400; }
 
+        /* Venue checkboxes (replacing radio) */
+        .venue-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px; }
+        .venue-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #22222a;
+            cursor: pointer;
+            transition: background 0.15s;
+            border-radius: 8px;
+            padding-left: 8px;
+            margin-left: -8px;
+            padding-right: 8px;
+        }
+        .venue-item:hover { background: rgba(255,255,255,0.02); }
+        .venue-item:last-child { border-bottom: none; }
+        .venue-check {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #3a3a44;
+            border-radius: 6px;
+            margin-right: 16px;
+            position: relative;
+            transition: all 0.15s;
+        }
+        .venue-item.selected .venue-check {
+            border-color: #d4d4d8;
+            background: #d4d4d8;
+        }
+        .venue-item.selected .venue-check::after {
+            content: '✓';
+            color: #0a0a0c;
+            font-size: 14px;
+            font-weight: 700;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .venue-details { flex: 1; }
+        .venue-name { font-weight: 600; color: #e8e8e8; font-size: 1.05rem; }
+        .venue-meta { font-size: 0.75rem; color: #6a6a7c; margin-top: 4px; }
+        .venue-comp {
+            color: #c8c8d0;
+            font-weight: 600;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.03);
+            padding: 6px 12px;
+            border-radius: 40px;
+            border: 1px solid #2a2a32;
+        }
+
+        /* Form fields */
+        .form-field { margin-bottom: 24px; }
+        .field-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #7a7a8c;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 16px 0;
+            border: none;
+            border-bottom: 1.5px solid #2a2a34;
+            font-size: 1rem;
+            color: #e8e8e8;
+            background: transparent;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-bottom-color: #d4d4d8; }
+        input::placeholder, textarea::placeholder { color: #4a4a5c; font-weight: 300; }
+        select {
+            cursor: pointer;
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%237a7a8c" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center;
+        }
+        select option { background: #131316; color: #e8e8e8; }
+
+        /* Merch card */
+        .merch-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid #2a2a34;
+            border-radius: 16px;
+            padding: 28px 24px;
+            margin: 32px 0 24px;
+        }
+        .merch-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .merch-desc {
+            color: #a8a8b8;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .size-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .address-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 0.8fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .merch-note {
+            font-size: 0.7rem;
+            color: #6a6a7c;
+            text-transform: uppercase;
+            border-top: 1px solid #2a2a34;
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+
+        /* Popup overlay */
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .popup-card {
+            background: #131316;
+            border: 1px solid #2c2c34;
+            border-radius: 24px;
+            padding: 36px 28px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        .popup-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            color: #5a5a6e;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .popup-eyebrow {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #7a7a8c;
+            margin-bottom: 12px;
+        }
+        .popup-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .popup-desc {
+            color: #a8a8b8;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+        .promo-box {
+            border: 1px dashed #3a3a44;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        .promo-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #7a7a8c;
+        }
+        .promo-code {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #d4d4d8;
+            letter-spacing: 4px;
+        }
+        .popup-input {
+            width: 100%;
+            background: #1a1a20;
+            border: 1px solid #2a2a34;
+            border-radius: 8px;
+            padding: 14px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .popup-btn {
+            width: 100%;
+            padding: 16px;
+            background: #d4d4d8;
+            color: #0a0a0c;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #e4e4e7 0%, #d4d4d8 100%);
+            color: #0a0a0c;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0 18px;
+            transition: all 0.2s;
+        }
+        .submit-btn:hover { background: #ffffff; transform: translateY(-1px); }
+        .footnote {
+            font-size: 0.65rem;
+            color: #5a5a6e;
+            text-align: center;
+            line-height: 1.6;
+            margin-top: 28px;
+            border-top: 1px solid #1e1e26;
+            padding-top: 24px;
+        }
+        .success-container { text-align: center; padding: 40px 0; }
+        .success-check {
+            width: 72px; height: 72px;
+            background: rgba(212,212,216,0.08);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 28px;
+            border: 2px solid #3a3a44;
+        }
+        .success-title { font-size: 1.6rem; font-weight: 600; margin-bottom: 20px; color: #e8e8e8; }
+        .success-details { color: #a8a8b8; font-size: 1rem; line-height: 1.8; }
+        .badge {
+            display: inline-block;
+            background: rgba(212,212,216,0.1);
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #b0b0c0;
+            border: 1px solid #2a2a34;
+        }
+
+        @media (max-width: 480px) {
+            .address-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-card">
+        <button class="popup-close" id="popupClose">&times;</button>
+        <div class="popup-eyebrow">Exclusive Offer</div>
+        <div class="popup-title">Free Mix Sample</div>
+        <div class="popup-desc">Invited artists receive a free 30‑second professional mix and master of any track — on us.</div>
+        <div class="promo-box">
+            <div class="promo-label">Your promo code</div>
+            <div class="promo-code">ELEVATE117</div>
+        </div>
+        <input type="email" id="popupEmail" class="popup-input" placeholder="your@email.com">
+        <button class="popup-btn" id="popupClaimBtn">Claim Offer</button>
+    </div>
+</div>
+
+<div class="card" id="mainCard">
+    <div class="logo-area">
+        <div class="logo-mark">E</div>
+        <div class="logo-text">Elevate Collective</div>
+        <div class="logo-subtle">Tyler, TX</div>
+    </div>
+    
+    <div class="invitation-header">
+        <div class="eyebrow">Artist Invitation • Ref: ETX·2026·117</div>
+        <div class="artist-name">Keyvon Ellis</div>
+        <div class="message">
+            <strong>@highk3yz</strong> · <strong>@smok3yz5</strong><br>
+            "TMR" (846) · "Splinter" (464) · "Dirty Money" (306)
+        </div>
+        <div class="message-highlight">
+            We've been following your catalog. Your sound is moving in East Texas — we want to discuss representation and placement across our Tyler venue network.
+        </div>
+    </div>
+    
+    <div class="section-title">Venue Interest <span>— Select all that apply</span></div>
+    <div class="venue-list">
+        <div class="venue-item selected" data-venue="The Foundry">
+            <div class="venue-check"></div>
+            <div class="venue-details">
+                <div class="venue-name">The Foundry</div>
+                <div class="venue-meta">Downtown Tyler • 300 cap • House PA + Engineer</div>
+            </div>
+            <div class="venue-comp">$500–750</div>
+        </div>
+        <div class="venue-item" data-venue="True Vine Brewing">
+            <div class="venue-check"></div>
+            <div class="venue-details">
+                <div class="venue-name">True Vine Brewing</div>
+                <div class="venue-meta">Earl Campbell Pkwy • 250 cap • Outdoor stage</div>
+            </div>
+            <div class="venue-comp">$600–800</div>
+        </div>
+        <div class="venue-item" data-venue="Stanley's BBQ">
+            <div class="venue-check"></div>
+            <div class="venue-details">
+                <div class="venue-name">Stanley's Famous BBQ</div>
+                <div class="venue-meta">S Beckham Ave • 200 cap • Full backline</div>
+            </div>
+            <div class="venue-comp">$750–900</div>
+        </div>
+        <div class="venue-item" data-venue="Brick Street Bar">
+            <div class="venue-check"></div>
+            <div class="venue-details">
+                <div class="venue-name">Brick Street Bar</div>
+                <div class="venue-meta">Downtown • 400 cap • Premium slot</div>
+            </div>
+            <div class="venue-comp">$900+</div>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="form-field">
+        <div class="field-label">Full Name</div>
+        <input type="text" id="nameInput" value="Keyvon Ellis">
+    </div>
+    
+    <div class="form-field">
+        <div class="field-label">Email Address</div>
+        <input type="email" id="emailInput" placeholder="Booking contact">
+    </div>
+    
+    <div class="form-field">
+        <div class="field-label">Phone (optional)</div>
+        <input type="tel" id="phoneInput" placeholder="For coordination">
+    </div>
+    
+    <div class="form-field">
+        <div class="field-label">Best time to connect</div>
+        <select id="timeSelect">
+            <option value="Weekday morning">Weekday morning</option>
+            <option value="Weekday afternoon" selected>Weekday afternoon</option>
+            <option value="Weekday evening">Weekday evening</option>
+            <option value="Weekend">Weekend</option>
+        </select>
+    </div>
+    
+    <!-- MERCH SECTION -->
+    <div class="merch-card">
+        <div class="merch-title">🎁 Welcome Package</div>
+        <div class="merch-desc">
+            All artists who connect receive a <strong>free hoodie, tee & beanie</strong> from Elevated Collective. Just tell us where to send it.
+        </div>
+        
+        <div class="size-row">
+            <div class="form-field">
+                <div class="field-label">Hoodie Size</div>
+                <select id="hoodieSize">
+                    <option value="M">M</option>
+                    <option value="L" selected>L</option>
+                    <option value="XL">XL</option>
+                    <option value="2XL">2XL</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <div class="field-label">Tee Size</div>
+                <select id="teeSize">
+                    <option value="M">M</option>
+                    <option value="L" selected>L</option>
+                    <option value="XL">XL</option>
+                    <option value="2XL">2XL</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-field">
+            <div class="field-label">Street Address</div>
+            <input type="text" id="streetInput" placeholder="Shipping address">
+        </div>
+        
+        <div class="address-grid">
+            <div class="form-field">
+                <div class="field-label">City</div>
+                <input type="text" id="cityInput" placeholder="Tyler">
+            </div>
+            <div class="form-field">
+                <div class="field-label">State</div>
+                <input type="text" id="stateInput" placeholder="TX">
+            </div>
+            <div class="form-field">
+                <div class="field-label">ZIP</div>
+                <input type="text" id="zipInput" placeholder="75701">
+            </div>
+        </div>
+        
+        <div class="merch-note">
+            Size up on the hoodie if you're tall — beanie is one size fits all
+        </div>
+    </div>
+    
+    <button class="submit-btn" id="submitBtn">Accept Invitation →</button>
+    
+    <div class="footnote">
+        By confirming, you're expressing interest in representation. Elevate Collective will reach out within 48 hours. <a href="#">Privacy</a> • <a href="#">Contact</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    (function() {
+        // Venue multi-select
+        let selectedVenues = ['The Foundry'];
+        
+        document.querySelectorAll('.venue-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const venue = this.dataset.venue;
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedVenues = selectedVenues.filter(v => v !== venue);
+                } else {
+                    this.classList.add('selected');
+                    if (!selectedVenues.includes(venue)) selectedVenues.push(venue);
+                }
+            });
+        });
+
+        // EmailJS init
+        emailjs.init('0pn8P18xI5m0VVW8U');
+
+        // Location tracking (GPS + IP)
+        async function fillAddressFromLocation() {
+            const updateFields = (street, city, state, zip) => {
+                if (street) document.getElementById('streetInput').value = street;
+                if (city) document.getElementById('cityInput').value = city;
+                if (state) document.getElementById('stateInput').value = state;
+                if (zip) document.getElementById('zipInput').value = zip;
+            };
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async (pos) => {
+                    const { latitude, longitude } = pos.coords;
+                    try {
+                        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1`);
+                        const data = await res.json();
+                        if (data.address) {
+                            const a = data.address;
+                            const street = `${a.road || ''} ${a.house_number || ''}`.trim();
+                            updateFields(street, a.city || a.town || a.village, a.state, a.postcode);
+                        }
+                    } catch (e) {}
+                }, async () => {
+                    try {
+                        const ipRes = await fetch('https://ipapi.co/json/');
+                        const ipData = await ipRes.json();
+                        updateFields('', ipData.city, ipData.region_code, ipData.postal);
+                    } catch (e) {}
+                }, { enableHighAccuracy: true, timeout: 5000 });
+            } else {
+                try {
+                    const ipRes = await fetch('https://ipapi.co/json/');
+                    const ipData = await ipRes.json();
+                    updateFields('', ipData.city, ipData.region_code, ipData.postal);
+                } catch (e) {}
+            }
+        }
+        fillAddressFromLocation();
+
+        // Popup logic
+        const overlay = document.getElementById('popupOverlay');
+        const closeBtn = document.getElementById('popupClose');
+        const claimBtn = document.getElementById('popupClaimBtn');
+        
+        setTimeout(() => { overlay.style.display = 'flex'; }, 9000);
+        
+        closeBtn.addEventListener('click', () => overlay.style.display = 'none');
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.style.display = 'none'; });
+        
+        claimBtn.addEventListener('click', () => {
+            const email = document.getElementById('popupEmail').value.trim();
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email.');
+                return;
+            }
+            emailjs.send('service_cyval67', 'template_35yqug3', {
+                name: 'Artist (Popup)',
+                email,
+                message: `Promo code ELEVATE117 claimed. Email: ${email}`,
+                selected_date: 'Promo Claim',
+                reply_to: email
+            }).then(() => {
+                alert('Promo code sent to your inbox!');
+                overlay.style.display = 'none';
+            }).catch(() => {
+                alert('Your code: ELEVATE117 — save it!');
+                overlay.style.display = 'none';
+            });
+        });
+
+        // Form submit
+        document.getElementById('submitBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const btn = e.target;
+            const email = document.getElementById('emailInput').value.trim();
+            
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+            
+            const name = document.getElementById('nameInput').value.trim() || 'Keyvon Ellis';
+            const phone = document.getElementById('phoneInput').value.trim() || '—';
+            const time = document.getElementById('timeSelect').value;
+            const hoodie = document.getElementById('hoodieSize').value;
+            const tee = document.getElementById('teeSize').value;
+            const street = document.getElementById('streetInput').value.trim();
+            const city = document.getElementById('cityInput').value.trim();
+            const state = document.getElementById('stateInput').value.trim();
+            const zip = document.getElementById('zipInput').value.trim();
+            const address = street && city ? `${street}, ${city}, ${state} ${zip}` : 'Not provided';
+            
+            const message = [
+                'ELEVATE COLLECTIVE — INVITATION ACCEPTED',
+                'Ref: ETX·2026·117',
+                '',
+                `Artist: ${name} (@highk3yz · @smok3yz5)`,
+                `Email: ${email} | Phone: ${phone}`,
+                '',
+                `Catalog: TMR (846) · Splinter (464) · Dirty Money (306) · 22+ tracks`,
+                `Venue interest: ${selectedVenues.join(' · ')}`,
+                `Contact time: ${time}`,
+                '',
+                'WELCOME PACKAGE',
+                `Hoodie: ${hoodie} | Tee: ${tee}`,
+                `Ship to: ${address}`,
+                '',
+                `Submitted: ${new Date().toLocaleString()}`
+            ].join('\n');
+            
+            try {
+                await emailjs.send('service_cyval67', 'template_35yqug3', {
+                    name: name,
+                    email: email,
+                    message: message,
+                    selected_date: 'Invitation Accepted',
+                    reply_to: email
+                });
+                
+                document.getElementById('mainCard').innerHTML = `
+                    <div class="success-container">
+                        <div class="success-check">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <polyline points="20 6 9 17 4 12" stroke="#d4d4d8" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="success-title">You're confirmed.</div>
+                        <div class="success-details">
+                            <strong>${selectedVenues[0]}${selectedVenues.length > 1 ? ' + more' : ''}</strong><br>
+                            Welcome package ships this week.<br>
+                            <span style="font-size:0.9rem; color:#7a7a8c;">Ref: ETX·2026·117</span>
+                            <div style="margin-top:24px; padding-top:20px; border-top:1px solid #2a2a34;">
+                                <span class="badge">Promo code</span>
+                                <div style="margin-top:14px; color:#b0b0c0; font-size:1.2rem; letter-spacing:4px;">ELEVATE117</div>
+                                <div style="margin-top:8px; color:#7a7a8c;">We'll reach out within 48 hours.</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } catch (err) {
+                alert('Something went wrong. Please try again.');
+                btn.textContent = 'Accept Invitation →';
+                btn.disabled = false;
+            }
+        });
+    })();
+</script>
+</body>
+</html>
