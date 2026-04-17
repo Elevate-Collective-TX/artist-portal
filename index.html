@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Elevate Collective · Artist Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
@@ -26,19 +26,20 @@
             margin: 0 auto;
             padding: 48px 24px 80px;
         }
-        /* header */
+        /* header with fake referral */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 48px;
+            margin-bottom: 24px;
             border-bottom: 1px solid #1e1e24;
-            padding-bottom: 24px;
+            padding-bottom: 20px;
         }
         .logo h1 {
-            font-weight: 500;
-            font-size: 1.4rem;
-            letter-spacing: -0.3px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
             background: linear-gradient(135deg, #fff 30%, #d4af37 80%);
             background-clip: text;
             -webkit-background-clip: text;
@@ -51,16 +52,30 @@
             text-transform: uppercase;
             margin-top: 4px;
         }
-        .ref {
-            font-size: 0.7rem;
-            color: #6b6b76;
+        .ref-code {
+            text-align: right;
         }
-        /* artist row with subtle animation */
+        .ref-label {
+            font-size: 0.6rem;
+            color: #6b6b76;
+            letter-spacing: 1px;
+        }
+        .ref-value {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #d4af37;
+            background: #15151a;
+            padding: 4px 8px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+        /* artist row with gold glow */
         .artist {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 48px;
+            margin: 32px 0 48px;
             transition: all 0.2s ease;
         }
         .avatar {
@@ -74,17 +89,21 @@
             font-weight: 500;
             font-size: 1.6rem;
             color: #d4af37;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
         }
         .artist-info h2 {
-            font-size: 1.8rem;
-            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
             letter-spacing: -0.5px;
-            color: #fff;
+            background: linear-gradient(135deg, #fff 20%, #d4af37 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
         }
         .artist-info a {
-            color: #fff;
             text-decoration: none;
-            border-bottom: 1px solid #2a2a30;
         }
         .artist-meta {
             font-size: 0.75rem;
@@ -113,9 +132,10 @@
             margin-bottom: 12px;
         }
         .invite h3 {
-            font-size: 2.2rem;
-            font-weight: 450;
-            letter-spacing: -1px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
             background: linear-gradient(135deg, #fff 30%, #d4af37 80%);
             background-clip: text;
             -webkit-background-clip: text;
@@ -149,11 +169,27 @@
             margin: 48px 0 20px 0;
             border-left: 3px solid #d4af37;
             padding-left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .section-title:first-of-type {
-            margin-top: 0;
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background: #1c1c22;
+            border-radius: 50%;
+            font-size: 10px;
+            color: #d4af37;
+            cursor: pointer;
+            transition: 0.1s;
         }
-        /* gold divider between sections */
+        .info-icon:hover {
+            background: #d4af37;
+            color: #0a0a0c;
+        }
         .gold-divider {
             height: 1px;
             background: linear-gradient(90deg, #d4af37, transparent);
@@ -187,7 +223,7 @@
             color: #d4af37;
             font-size: 0.85rem;
         }
-        /* chart wrapper with animation */
+        /* chart wrapper */
         .chart-wrapper {
             margin: 40px 0;
         }
@@ -244,7 +280,7 @@
             margin-top: 8px;
             letter-spacing: 1px;
         }
-        /* venues with instruction */
+        /* venues with tooltip and map link */
         .venue-header {
             display: flex;
             justify-content: space-between;
@@ -276,28 +312,40 @@
             padding-left: 16px;
             margin-left: -16px;
         }
+        .venue-info {
+            flex: 1;
+        }
         .venue-name {
             font-weight: 500;
             color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .venue-address {
             font-size: 0.7rem;
             color: #6b6b76;
             margin-top: 2px;
         }
+        .map-link {
+            font-size: 0.65rem;
+            color: #d4af37;
+            text-decoration: none;
+            margin-left: 8px;
+        }
         .venue-pay {
             font-weight: 500;
             color: #d4af37;
             text-decoration: none;
         }
-        /* gift section */
+        /* gift section with improved size chart */
         .gift-box {
             margin: 48px 0;
             padding: 24px 0;
             border-top: 1px solid #1e1e24;
             border-bottom: 1px solid #1e1e24;
         }
-        .size-table {
+        .size-chart-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 8px;
@@ -305,11 +353,16 @@
             font-size: 0.7rem;
             text-align: center;
         }
-        .size-table div {
+        .size-chart-grid div {
             background: #101014;
             padding: 8px 4px;
             border-radius: 12px;
             color: #c0c0cc;
+        }
+        .size-chart-grid .header-cell {
+            background: #1a1a20;
+            color: #d4af37;
+            font-weight: 500;
         }
         .select-pair {
             display: flex;
@@ -398,11 +451,27 @@
             padding-top: 24px;
             margin-top: 24px;
         }
+        /* tooltip custom */
+        .tooltip-text {
+            display: none;
+            position: absolute;
+            background: #1a1a20;
+            color: #ccc;
+            font-size: 0.7rem;
+            padding: 6px 10px;
+            border-radius: 8px;
+            max-width: 200px;
+            z-index: 10;
+            border: 1px solid #d4af37;
+        }
+        .info-icon:hover .tooltip-text {
+            display: block;
+        }
         @media (max-width: 550px) {
             .stats-grid { flex-wrap: wrap; }
             .stat-card { min-width: calc(50% - 6px); }
             .form-row { flex-direction: column; gap: 0; }
-            .size-table { grid-template-columns: repeat(3, 1fr); }
+            .size-chart-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
@@ -410,7 +479,10 @@
 <div class="container" id="app">
     <div class="header">
         <div class="logo"><h1>Elevate Collective</h1><p>Tyler, TX</p></div>
-        <div class="ref">ETX-2026-117</div>
+        <div class="ref-code">
+            <div class="ref-label">REFERRAL CODE</div>
+            <div class="ref-value">ETX-VIP-0426</div>
+        </div>
     </div>
 
     <div class="artist" id="artistSection">
@@ -441,7 +513,7 @@
 
     <div class="gold-divider"></div>
 
-    <!-- Chart with projected plays -->
+    <!-- Chart with projection -->
     <div class="chart-wrapper">
         <div class="chart-header"><span>📈 30-day play trend + projection</span><span>actual → forecast</span></div>
         <canvas id="trendChart"></canvas>
@@ -460,27 +532,59 @@
 
     <div class="gold-divider"></div>
 
-    <!-- Partner venues with instruction -->
-    <div class="section-title">✨ Partner venues · Tyler, TX</div>
+    <!-- Partner venues with tooltip and map links -->
+    <div class="section-title">
+        ✨ Partner venues · Tyler, TX
+        <span class="info-icon" style="position: relative;">ℹ
+            <span class="tooltip-text" style="position: absolute; bottom: 20px; left: 0;">Elevate Collective has direct booking partnerships. Click any venue to select.</span>
+        </span>
+    </div>
     <div class="venue-header">
         <div class="venue-instruction">Click on any venue to select your interest</div>
     </div>
     <div class="venue-list">
-        <div class="venue-item selected" data-venue="The Foundry"><div><div class="venue-name">The Foundry</div><div class="venue-address">Downtown · 300 cap</div></div><div class="venue-pay">$500–750</div></div>
-        <div class="venue-item" data-venue="True Vine Brewing"><div><div class="venue-name">True Vine Brewing</div><div class="venue-address">Earl Campbell Pkwy · 250 cap</div></div><div class="venue-pay">$600–800</div></div>
-        <div class="venue-item" data-venue="Stanley's Famous BBQ"><div><div class="venue-name">Stanley's Famous BBQ</div><div class="venue-address">S Beckham Ave · 200 cap</div></div><div class="venue-pay">$750–900</div></div>
-        <div class="venue-item" data-venue="Brick Street Bar"><div><div class="venue-name">Brick Street Bar</div><div class="venue-address">Downtown · 400 cap</div></div><div class="venue-pay">$900+</div></div>
+        <div class="venue-item selected" data-venue="The Foundry">
+            <div class="venue-info">
+                <div class="venue-name">The Foundry <a href="https://maps.google.com/?q=The+Foundry+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
+                <div class="venue-address">Downtown · 300 cap</div>
+            </div>
+            <div class="venue-pay">$500–750</div>
+        </div>
+        <div class="venue-item" data-venue="True Vine Brewing">
+            <div class="venue-info">
+                <div class="venue-name">True Vine Brewing <a href="https://maps.google.com/?q=True+Vine+Brewing+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
+                <div class="venue-address">Earl Campbell Pkwy · 250 cap</div>
+            </div>
+            <div class="venue-pay">$600–800</div>
+        </div>
+        <div class="venue-item" data-venue="Stanley's Famous BBQ">
+            <div class="venue-info">
+                <div class="venue-name">Stanley's Famous BBQ <a href="https://maps.google.com/?q=Stanley%27s+Famous+BBQ+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
+                <div class="venue-address">S Beckham Ave · 200 cap</div>
+            </div>
+            <div class="venue-pay">$750–900</div>
+        </div>
+        <div class="venue-item" data-venue="Brick Street Bar">
+            <div class="venue-info">
+                <div class="venue-name">Brick Street Bar <a href="https://maps.google.com/?q=Brick+Street+Bar+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
+                <div class="venue-address">Downtown · 400 cap</div>
+            </div>
+            <div class="venue-pay">$900+</div>
+        </div>
     </div>
 
     <div class="gold-divider"></div>
 
-    <!-- Gift section -->
+    <!-- Gift section with improved sizing grid -->
     <div class="gift-box">
         <div class="section-title" style="margin-top:0;">🎁 Free artist gift</div>
-        <div class="size-table">
-            <div>Size</div><div>Chest</div><div>Length</div><div>Sleeve</div><div>S</div><div>34-36</div><div>27</div><div>33.5</div>
-            <div>M</div><div>38-40</div><div>28</div><div>34.5</div><div>L</div><div>42-44</div><div>29</div><div>35.5</div>
-            <div>XL</div><div>46-48</div><div>30</div><div>36.5</div><div>2XL</div><div>50-52</div><div>31</div><div>37.5</div>
+        <div class="size-chart-grid">
+            <div class="header-cell">Size</div><div class="header-cell">Chest</div><div class="header-cell">Length</div><div class="header-cell">Sleeve</div>
+            <div>S</div><div>34-36</div><div>27</div><div>33.5</div>
+            <div>M</div><div>38-40</div><div>28</div><div>34.5</div>
+            <div>L</div><div>42-44</div><div>29</div><div>35.5</div>
+            <div>XL</div><div>46-48</div><div>30</div><div>36.5</div>
+            <div>2XL</div><div>50-52</div><div>31</div><div>37.5</div>
         </div>
         <div class="select-pair">
             <div class="select-field"><label>Hoodie</label><select id="hoodieSize"><option>S</option><option>M</option><option selected>L</option><option>XL</option><option>2XL</option></select></div>
@@ -668,8 +772,10 @@
     // Venue selection with instruction
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const name = this.querySelector('.venue-name')?.innerText;
+        item.addEventListener('click', function(e) {
+            // don't trigger if clicking on map link
+            if (e.target.classList && e.target.classList.contains('map-link')) return;
+            const name = this.querySelector('.venue-name')?.innerText.replace('📍 map', '').trim();
             if (this.classList.contains('selected')) {
                 this.classList.remove('selected');
                 selectedVenues = selectedVenues.filter(v => v !== name);
@@ -677,6 +783,18 @@
                 this.classList.add('selected');
                 if (!selectedVenues.includes(name)) selectedVenues.push(name);
             }
+        });
+    });
+    
+    // Tooltip hover for info icons
+    document.querySelectorAll('.info-icon').forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+            const tooltip = this.querySelector('.tooltip-text');
+            if (tooltip) tooltip.style.display = 'block';
+        });
+        icon.addEventListener('mouseleave', function() {
+            const tooltip = this.querySelector('.tooltip-text');
+            if (tooltip) tooltip.style.display = 'none';
         });
     });
     
