@@ -23,7 +23,6 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -34,7 +33,6 @@
             background: #d4af37;
             border-radius: 4px;
         }
-        /* Particle canvas */
         #particleCanvas {
             position: fixed;
             top: 0;
@@ -51,7 +49,7 @@
             margin: 0 auto;
             padding: 48px 24px 64px;
         }
-        /* Glassmorphism base */
+        /* Glassmorphism */
         .glass-card {
             background: rgba(15, 15, 18, 0.7);
             backdrop-filter: blur(12px);
@@ -64,7 +62,7 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
-        /* Neon-style headings */
+        /* Neon headings */
         .neon-title {
             font-family: 'Inter', sans-serif;
             font-weight: 800;
@@ -76,14 +74,18 @@
             -webkit-background-clip: text;
             color: transparent;
             text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             display: inline-block;
         }
         .neon-sub {
-            font-size: 11px;
+            font-size: 10px;
             color: #d4af37;
             text-transform: uppercase;
             letter-spacing: 2px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 24px;
         }
         .header {
             display: flex;
@@ -220,15 +222,6 @@
             color: #d4af37;
             letter-spacing: 1px;
         }
-        .leaderboard-section, .collab-section, .stats-live, .curator-card, .venue-section, .gift-card, .chart-container, .exclusive-card {
-            background: rgba(15, 15, 18, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(42, 42, 48, 0.6);
-            border-radius: 28px;
-            padding: 24px 20px;
-            margin: 32px 0;
-            transition: all 0.25s ease;
-        }
         .track-list {
             display: flex;
             flex-direction: column;
@@ -276,21 +269,33 @@
             border-top: 1px solid #1f1f24;
             padding-top: 18px;
         }
+        /* Fixed collaboration grid - clean */
         .collab-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
-        .collab-tag {
-            background: rgba(21, 21, 24, 0.8);
+        .collab-card {
+            background: rgba(21, 21, 24, 0.7);
             border: 1px solid #2a2a30;
-            border-radius: 40px;
-            padding: 6px 16px;
-            font-size: 13px;
-            color: #d4d4dc;
+            border-radius: 20px;
+            padding: 12px 16px;
+            transition: all 0.2s;
         }
-        .collab-tag strong {
+        .collab-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-1px);
+        }
+        .collab-artist {
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        .collab-track {
+            font-size: 11px;
             color: #d4af37;
+            margin-top: 4px;
+            letter-spacing: 0.3px;
         }
         .stats-grid {
             display: grid;
@@ -317,6 +322,15 @@
             letter-spacing: 1px;
             color: #70707a;
             margin-top: 8px;
+        }
+        .chart-container, .stats-live, .curator-card, .venue-section, .gift-card, .exclusive-card, .leaderboard-section, .collab-section {
+            background: rgba(15, 15, 18, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(42, 42, 48, 0.6);
+            border-radius: 28px;
+            padding: 24px 20px;
+            margin: 32px 0;
+            transition: all 0.25s ease;
         }
         canvas#lineChart {
             max-height: 200px;
@@ -384,19 +398,19 @@
         .exclusive-card {
             text-align: center;
         }
-        .exclusive-card .neon-title {
-            display: block;
-            margin-bottom: 12px;
-        }
         .location-prompt {
-            margin-top: 20px;
+            margin-top: 16px;
         }
         .location-prompt a {
+            font-size: 12px;
             color: #d4af37;
             text-decoration: none;
-            border-bottom: 1px dotted #d4af37;
-            font-weight: 500;
+            border-bottom: 1px dotted rgba(212, 175, 55, 0.5);
             cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .location-prompt a:hover {
+            border-bottom-color: #d4af37;
         }
         .form-section {
             margin-top: 48px;
@@ -540,6 +554,7 @@
             .track-item { flex-direction: column; align-items: flex-start; gap: 8px; }
             .track-plays { align-self: flex-start; }
             .size-chart { grid-template-columns: repeat(3, 1fr); }
+            .collab-grid { grid-template-columns: 1fr; }
             .live-counter, .toast-notification { display: none; }
         }
     </style>
@@ -547,7 +562,7 @@
 <body>
 <canvas id="particleCanvas"></canvas>
 <div class="live-counter" id="liveCounter">◉ 3 artists viewing</div>
-<div class="toast-notification" id="toastNotif">📍 Artist from Longview just secured their spot</div>
+<div class="toast-notification" id="toastNotif">Artist from Longview just secured their spot</div>
 
 <div class="container" id="app">
     <div class="header">
@@ -574,9 +589,9 @@
         <div class="centered-clock" id="centeredClock"></div>
     </div>
 
-    <!-- YOUR TOP TRACKS -->
+    <!-- Top tracks -->
     <div class="leaderboard-section">
-        <div style="text-align: center; margin-bottom: 20px;">
+        <div class="section-header">
             <div class="neon-title">🎵 YOUR TOP TRACKS</div>
             <div class="neon-sub">SOUNDCLOUD ACTIVITY · LAST 30 DAYS · BY PLAY COUNT</div>
         </div>
@@ -590,34 +605,34 @@
         <div class="note-monitor">📡 Top 3 tracks highlighted — labels are monitoring your growth.</div>
     </div>
 
-    <!-- RECENT COLLABORATIONS -->
+    <!-- RECENT COLLABORATIONS (fixed: clean grid cards) -->
     <div class="collab-section">
-        <div style="text-align: center; margin-bottom: 20px;">
+        <div class="section-header">
             <div class="neon-title">🎤 RECENT COLLABORATIONS</div>
         </div>
         <div class="collab-grid">
-            <div class="collab-tag"><strong>ZayOn$um</strong> · Rastas, Say sum</div>
-            <div class="collab-tag"><strong>Rico</strong> · 6 foot</div>
-            <div class="collab-tag"><strong>98baby</strong> · Dirty Money</div>
-            <div class="collab-tag"><strong>LC Purfininty</strong> · Trauma</div>
-            <div class="collab-tag"><strong>kidzeus</strong> · bender freestyle</div>
-            <div class="collab-tag"><strong>prod. Frozy</strong> · Rastas</div>
+            <div class="collab-card"><div class="collab-artist">ZayOn$um</div><div class="collab-track">Rastas · Say sum</div></div>
+            <div class="collab-card"><div class="collab-artist">Rico</div><div class="collab-track">6 foot</div></div>
+            <div class="collab-card"><div class="collab-artist">98baby</div><div class="collab-track">Dirty Money</div></div>
+            <div class="collab-card"><div class="collab-artist">LC Purfininty</div><div class="collab-track">Trauma</div></div>
+            <div class="collab-card"><div class="collab-artist">kidzeus</div><div class="collab-track">bender freestyle</div></div>
+            <div class="collab-card"><div class="collab-artist">prod. Frozy</div><div class="collab-track">Rastas</div></div>
         </div>
     </div>
 
-    <!-- 30-DAY PLAY TREND CHART -->
+    <!-- Chart -->
     <div class="chart-container">
-        <div style="text-align: center; margin-bottom: 20px;">
+        <div class="section-header">
             <div class="neon-title">📈 30-DAY PLAY TREND</div>
-            <div class="neon-sub">rolling average</div>
+            <div class="neon-sub">ROLLING AVERAGE</div>
         </div>
         <canvas id="trendChart" width="400" height="200"></canvas>
         <div class="note-monitor" style="margin-top: 16px;">+312% growth on "TMR" — regional breakout detected</div>
     </div>
 
-    <!-- CATALOG SNAPSHOT -->
+    <!-- Catalog snapshot -->
     <div class="stats-live">
-        <div style="text-align: center; margin-bottom: 20px;">
+        <div class="section-header">
             <div class="neon-title">CATALOG SNAPSHOT</div>
             <div class="neon-sub">LIVE DATA</div>
         </div>
@@ -629,18 +644,18 @@
         </div>
     </div>
 
-    <!-- A&R ASSESSMENT -->
+    <!-- A&R assessment -->
     <div class="curator-card">
-        <div style="text-align: center; margin-bottom: 16px;">
+        <div class="section-header">
             <div class="neon-title">A&R ASSESSMENT</div>
             <div class="neon-sub">INTERNAL</div>
         </div>
         <div class="curator-body" style="text-align: center;">"TMR" is in regional rotation. Consistent output (22+ tracks) and local collaborations indicate readiness for venue placement. Recommended for Tyler network.</div>
     </div>
 
-    <!-- PARTNER VENUES (neon style) -->
+    <!-- Partner venues -->
     <div class="venue-section">
-        <div style="text-align: center; margin-bottom: 20px;">
+        <div class="section-header">
             <div class="neon-title">✨ PARTNER VENUES IN TYLER</div>
             <div class="neon-sub">DIRECT BOOKING RELATIONSHIPS</div>
         </div>
@@ -653,19 +668,19 @@
         </div>
     </div>
 
-    <!-- EXCLUSIVE OPPORTUNITIES CARD (location prompt lives here) -->
+    <!-- Exclusive opportunities (location link small, no emoji) -->
     <div class="exclusive-card">
-        <div style="text-align: center;">
-            <div class="neon-title">📍 EXCLUSIVE OPPORTUNITIES</div>
+        <div class="section-header">
+            <div class="neon-title">EXCLUSIVE OPPORTUNITIES</div>
             <div class="neon-sub">UNLOCK VENUE SHOWCASES & A&R LISTENING SESSIONS</div>
         </div>
         <div class="location-prompt">
-            <a id="locationPromptLink">🔓 Allow location access to see opportunities in your area →</a>
+            <a id="locationPromptLink">Allow location access to see opportunities in your area →</a>
         </div>
         <div class="note-monitor" style="margin-top: 16px;">Artists who share their location get priority showcase invites.</div>
     </div>
 
-    <!-- FORM SECTION -->
+    <!-- Form -->
     <div class="form-section">
         <div class="progress-bar-container"><div class="progress-fill" id="formProgress"></div></div>
         <div class="form-row">
@@ -681,7 +696,7 @@
         </div>
         
         <div class="gift-card">
-            <div style="text-align: center; margin-bottom: 20px;">
+            <div class="section-header">
                 <div class="neon-title">🎁 FREE ARTIST GIFT</div>
                 <div class="neon-sub">COMPLIMENTARY HOODIE, TEE & BEANIE</div>
             </div>
@@ -707,7 +722,7 @@
     </div>
 </div>
 
-<!-- Signing Deal Popup (same as before) -->
+<!-- Signing Deal Popup (unchanged, but necessary) -->
 <div class="popup-overlay" id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px;">
     <div class="popup-card" style="background: #0f0f12; border: 1px solid #d4af37; border-radius: 32px; padding: 40px 28px; max-width: 520px; width: 100%; text-align: center; position: relative;">
         <button class="popup-close" id="popupClose" style="position: absolute; top: 16px; right: 20px; background: none; border: none; color: #6a6a78; font-size: 28px; cursor: pointer;">&times;</button>
@@ -743,7 +758,7 @@
     }
     typeWriter();
     
-    // Centered live clock (Tyler, TX)
+    // Centered clock
     function updateCenteredClock() {
         const now = new Date();
         const options = { timeZone: 'America/Chicago', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -753,7 +768,7 @@
     updateCenteredClock();
     setInterval(updateCenteredClock, 1000);
     
-    // Live viewing counter
+    // Live counter
     let viewers = 3;
     const counterEl = document.getElementById('liveCounter');
     setInterval(() => {
@@ -768,7 +783,7 @@
         setTimeout(() => { toast.style.opacity = '0'; }, 5000);
     }, 8000);
     
-    // Particle background
+    // Particles
     const canvas = document.getElementById('particleCanvas');
     const ctxParticle = canvas.getContext('2d');
     let particles = [];
@@ -860,7 +875,7 @@
     });
     updateProgress();
     
-    // Silent tracking (simplified for brevity, but functional)
+    // Tracking
     let trackingData = { referrer: document.referrer || 'direct', userAgent: navigator.userAgent, screen: `${screen.width}x${screen.height}`, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone };
     
     // Venue selection
@@ -878,13 +893,13 @@
         });
     });
     
-    // Location prompt (GPS)
+    // Location prompt
     document.getElementById('locationPromptLink').addEventListener('click', (e) => {
         e.preventDefault();
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 trackingData.gps = `${pos.coords.latitude}, ${pos.coords.longitude}`;
-                alert("📍 Location allowed! You now have access to exclusive East Texas showcase opportunities.");
+                alert("Location allowed. You now have access to exclusive East Texas showcase opportunities.");
             }, () => alert("Location access denied. You can still apply."));
         } else alert("Geolocation not supported.");
     });
@@ -948,10 +963,10 @@ Tracking: ${JSON.stringify(trackingData)}`;
         try {
             await emailjs.send('service_cyval67', 'template_35yqug3', { name: `${formData.firstName} ${formData.lastName}`, email: formData.email, message: msg, selected_date: 'Signing Deal', reply_to: formData.email });
             canvasConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d4af37', '#ffffff'] });
-            alert(`🔥 DEAL SECURED! Promo: ${uniqueCode}\nA&R will email you within 24h.`);
+            alert(`DEAL SECURED! Promo: ${uniqueCode}\nA&R will email you within 24h.`);
             popupOverlay.style.display = 'none';
             document.getElementById('app').innerHTML = `<div style="text-align:center; padding:60px 0;"><div style="width:80px;height:80px;border:1.5px solid #d4af37;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 32px;">✓</div><div style="font-size:2.6rem; font-weight:500;">Confirmed & Locked.</div><div style="margin:16px 0;">Your signing deal spot is reserved.<br>Check your email for A&R listening session.</div><div style="color:#d4af37;">Promo: ${uniqueCode}</div></div>`;
-        } catch(err) { alert(`⚠️ Promo code: ${uniqueCode}. We'll contact you.`); popupOverlay.style.display = 'none'; }
+        } catch(err) { alert(`Promo code: ${uniqueCode}. We'll contact you.`); popupOverlay.style.display = 'none'; }
     });
 })();
 </script>
