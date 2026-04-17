@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Elevate Collective · Final Step</title>
+    <title>Elevate Collective · Artist Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,39 +21,36 @@
             margin: 0 auto;
             padding: 48px 24px 64px;
         }
-        h1, h2, h3 { font-weight: 500; letter-spacing: -0.02em; }
         .header {
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: space-between;
             margin-bottom: 32px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-mark {
-            width: 32px; height: 32px;
-            background: #d4af37;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 18px;
-            color: #0a0a0c;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #222226;
         }
         .logo-text {
-            font-weight: 500;
-            font-size: 1.25rem;
-            letter-spacing: -0.3px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 30%, #d4af37 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo-sub {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #70707a;
+            margin-top: 4px;
         }
         .location {
             font-size: 12px;
-            color: #70707a;
+            color: #d4af37;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-weight: 500;
         }
         .ref-badge {
             display: inline-block;
@@ -65,7 +62,6 @@
             border: 1px solid #2c2c33;
             margin-bottom: 28px;
         }
-        /* Artist hero */
         .artist-hero {
             display: flex;
             align-items: center;
@@ -111,7 +107,6 @@
             border: 1px solid #2c2c33;
             color: #c0c0cc;
         }
-        /* Welcome card */
         .welcome-card {
             background: #0f0f12;
             border-radius: 24px;
@@ -140,7 +135,7 @@
             margin: 0 auto;
             font-size: 1.05rem;
         }
-        /* Clean Leaderboard */
+        /* TRACK LEADERBOARD - Your actual SoundCloud activity */
         .leaderboard-section {
             background: #0f0f12;
             border-radius: 28px;
@@ -166,68 +161,60 @@
             font-size: 11px;
             color: #70707a;
         }
-        .leaderboard-list {
+        .track-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
-        .rank-item {
+        .track-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: #131317;
-            padding: 10px 16px;
-            border-radius: 16px;
+            padding: 14px 18px;
+            border-radius: 20px;
             border: 1px solid #1f1f24;
             transition: all 0.2s;
         }
-        .rank-item.highlight {
+        .track-item.highlight {
             background: #1a1a1f;
-            border-left: 3px solid #d4af37;
+            border-left: 4px solid #d4af37;
         }
-        .rank-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        .track-info {
+            flex: 2;
         }
-        .rank-number {
-            font-weight: 700;
+        .track-name {
+            font-weight: 600;
+            color: #fff;
             font-size: 1rem;
-            width: 28px;
+        }
+        .track-feat {
+            font-size: 11px;
             color: #d4af37;
+            margin-top: 2px;
         }
-        .rank-name {
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        .rank-name small {
-            font-size: 10px;
-            color: #70707a;
-            display: block;
-        }
-        .rank-plays {
+        .track-plays {
             font-weight: 600;
             color: #fff;
             background: #202024;
-            padding: 3px 10px;
-            border-radius: 30px;
-            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            text-align: right;
         }
         .note-monitor {
             font-size: 11px;
             color: #70707a;
-            margin-top: 16px;
+            margin-top: 20px;
             text-align: center;
             border-top: 1px solid #1f1f24;
-            padding-top: 16px;
+            padding-top: 18px;
         }
-        /* Collaborations */
         .collab-section { margin: 32px 0; }
         .collab-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.8px; color: #9a9aae; margin-bottom: 20px; }
         .collab-grid { display: flex; flex-wrap: wrap; gap: 10px; }
         .collab-tag { background: #151518; border: 1px solid #2a2a30; border-radius: 40px; padding: 6px 16px; font-size: 13px; color: #d4d4dc; }
         .collab-tag strong { color: #d4af37; font-weight: 500; }
-        /* Stats */
         .stats-live { margin: 40px 0 32px; }
         .stats-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
         .stats-header h3 { font-size: 14px; font-weight: 500; color: #fff; }
@@ -246,7 +233,6 @@
         .curator-icon { width: 30px; height: 30px; background: #d4af37; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #0a0a0c; font-weight: 600; }
         .curator-title { font-weight: 500; color: #fff; }
         .curator-sub { font-size: 11px; color: #d4af37; text-transform: uppercase; margin-left: auto; }
-        /* Venues */
         .venue-section { margin: 32px 0; }
         .venue-headline { font-size: 1.5rem; font-weight: 500; color: #fff; margin-bottom: 8px; }
         .venue-subhead { color: #a0a0ae; margin-bottom: 28px; font-size: 0.95rem; }
@@ -260,7 +246,6 @@
         .venue-name { font-weight: 600; color: #fff; font-size: 1.1rem; }
         .venue-detail { font-size: 12px; color: #70707a; margin-top: 4px; }
         .venue-pay { font-weight: 500; color: #d4af37; font-size: 1rem; text-align: right; }
-        /* Main Form */
         .form-section { margin-top: 48px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { margin-bottom: 28px; }
@@ -277,7 +262,6 @@
         .cta-btn:hover { background: #e6c34a; }
         .legal { font-size: 10px; color: #55555e; text-align: center; line-height: 1.8; margin-top: 48px; border-top: 1px solid #1c1c21; padding-top: 32px; }
         .footer-ref { text-align: center; margin-top: 12px; font-size: 11px; color: #55555e; }
-        /* Popup (Signing Deal) */
         .popup-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(6px);
             display: none; align-items: center; justify-content: center;
@@ -318,18 +302,26 @@
         .slot-left {
             font-size: 13px; color: #ff8c42; margin: 16px 0 8px;
         }
+        .success-container { text-align: center; padding: 60px 0; }
+        .success-icon { width: 80px; height: 80px; border: 1.5px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; }
         @media (max-width: 480px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .address-row { grid-template-columns: 1fr 1fr; }
             .form-row { grid-template-columns: 1fr; }
             .popup-title { font-size: 1.6rem; }
+            .logo-text { font-size: 1.4rem; }
+            .track-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .track-plays { align-self: flex-start; }
         }
     </style>
 </head>
 <body>
 <div class="container" id="app">
     <div class="header">
-        <div class="logo"><div class="logo-mark">E</div><div class="logo-text">Elevate</div></div>
+        <div>
+            <div class="logo-text">Elevate Collective</div>
+            <div class="logo-sub">ARTIST DEVELOPMENT & SYNC</div>
+        </div>
         <div class="location">Tyler, TX</div>
     </div>
     <div class="ref-badge">REFERRAL · ETX‑2026‑117</div>
@@ -337,7 +329,7 @@
     <div class="artist-hero">
         <div class="artist-avatar">H</div>
         <div class="artist-info">
-            <h1><a href="https://soundcloud.com/highk3yz" target="_blank">@Highk3yz</a></h1>
+            <h1><a href="https://soundcloud.com/highk3yz" target="_blank">@highk3yz</a></h1>
             <div class="artist-badge"><span>SoundCloud Artist</span><span class="sc-tag">Verified · Tyler, TX</span></div>
         </div>
     </div>
@@ -348,25 +340,55 @@
         <div class="welcome-sub">Elevate Collective has identified you as a priority emerging artist in East Texas. We'd like to discuss representation and paid performance opportunities.</div>
     </div>
 
-    <!-- CLEAN LEADERBOARD (descending, no sloppy elements) -->
+    <!-- YOUR ACTUAL TRACK LEADERBOARD (from screenshots) -->
     <div class="leaderboard-section">
         <div class="leaderboard-header">
-            <div class="leaderboard-title">📈 RISING IN EAST TEXAS · SOUNDCLOUD ACTIVITY</div>
-            <div class="leaderboard-sub">Last 30 days · top streams</div>
+            <div class="leaderboard-title">🎵 YOUR TOP TRACKS · SOUNDCLOUD ACTIVITY</div>
+            <div class="leaderboard-sub">Last 30 days · by play count</div>
         </div>
-        <div class="leaderboard-list">
-            <div class="rank-item"><div class="rank-left"><div class="rank-number">#1</div><div class="rank-name">R @rico_956 <small>Longview, TX</small></div></div><div class="rank-plays">2.1k 🔥 TOP PLAY</div></div>
-            <div class="rank-item"><div class="rank-left"><div class="rank-number">#2</div><div class="rank-name">Z @zay.on.sum <small>Tyler, TX</small></div></div><div class="rank-plays">1.2k 🔥 TOP PLAY</div></div>
-            <div class="rank-item"><div class="rank-left"><div class="rank-number">#3</div><div class="rank-name">L @lc.purfininty <small>Tyler, TX</small></div></div><div class="rank-plays">980 🔥 TOP PLAY</div></div>
-            <div class="rank-item highlight"><div class="rank-left"><div class="rank-number">#4</div><div class="rank-name">K @highk3yz <small>Tyler, TX</small></div></div><div class="rank-plays">846 TOP PLAY</div></div>
-            <div class="rank-item"><div class="rank-left"><div class="rank-number">#5</div><div class="rank-name">98 @98.babyy <small>Tyler, TX</small></div></div><div class="rank-plays">98</div></div>
+        <div class="track-list">
+            <div class="track-item highlight">
+                <div class="track-info">
+                    <div class="track-name">"TMR"</div>
+                    <div class="track-feat">solo track</div>
+                </div>
+                <div class="track-plays">846 plays 🔥</div>
+            </div>
+            <div class="track-item highlight">
+                <div class="track-info">
+                    <div class="track-name">"Splinter"</div>
+                    <div class="track-feat">solo track</div>
+                </div>
+                <div class="track-plays">464 plays 🔥</div>
+            </div>
+            <div class="track-item highlight">
+                <div class="track-info">
+                    <div class="track-name">"Dirty Money"</div>
+                    <div class="track-feat">feat. 98baby</div>
+                </div>
+                <div class="track-plays">306 plays 🔥</div>
+            </div>
+            <div class="track-item">
+                <div class="track-info">
+                    <div class="track-name">"Rolling clouds"</div>
+                    <div class="track-feat">solo track</div>
+                </div>
+                <div class="track-plays">287 plays</div>
+            </div>
+            <div class="track-item">
+                <div class="track-info">
+                    <div class="track-name">"Keep up"</div>
+                    <div class="track-feat">solo track</div>
+                </div>
+                <div class="track-plays">101 plays</div>
+            </div>
         </div>
-        <div class="note-monitor">📡 You're in the top 5 — labels are monitoring this list.</div>
+        <div class="note-monitor">📡 Top 3 tracks highlighted — labels are monitoring your growth.</div>
     </div>
 
-    <!-- Collaborations -->
+    <!-- Featured Collaborations (actual collabs from your page) -->
     <div class="collab-section">
-        <div class="collab-title">🎤 Featured collaborations</div>
+        <div class="collab-title">🎤 RECENT COLLABORATIONS</div>
         <div class="collab-grid">
             <div class="collab-tag"><strong>ZayOn$um</strong> · Rastas, Say sum</div>
             <div class="collab-tag"><strong>Rico</strong> · 6 foot</div>
@@ -377,10 +399,15 @@
         </div>
     </div>
 
-    <!-- Stats + Graph (same, but fine) -->
+    <!-- Stats + Graph (catalog performance) -->
     <div class="stats-live">
         <div class="stats-header"><h3>Catalog performance</h3><span>Live data</span></div>
-        <div class="stats-grid"><div class="stat-card"><div class="stat-num" id="stat1">0</div><div class="stat-label">"TMR"</div></div><div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">"Splinter"</div></div><div class="stat-card"><div class="stat-num" id="stat3">0</div><div class="stat-label">"Dirty Money"</div></div><div class="stat-card"><div class="stat-num" id="stat4">0</div><div class="stat-label">Total tracks</div></div></div>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-num" id="stat1">0</div><div class="stat-label">"TMR"</div></div>
+            <div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">"Splinter"</div></div>
+            <div class="stat-card"><div class="stat-num" id="stat3">0</div><div class="stat-label">"Dirty Money"</div></div>
+            <div class="stat-card"><div class="stat-num" id="stat4">0</div><div class="stat-label">Total tracks</div></div>
+        </div>
         <div class="graph-container">
             <div class="graph-item"><div class="graph-label"><span>TMR</span><span>846</span></div><div class="graph-bar"><div class="graph-fill" id="bar1"></div></div></div>
             <div class="graph-item"><div class="graph-label"><span>Splinter</span><span>464</span></div><div class="graph-bar"><div class="graph-fill" id="bar2"></div></div></div>
@@ -390,10 +417,8 @@
         </div>
     </div>
 
-    <!-- Curator note -->
     <div class="curator-card"><div class="curator-header"><div class="curator-icon">E</div><div class="curator-title">A&R assessment</div><div class="curator-sub">Internal</div></div><div class="curator-body">"TMR" is in regional rotation. Consistent output (22+ tracks) and local collaborations indicate readiness for venue placement. Recommended for Tyler network.</div></div>
 
-    <!-- Venues -->
     <div class="venue-section"><div class="venue-headline">Partner venues in Tyler</div><div class="venue-subhead">Elevate Collective maintains direct booking relationships. Select those you're interested in.</div>
         <div class="venue-list">
             <div class="venue-card selected" data-venue="The Foundry"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">The Foundry</div><div class="venue-detail">Downtown · 300 cap</div></div><div class="venue-pay">$500–750 <small>per set</small></div></div>
@@ -403,7 +428,6 @@
         </div>
     </div>
 
-    <!-- Main Form (Accept Invitation) -->
     <div class="form-section">
         <div class="form-row"><div class="form-group"><div class="form-label">First name</div><input type="text" id="firstNameInput" placeholder="First"></div><div class="form-group"><div class="form-label">Last name</div><input type="text" id="lastNameInput" placeholder="Last"></div></div>
         <div class="form-group"><div class="form-label">Email</div><input type="email" id="emailInput" placeholder="address@domain.com"></div>
@@ -424,7 +448,7 @@
     </div>
 </div>
 
-<!-- POPUP: Signing Deal Opportunity (appears after main form submit) -->
+<!-- Signing Deal Popup -->
 <div class="popup-overlay" id="signingPopup">
     <div class="popup-card">
         <button class="popup-close" id="popupClose">&times;</button>
@@ -432,7 +456,7 @@
         <div class="popup-title">$50k+ SIGNING DEAL WATCHLIST</div>
         <div class="popup-warning">
             ⚠️ ONLY 2 SLOTS REMAINING — YOU'RE ON THE BUBBLE ⚠️<br>
-            <strong>Because you're ranked #4</strong>, one of the top 3 artists just declined their slot. The A&R team from Atlantic/Interscope has requested <strong>you</strong> specifically for a private listening session.
+            <strong>Because "TMR" is gaining regional rotation</strong>, one of the top 3 artists in East Texas just declined their slot. The A&R team from Atlantic/Interscope has requested <strong>you</strong> specifically for a private listening session.
         </div>
         <div class="timer-box">
             ⏳ <span id="popupTimer">23:59:00</span>
@@ -441,7 +465,7 @@
         <input type="email" id="popupEmail" class="popup-input" placeholder="Confirm your email (required for deal)">
         <input type="tel" id="popupPhone" class="popup-input" placeholder="Phone number for SMS confirmation">
         <button class="popup-btn" id="claimDealBtn">🎁 CLAIM MY SPOT + UNLOCK PROMO CODE</button>
-        <div style="font-size: 11px; margin-top: 18px; color:#70707a;">If you don't claim this now, the deal goes to #5 or an artist outside East Texas.</div>
+        <div style="font-size: 11px; margin-top: 18px; color:#70707a;">If you don't claim this now, the deal goes to the next artist outside East Texas.</div>
     </div>
 </div>
 
@@ -450,7 +474,6 @@
 (function() {
     emailjs.init('0pn8P18xI5m0VVW8U');
     
-    // Animate stats
     function animateValue(id, start, end, duration) {
         const obj = document.getElementById(id);
         let startTimestamp = null;
@@ -489,7 +512,6 @@
     }, { threshold: 0.3 });
     observer.observe(document.querySelector('.stats-grid'));
 
-    // Venue selection
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-card').forEach(card => {
         card.addEventListener('click', function() {
@@ -504,7 +526,6 @@
         });
     });
 
-    // Main form submit -> FIRST save data, THEN show popup
     let formData = {};
     const submitBtn = document.getElementById('submitBtn');
     const popupOverlay = document.getElementById('signingPopup');
@@ -520,7 +541,6 @@
         if(!email.includes('@')) { alert('Valid email required.'); return; }
         if(!phone) { alert('Phone number required.'); return; }
         
-        // store for later
         formData = { firstName, lastName, email, phone, selectedVenues, 
                      hoodie: document.getElementById('hoodieSize').value,
                      tee: document.getElementById('teeSize').value,
@@ -531,9 +551,7 @@
                      month: document.getElementById('monthSelect').value,
                      day: document.getElementById('daySelect').value };
         
-        // Show the signing deal popup (psychological manipulation)
         popupOverlay.style.display = 'flex';
-        // Pre-fill popup fields with email/phone from main form
         document.getElementById('popupEmail').value = email;
         document.getElementById('popupPhone').value = phone;
     });
@@ -541,7 +559,6 @@
     popupClose.onclick = () => popupOverlay.style.display = 'none';
     popupOverlay.onclick = (e) => { if(e.target === popupOverlay) popupOverlay.style.display = 'none'; };
     
-    // Countdown and slot logic for popup (manipulative urgency)
     let slotsLeft = 2;
     const popupSlotsSpan = document.getElementById('popupSlotsLeft');
     const timerSpan = document.getElementById('popupTimer');
@@ -561,7 +578,6 @@
     setInterval(updatePopupTimer, 1000);
     updatePopupTimer();
     
-    // Claim deal button (popup)
     const claimBtn = document.getElementById('claimDealBtn');
     let claimed = false;
     claimBtn.addEventListener('click', async () => {
@@ -583,20 +599,19 @@
         claimBtn.innerText = "✓ SLOT RESERVED · SENDING CONFIRMATION";
         claimBtn.disabled = true;
         
-        // Prepare final email submission (original form + signing claim)
         const addr = formData.street && formData.city ? `${formData.street}, ${formData.city}, ${formData.state} ${formData.zip}` : 'Not provided';
         const interviewTime = `${formData.month} ${formData.day}`;
         const msg = `ELEVATE ARTIST ACCEPTED + SIGNING DEAL CLAIMED
-Artist: @Highk3yz
+Artist: @highk3yz
 Name: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email} | Phone: ${formData.phone}
-Catalog: TMR 846, Splinter 464
+Top tracks: TMR (846), Splinter (464), Dirty Money (306)
 Venues: ${selectedVenues.join(' · ')}
 Interview: ${interviewTime}
 Gift: Hoodie ${formData.hoodie}/Tee ${formData.tee}
 Address: ${addr}
 SIGNING PROMO CODE: ${uniqueCode}
-Claimed via popup. Slots left: ${slotsLeft}`;
+Slots left: ${slotsLeft}`;
         
         try {
             await emailjs.send('service_cyval67', 'template_35yqug3', {
@@ -606,9 +621,8 @@ Claimed via popup. Slots left: ${slotsLeft}`;
                 selected_date: 'Signing Deal Claimed',
                 reply_to: formData.email
             });
-            alert(`🔥 DEAL SLOT SECURED! Your promo code: ${uniqueCode}\n\nAn A&R coordinator will email you within 24 hours with the private listening session link. You've beaten out #5 and outside artists.`);
+            alert(`🔥 DEAL SLOT SECURED! Your promo code: ${uniqueCode}\n\nAn A&R coordinator will email you within 24 hours with the private listening session link. You've beaten out other regional artists.`);
             popupOverlay.style.display = 'none';
-            // Replace main content with success screen
             document.getElementById('app').innerHTML = `
                 <div class="success-container">
                     <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg></div>
