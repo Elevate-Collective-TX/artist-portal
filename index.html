@@ -26,7 +26,6 @@
             margin: 0 auto;
             padding: 48px 24px 80px;
         }
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -70,7 +69,6 @@
             display: inline-block;
             margin-top: 4px;
         }
-        /* Artist row */
         .artist {
             display: flex;
             align-items: center;
@@ -125,7 +123,6 @@
             font-size: 0.7rem;
             margin-left: 8px;
         }
-        /* Invite */
         .invite {
             text-align: center;
             margin: 32px 0 48px;
@@ -168,7 +165,6 @@
             max-width: 480px;
             margin: 0 auto;
         }
-        /* Section titles */
         .section-title {
             font-size: 0.7rem;
             letter-spacing: 2px;
@@ -220,7 +216,6 @@
             background: linear-gradient(90deg, #d4af37, transparent);
             margin: 48px 0;
         }
-        /* Track list */
         .track-list {
             display: flex;
             flex-direction: column;
@@ -248,7 +243,6 @@
             color: #d4af37;
             font-size: 0.85rem;
         }
-        /* Chart */
         .chart-wrapper {
             margin: 40px 0;
         }
@@ -279,7 +273,6 @@
             padding-top: 16px;
             margin-top: 16px;
         }
-        /* Stats callout - gold header, no emoji */
         .stats-callout {
             background: #101014;
             border-radius: 24px;
@@ -315,7 +308,6 @@
             text-transform: uppercase;
             color: #6b6b76;
         }
-        /* Venues */
         .venue-header {
             display: flex;
             justify-content: space-between;
@@ -379,7 +371,6 @@
             color: #6b6b76;
             display: block;
         }
-        /* Gift */
         .gift-box {
             margin: 48px 0;
             padding: 24px 0;
@@ -491,7 +482,7 @@
             padding-top: 24px;
             margin-top: 24px;
         }
-        /* Scroll reveal animation */
+        /* Scroll reveal */
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
@@ -501,15 +492,15 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Centered minimal giveaway popup */
+        /* Giveaway popup - minimal, centered, no gold, no emoji */
         .giveaway-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -522,33 +513,33 @@
             visibility: visible;
             opacity: 1;
         }
-        .giveaway-modal {
-            background: #0a0a0c;
-            border: 1px solid #d4af37;
-            border-radius: 24px;
-            max-width: 380px;
+        .giveaway-card {
+            background: #0f0f12;
+            border-radius: 20px;
+            max-width: 360px;
             width: 90%;
-            padding: 32px 28px;
+            padding: 28px 24px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid #2a2a30;
         }
-        .giveaway-modal h3 {
+        .giveaway-card h3 {
             font-family: 'Inter', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 500;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.2px;
             color: #fff;
             margin-bottom: 12px;
         }
-        .giveaway-modal p {
-            font-size: 0.85rem;
+        .giveaway-card p {
+            font-size: 0.8rem;
             color: #aaa;
             line-height: 1.5;
             margin-bottom: 24px;
         }
-        .giveaway-modal input {
+        .giveaway-card input {
             width: 100%;
-            background: #15151a;
+            background: #1a1a20;
             border: 1px solid #2a2a30;
             border-radius: 40px;
             padding: 12px 16px;
@@ -556,7 +547,7 @@
             margin-bottom: 16px;
             color: #fff;
         }
-        .giveaway-modal button {
+        .giveaway-card button {
             width: 100%;
             background: #d4af37;
             color: #0a0a0c;
@@ -568,13 +559,13 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        .giveaway-modal button:hover {
+        .giveaway-card button:hover {
             background: #e6c34a;
         }
         .giveaway-close {
             position: absolute;
-            top: 16px;
-            right: 20px;
+            top: 12px;
+            right: 16px;
             background: none;
             border: none;
             color: #888;
@@ -610,7 +601,7 @@
         <p>After reviewing SoundCloud analytics in East Texas, we've extended this invitation exclusively to you. Elevate Collective wants to discuss representation and paid performance opportunities.</p>
     </div>
 
-    <!-- Top tracks section -->
+    <!-- Top tracks -->
     <div class="fade-up" id="sectionTracks">
         <div class="section-title">🎧 Your top tracks · last 30 days</div>
         <div class="track-list">
@@ -626,7 +617,7 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Chart section -->
+    <!-- Chart -->
     <div class="fade-up" id="sectionChart">
         <div class="chart-wrapper">
             <div class="chart-header"><span>📈 30-day play trend + projection</span><span>actual → forecast</span></div>
@@ -637,7 +628,7 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Stats callout (no emoji) -->
+    <!-- Stats -->
     <div class="fade-up" id="sectionStats">
         <div class="stats-callout">
             <h4>Catalog at a glance</h4>
@@ -652,7 +643,7 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Partner venues -->
+    <!-- Venues -->
     <div class="fade-up" id="sectionVenues">
         <div class="section-title">
             ✨ Partner venues · Tyler, TX
@@ -695,7 +686,7 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Gift section -->
+    <!-- Gift -->
     <div class="fade-up" id="sectionGift">
         <div class="gift-box">
             <div class="section-title" style="margin-top:0;">🎁 Free artist gift</div>
@@ -718,7 +709,7 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Contact information -->
+    <!-- Contact -->
     <div class="fade-up" id="sectionContact">
         <div class="section-title">📞 Contact information</div>
         <div class="form-row"><div class="form-group"><label>First name</label><input type="text" id="firstNameInput"></div><div class="form-group"><label>Last name</label><input type="text" id="lastNameInput"></div></div>
@@ -758,10 +749,10 @@
     <div class="footer-note">Elevate Collective · Tyler, TX · This invitation is non-binding. Free gift shipped within US only.</div>
 </div>
 
-<!-- Centered minimal giveaway popup -->
+<!-- Giveaway Popup - minimal, centered, no gold, no emoji -->
 <div id="giveawayOverlay" class="giveaway-overlay">
-    <div class="giveaway-modal">
-        <button class="giveaway-close" id="giveawayClose">&times;</button>
+    <div class="giveaway-card">
+        <button class="giveaway-close" id="giveawayClose">✕</button>
         <h3>Giveaway</h3>
         <p>Enter your email for a chance to win monthly cash prizes, limited edition merch, and studio sessions.</p>
         <input type="email" id="giveawayEmail" placeholder="Your email address">
@@ -769,7 +760,7 @@
     </div>
 </div>
 
-<!-- Signing deal popup -->
+<!-- Signing deal popup (unchanged) -->
 <div id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;">
     <div style="background: #0a0a0c; border: 1px solid #d4af37; border-radius: 32px; max-width: 400px; width: 100%; padding: 32px 28px; text-align: center;">
         <button id="popupClose" style="float: right; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">&times;</button>
@@ -806,7 +797,7 @@
     }
     typeWriter();
     
-    // Scroll reveal for fade-up sections
+    // Scroll reveal
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -818,7 +809,7 @@
     }, { threshold: 0.1 });
     fadeElements.forEach(el => observer.observe(el));
     
-    // Scroll animation for artist
+    // Artist scroll effect
     const artistSection = document.getElementById('artistSection');
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
@@ -927,7 +918,7 @@
         }
     });
     
-    // Centered giveaway popup (appears after 8 seconds)
+    // Giveaway popup (appears after 8 seconds)
     const giveawayOverlay = document.getElementById('giveawayOverlay');
     setTimeout(() => {
         giveawayOverlay.classList.add('active');
