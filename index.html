@@ -137,6 +137,39 @@
             margin-bottom: 32px;
             font-size: 1rem;
         }
+        /* Associated Artists */
+        .associated-section {
+            background: rgba(201,168,76,0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+        .associated-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .associated-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .assoc-item {
+            text-align: center;
+        }
+        .assoc-name {
+            font-weight: 500;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        .assoc-ig {
+            font-size: 0.7rem;
+            color: var(--gold-light);
+            margin-top: 4px;
+        }
         /* Animated Stats */
         .stats-grid {
             display: grid;
@@ -515,6 +548,7 @@
             .address-row { grid-template-columns: 1fr 1fr; }
             .size-chart { font-size: 0.6rem; }
             .form-row { grid-template-columns: 1fr; }
+            .associated-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -548,6 +582,37 @@
         In partnership with SoundCloud, we've identified <strong>@highk3yz</strong> as a rising artist in the East Texas region. 
         <strong>"TMR"</strong> (846), <strong>"Splinter"</strong> (464), <strong>"Dirty Money"</strong> (306) and 19+ other tracks show consistent growth and a dedicated listener base.
         We'd like to explore representation and placement opportunities across our Tyler venue network.
+    </div>
+
+    <!-- Associated Artists (Social Proof) -->
+    <div class="associated-section">
+        <div class="associated-title">🎯 Artists You've Worked With</div>
+        <div class="associated-grid">
+            <div class="assoc-item">
+                <div class="assoc-name">ZayOn$um</div>
+                <div class="assoc-ig">@zay.on.sum</div>
+            </div>
+            <div class="assoc-item">
+                <div class="assoc-name">Rico</div>
+                <div class="assoc-ig">@rico_956</div>
+            </div>
+            <div class="assoc-item">
+                <div class="assoc-name">98baby</div>
+                <div class="assoc-ig">@98.babyy</div>
+            </div>
+            <div class="assoc-item">
+                <div class="assoc-name">LC Purfininty</div>
+                <div class="assoc-ig">@lc.purfininty</div>
+            </div>
+            <div class="assoc-item">
+                <div class="assoc-name">kidzeus</div>
+                <div class="assoc-ig">@kidzeus</div>
+            </div>
+            <div class="assoc-item">
+                <div class="assoc-name">prod. Frozy</div>
+                <div class="assoc-ig">@prod.frozy</div>
+            </div>
+        </div>
     </div>
 
     <!-- Animated Stats -->
