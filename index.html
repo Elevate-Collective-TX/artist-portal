@@ -39,7 +39,10 @@
             font-weight: 500;
             font-size: 1.4rem;
             letter-spacing: -0.3px;
-            color: #fff;
+            background: linear-gradient(135deg, #fff 30%, #d4af37 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
         .logo p {
             font-size: 0.7rem;
@@ -52,7 +55,7 @@
             font-size: 0.7rem;
             color: #6b6b76;
         }
-        /* artist row with scroll animation */
+        /* artist row with subtle animation */
         .artist {
             display: flex;
             align-items: center;
@@ -113,7 +116,10 @@
             font-size: 2.2rem;
             font-weight: 450;
             letter-spacing: -1px;
-            color: #fff;
+            background: linear-gradient(135deg, #fff 30%, #d4af37 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
             margin-bottom: 16px;
             min-height: 70px;
         }
@@ -134,23 +140,23 @@
             max-width: 480px;
             margin: 0 auto;
         }
-        /* section titles - gold */
+        /* section titles with gold bar */
         .section-title {
             font-size: 0.7rem;
             letter-spacing: 2px;
             color: #d4af37;
             text-transform: uppercase;
             margin: 48px 0 20px 0;
-            border-left: 2px solid #d4af37;
+            border-left: 3px solid #d4af37;
             padding-left: 12px;
         }
         .section-title:first-of-type {
             margin-top: 0;
         }
-        /* defined divider */
-        .divider {
+        /* gold divider between sections */
+        .gold-divider {
             height: 1px;
-            background: #1e1e24;
+            background: linear-gradient(90deg, #d4af37, transparent);
             margin: 48px 0;
         }
         /* track list */
@@ -181,7 +187,7 @@
             color: #d4af37;
             font-size: 0.85rem;
         }
-        /* chart wrapper */
+        /* chart wrapper with animation */
         .chart-wrapper {
             margin: 40px 0;
         }
@@ -238,7 +244,18 @@
             margin-top: 8px;
             letter-spacing: 1px;
         }
-        /* venues */
+        /* venues with instruction */
+        .venue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 16px;
+        }
+        .venue-instruction {
+            font-size: 0.65rem;
+            color: #6b6b76;
+            letter-spacing: 0.5px;
+        }
         .venue-list {
             display: flex;
             flex-direction: column;
@@ -271,6 +288,7 @@
         .venue-pay {
             font-weight: 500;
             color: #d4af37;
+            text-decoration: none;
         }
         /* gift section */
         .gift-box {
@@ -380,18 +398,6 @@
             padding-top: 24px;
             margin-top: 24px;
         }
-        .live-counter {
-            position: fixed;
-            bottom: 16px;
-            right: 16px;
-            background: #0a0a0c;
-            border: 1px solid #d4af37;
-            border-radius: 40px;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            color: #d4af37;
-            z-index: 100;
-        }
         @media (max-width: 550px) {
             .stats-grid { flex-wrap: wrap; }
             .stat-card { min-width: calc(50% - 6px); }
@@ -401,7 +407,6 @@
     </style>
 </head>
 <body>
-<div class="live-counter" id="liveCounter">◉ 3 viewing</div>
 <div class="container" id="app">
     <div class="header">
         <div class="logo"><h1>Elevate Collective</h1><p>Tyler, TX</p></div>
@@ -432,19 +437,18 @@
         <div class="track-row"><div><div class="track-name">Keep up</div><div class="track-feat">solo</div></div><div class="track-plays">101</div></div>
         <div class="track-row"><div><div class="track-name">Rastas</div><div class="track-feat">ft. ZayOn$um, Frozy</div></div><div class="track-plays">51</div></div>
         <div class="track-row"><div><div class="track-name">6 foot</div><div class="track-feat">ft. Rico</div></div><div class="track-plays">58</div></div>
-        <div class="track-row"><div><div class="track-name">bender freestyle</div><div class="track-feat">ft. kidzeus</div></div><div class="track-plays">7</div></div>
     </div>
 
-    <div class="divider"></div>
+    <div class="gold-divider"></div>
 
-    <!-- Chart -->
+    <!-- Chart with projected plays -->
     <div class="chart-wrapper">
-        <div class="chart-header"><span>📈 30-day play trend</span><span>rolling average</span></div>
+        <div class="chart-header"><span>📈 30-day play trend + projection</span><span>actual → forecast</span></div>
         <canvas id="trendChart"></canvas>
-        <div class="chart-note">+312% growth on "TMR" — regional breakout detected</div>
+        <div class="chart-note">+312% actual growth on "TMR" · Projected 1.2k plays by week 8</div>
     </div>
 
-    <div class="divider"></div>
+    <div class="gold-divider"></div>
 
     <!-- Stats -->
     <div class="stats-grid">
@@ -454,10 +458,13 @@
         <div class="stat-card"><div class="stat-number" id="stat4">0</div><div class="stat-label">Total tracks</div></div>
     </div>
 
-    <div class="divider"></div>
+    <div class="gold-divider"></div>
 
-    <!-- Venues -->
+    <!-- Partner venues with instruction -->
     <div class="section-title">✨ Partner venues · Tyler, TX</div>
+    <div class="venue-header">
+        <div class="venue-instruction">Click on any venue to select your interest</div>
+    </div>
     <div class="venue-list">
         <div class="venue-item selected" data-venue="The Foundry"><div><div class="venue-name">The Foundry</div><div class="venue-address">Downtown · 300 cap</div></div><div class="venue-pay">$500–750</div></div>
         <div class="venue-item" data-venue="True Vine Brewing"><div><div class="venue-name">True Vine Brewing</div><div class="venue-address">Earl Campbell Pkwy · 250 cap</div></div><div class="venue-pay">$600–800</div></div>
@@ -465,7 +472,7 @@
         <div class="venue-item" data-venue="Brick Street Bar"><div><div class="venue-name">Brick Street Bar</div><div class="venue-address">Downtown · 400 cap</div></div><div class="venue-pay">$900+</div></div>
     </div>
 
-    <div class="divider"></div>
+    <div class="gold-divider"></div>
 
     <!-- Gift section -->
     <div class="gift-box">
@@ -483,17 +490,15 @@
         <div class="form-row"><div class="form-group"><label>City</label><input type="text" id="cityInput"></div><div class="form-group"><label>State</label><input type="text" id="stateInput"></div><div class="form-group"><label>ZIP</label><input type="text" id="zipInput"></div></div>
     </div>
 
-    <div class="divider"></div>
+    <div class="gold-divider"></div>
 
-    <!-- Contact Information section header (gold) -->
+    <!-- Contact information -->
     <div class="section-title">📞 Contact information</div>
-
-    <!-- Form fields -->
     <div class="form-row"><div class="form-group"><label>First name</label><input type="text" id="firstNameInput"></div><div class="form-group"><label>Last name</label><input type="text" id="lastNameInput"></div></div>
     <div class="form-group"><label>Email</label><input type="email" id="emailInput"></div>
     <div class="form-group"><label>Phone</label><input type="tel" id="phoneInput"></div>
 
-    <!-- More date options (May–September, 1–31) -->
+    <!-- Date options -->
     <div class="form-row">
         <div class="form-group"><label>Preferred month</label>
             <select id="monthSelect">
@@ -513,7 +518,7 @@
         </div>
     </div>
 
-    <!-- Location request at bottom -->
+    <!-- Location request -->
     <div class="location-footer"><a id="locationPromptLink">Allow location access for exclusive showcase opportunities</a></div>
 
     <button class="cta-btn" id="submitBtn">Accept invitation →</button>
@@ -533,7 +538,7 @@
         <input type="email" id="popupEmail" placeholder="Confirm email" style="width: 100%; background: #15151a; border: 1px solid #25252b; padding: 12px; border-radius: 40px; margin-bottom: 12px; color: #fff;">
         <input type="tel" id="popupPhone" placeholder="Phone for SMS" style="width: 100%; background: #15151a; border: 1px solid #25252b; padding: 12px; border-radius: 40px; margin-bottom: 20px; color: #fff;">
         <button id="claimDealBtn" style="width: 100%; background: #d4af37; color: #0a0a0c; border: none; padding: 14px; border-radius: 40px; font-weight: 600; cursor: pointer;">Claim spot →</button>
-        <p style="font-size: 10px; margin-top: 20px; color: #666;">If you don't claim, the deal goes to #5 or outside artist.</p>
+        <p style="font-size: 10px; margin-top: 20px; color: #666;">If you don't claim, the deal goes to the next artist outside East Texas.</p>
     </div>
 </div>
 
@@ -542,7 +547,7 @@
 (function() {
     emailjs.init('0pn8P18xI5m0VVW8U');
     
-    // Typing animation for "You're invited!"
+    // Typing animation for "You're invited!" with gradient
     const titleEl = document.getElementById('typingTitle');
     const fullText = "You're invited.";
     let i = 0;
@@ -557,7 +562,7 @@
     }
     typeWriter();
     
-    // Scroll animation: artist info subtly scales/glows on scroll
+    // Scroll animation: artist section subtle scale
     const artistSection = document.getElementById('artistSection');
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
@@ -570,38 +575,69 @@
         }
     });
     
-    // Detailed chart
+    // Chart with projection (weeks 1-4 actual, weeks 5-8 projected)
     const ctx = document.getElementById('trendChart').getContext('2d');
-    new Chart(ctx, {
+    const chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-            datasets: [{
-                label: 'TMR plays',
-                data: [120, 310, 680, 846],
-                borderColor: '#d4af37',
-                backgroundColor: 'rgba(212, 175, 55, 0.03)',
-                borderWidth: 2,
-                pointBackgroundColor: '#d4af37',
-                pointRadius: 3,
-                pointHoverRadius: 5,
-                tension: 0.3,
-                fill: true
-            }]
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
+            datasets: [
+                {
+                    label: 'Actual plays',
+                    data: [120, 310, 680, 846, null, null, null, null],
+                    borderColor: '#d4af37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.05)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#d4af37',
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'Projected plays',
+                    data: [null, null, null, null, 980, 1100, 1180, 1250],
+                    borderColor: '#d4af37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.02)',
+                    borderWidth: 2,
+                    borderDash: [6, 6],
+                    pointBackgroundColor: '#d4af37',
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                    tension: 0.3,
+                    fill: false
+                }
+            ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: true,
             plugins: {
-                legend: { display: false },
+                legend: { display: true, labels: { color: '#ccc', font: { size: 10 } } },
                 tooltip: { backgroundColor: '#101014', titleColor: '#d4af37', bodyColor: '#ccc' }
             },
             scales: {
-                y: { grid: { color: '#1a1a20' }, ticks: { color: '#888' } },
+                y: { grid: { color: '#1a1a20' }, ticks: { color: '#888' }, title: { display: true, text: 'plays', color: '#888', font: { size: 10 } } },
                 x: { grid: { display: false }, ticks: { color: '#888' } }
             }
         }
     });
+    
+    // Animate chart on scroll (fade in effect)
+    const chartObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                chartObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    const chartCanvas = document.getElementById('trendChart');
+    chartCanvas.style.opacity = '0';
+    chartCanvas.style.transform = 'translateY(20px)';
+    chartCanvas.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    chartObserver.observe(chartCanvas);
     
     // Animate stats on scroll
     function animateNumber(el, target) {
@@ -629,7 +665,7 @@
     }, { threshold: 0.3 });
     statsObserver.observe(document.querySelector('.stats-grid'));
     
-    // Venue selection
+    // Venue selection with instruction
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
         item.addEventListener('click', function() {
@@ -732,13 +768,6 @@ PROMO CODE: ${code}`;
             popup.style.display = 'none';
         }
     });
-    
-    // Live counter
-    let viewers = 3;
-    setInterval(() => {
-        viewers = Math.floor(Math.random() * 4) + 2;
-        document.getElementById('liveCounter').innerHTML = `◉ ${viewers} viewing`;
-    }, 12000);
 })();
 </script>
 </body>
