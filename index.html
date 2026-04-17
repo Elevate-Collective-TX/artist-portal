@@ -22,7 +22,6 @@
             margin: 0 auto;
             padding: 48px 24px 80px;
         }
-        /* header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -60,7 +59,6 @@
             display: inline-block;
             margin-top: 4px;
         }
-        /* artist */
         .artist {
             display: flex;
             align-items: center;
@@ -104,7 +102,6 @@
         }
         .artist-meta { font-size: 0.75rem; color: #9a9aa6; margin-top: 4px; }
         .verified { background: #15151a; padding: 2px 8px; border-radius: 30px; font-size: 0.7rem; margin-left: 8px; }
-        /* invite */
         .invite {
             text-align: center;
             margin: 32px 0 48px;
@@ -134,7 +131,6 @@
         }
         @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
         .invite p { color: #a0a0ac; font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
-        /* section titles */
         .section-title {
             font-size: 0.7rem;
             letter-spacing: 2px;
@@ -180,7 +176,6 @@
             background: linear-gradient(90deg, #d4af37, transparent);
             margin: 48px 0;
         }
-        /* track list */
         .track-list { display: flex; flex-direction: column; gap: 12px; }
         .track-row {
             display: flex;
@@ -192,7 +187,6 @@
         .track-name { font-weight: 500; font-size: 1rem; color: #fff; }
         .track-feat { font-size: 0.7rem; color: #a0a0ac; margin-top: 2px; }
         .track-plays { font-weight: 500; color: #d4af37; font-size: 0.85rem; }
-        /* chart */
         .chart-wrapper { margin: 40px 0; }
         .chart-header {
             display: flex;
@@ -211,7 +205,6 @@
             padding-top: 16px;
             margin-top: 16px;
         }
-        /* stats callout */
         .stats-callout {
             background: #101014;
             border-radius: 24px;
@@ -247,7 +240,6 @@
             text-transform: uppercase;
             color: #6b6b76;
         }
-        /* venues */
         .venue-header {
             display: flex;
             justify-content: space-between;
@@ -272,7 +264,6 @@
         .map-link { font-size: 0.65rem; color: #d4af37; text-decoration: none; margin-left: 8px; }
         .venue-pay { font-weight: 500; color: #d4af37; text-align: right; }
         .pay-est { font-size: 0.6rem; color: #6b6b76; display: block; }
-        /* gift */
         .gift-box {
             margin: 48px 0;
             padding: 24px 0;
@@ -383,7 +374,6 @@
             padding-top: 24px;
             margin-top: 24px;
         }
-        /* scroll reveal */
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
@@ -393,7 +383,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Giveaway popup - clean, enticing */
+        /* Giveaway popup - fixed close button position */
         .giveaway-overlay {
             position: fixed;
             top: 0;
@@ -420,7 +410,7 @@
             border-radius: 20px;
             max-width: 340px;
             width: 90%;
-            padding: 28px 24px;
+            padding: 28px 24px 28px 24px;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             border: 1px solid #2a2a30;
@@ -432,18 +422,20 @@
             letter-spacing: -0.3px;
             color: #fff;
             margin-bottom: 12px;
+            margin-top: 0;
         }
         .giveaway-card p {
             font-size: 0.85rem;
             color: #bbb;
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         .giveaway-card .prize-list {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #d4af37;
             margin-bottom: 24px;
             letter-spacing: 0.3px;
+            font-weight: 500;
         }
         .giveaway-card input {
             width: 100%;
@@ -480,6 +472,7 @@
             font-size: 20px;
             cursor: pointer;
             line-height: 1;
+            padding: 4px;
         }
         @media (max-width: 550px) {
             .form-row { flex-direction: column; gap: 0; }
@@ -510,7 +503,6 @@
         <p>After reviewing SoundCloud analytics in East Texas, we've extended this invitation exclusively to you. Elevate Collective wants to discuss representation and paid performance opportunities.</p>
     </div>
 
-    <!-- Top tracks -->
     <div class="fade-up" id="sectionTracks">
         <div class="section-title">🎧 Your top tracks · last 30 days</div>
         <div class="track-list">
@@ -526,7 +518,6 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Chart -->
     <div class="fade-up" id="sectionChart">
         <div class="chart-wrapper">
             <div class="chart-header"><span>📈 30-day play trend + projection</span><span>actual → forecast</span></div>
@@ -537,7 +528,6 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Stats -->
     <div class="fade-up" id="sectionStats">
         <div class="stats-callout">
             <h4>Catalog at a glance</h4>
@@ -552,7 +542,6 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Partner venues -->
     <div class="fade-up" id="sectionVenues">
         <div class="section-title">
             ✨ Partner venues · Tyler, TX
@@ -595,7 +584,6 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Free artist gift (explicit list) -->
     <div class="fade-up" id="sectionGift">
         <div class="gift-box">
             <div class="section-title" style="margin-top:0;">🎁 Free artist gift</div>
@@ -619,7 +607,6 @@
 
     <div class="gold-divider fade-up"></div>
 
-    <!-- Contact information -->
     <div class="fade-up" id="sectionContact">
         <div class="section-title">📞 Contact information</div>
         <div class="form-row"><div class="form-group"><label>First name</label><input type="text" id="firstNameInput"></div><div class="form-group"><label>Last name</label><input type="text" id="lastNameInput"></div></div>
@@ -659,7 +646,7 @@
     <div class="footer-note">Elevate Collective · Tyler, TX · This invitation is non-binding. Free gift shipped within US only.</div>
 </div>
 
-<!-- Giveaway Popup - clean, enticing -->
+<!-- Giveaway Popup - fixed close button position -->
 <div id="giveawayOverlay" class="giveaway-overlay">
     <div class="giveaway-card">
         <button class="giveaway-close" id="giveawayClose">✕</button>
@@ -671,7 +658,7 @@
     </div>
 </div>
 
-<!-- Signing deal popup (unchanged) -->
+<!-- Signing deal popup -->
 <div id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;">
     <div style="background: #0a0a0c; border: 1px solid #d4af37; border-radius: 32px; max-width: 400px; width: 100%; padding: 32px 28px; text-align: center;">
         <button id="popupClose" style="float: right; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">&times;</button>
@@ -693,7 +680,6 @@
 (function() {
     emailjs.init('0pn8P18xI5m0VVW8U');
     
-    // Typing animation
     const titleEl = document.getElementById('typingTitle');
     const fullText = "You're invited.";
     let i = 0;
@@ -708,7 +694,6 @@
     }
     typeWriter();
     
-    // Scroll reveal
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -720,7 +705,6 @@
     }, { threshold: 0.1 });
     fadeElements.forEach(el => observer.observe(el));
     
-    // Artist scroll effect
     const artistSection = document.getElementById('artistSection');
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
@@ -728,7 +712,6 @@
         artistSection.style.opacity = scrollY > 100 ? '0.9' : '1';
     });
     
-    // Chart
     const ctx = document.getElementById('trendChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',
@@ -774,7 +757,6 @@
         }
     });
     
-    // Stats animation
     function animateNumber(el, target) {
         let current = 0;
         const step = () => {
@@ -800,7 +782,6 @@
     }, { threshold: 0.3 });
     statsObserver.observe(document.querySelector('.stats-callout'));
     
-    // Venue selection
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
         item.addEventListener('click', function(e) {
@@ -816,7 +797,6 @@
         });
     });
     
-    // Location prompt
     document.getElementById('locationPromptLink').addEventListener('click', (e) => {
         e.preventDefault();
         if (navigator.geolocation) {
@@ -829,14 +809,9 @@
         }
     });
     
-    // Giveaway popup (after 8 seconds)
     const giveawayOverlay = document.getElementById('giveawayOverlay');
-    setTimeout(() => {
-        giveawayOverlay.classList.add('active');
-    }, 8000);
-    document.getElementById('giveawayClose').addEventListener('click', () => {
-        giveawayOverlay.classList.remove('active');
-    });
+    setTimeout(() => { giveawayOverlay.classList.add('active'); }, 8000);
+    document.getElementById('giveawayClose').addEventListener('click', () => { giveawayOverlay.classList.remove('active'); });
     document.getElementById('giveawaySubmit').addEventListener('click', async () => {
         const email = document.getElementById('giveawayEmail').value.trim();
         if (!email.includes('@')) { alert("Enter a valid email."); return; }
@@ -856,7 +831,6 @@
         }
     });
     
-    // Signing deal popup
     const popup = document.getElementById('signingPopup');
     const submitBtn = document.getElementById('submitBtn');
     submitBtn.addEventListener('click', (e) => {
