@@ -3,117 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Elevate Collective · East Texas Artist Referral</title>
+    <title>Elevate Collective · Artist Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: #0b0b0d;
+            background: #0a0a0c;
             color: #e4e4e6;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
         .container {
-            max-width: 600px;
+            max-width: 640px;
             margin: 0 auto;
             padding: 48px 24px 64px;
         }
         h1, h2, h3 { font-weight: 500; letter-spacing: -0.02em; }
-        .badge { font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: #9a9aae; }
         .divider { height: 1px; background: #222226; margin: 32px 0; }
-        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
-        .logo { display: flex; align-items: center; gap: 10px; }
-        .logo-mark { width: 28px; height: 28px; background: #d4af37; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px; color: #0b0b0d; }
-        .logo-text { font-weight: 500; font-size: 1.2rem; letter-spacing: -0.3px; }
-        .location { font-size: 12px; color: #70707a; text-transform: uppercase; letter-spacing: 1px; }
-        .ref { display: inline-block; background: #18181c; padding: 4px 12px; border-radius: 40px; font-size: 11px; color: #b0b0bb; border: 1px solid #2c2c33; margin-bottom: 24px; }
-        .artist-row { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
-        .artist-pfp { width: 64px; height: 64px; border-radius: 50%; background: #1c1c21; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 28px; color: #fff; border: 1px solid #2c2c33; }
-        .artist-info h2 { font-size: 2rem; font-weight: 500; line-height: 1.1; color: #fff; }
-        .artist-info a { color: #fff; text-decoration: none; border-bottom: 1px solid #3a3a45; }
-        .handle-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 14px; color: #9a9aae; }
-        .sc-tag { background: #1c1c21; padding: 2px 8px; border-radius: 20px; font-size: 11px; border: 1px solid #2c2c33; color: #c0c0cc; }
-        .welcome-card { background: #111114; border-radius: 20px; padding: 32px 28px; margin: 32px 0; border: 1px solid #23232a; text-align: center; }
-        .welcome-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #d4af37; margin-bottom: 16px; }
-        .welcome-title { font-size: 2.4rem; font-weight: 450; letter-spacing: -0.03em; color: #fff; margin-bottom: 12px; }
-        .welcome-sub { color: #a0a0ae; max-width: 480px; margin: 0 auto; }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 32px 0; }
-        .stat-card { background: #111114; border: 1px solid #222226; border-radius: 12px; padding: 20px 8px; text-align: center; }
-        .stat-num { font-size: 2rem; font-weight: 500; color: #d4af37; line-height: 1; }
-        .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #70707a; margin-top: 6px; }
-        /* Collaborations section – clean & authentic */
-        .collab-section { margin: 32px 0; }
-        .collab-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #9a9aae; margin-bottom: 20px; }
-        .collab-grid { display: flex; flex-wrap: wrap; gap: 12px; }
-        .collab-tag {
-            background: #1a1a1f;
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-mark {
+            width: 32px; height: 32px;
+            background: #d4af37;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+            color: #0a0a0c;
+        }
+        .logo-text {
+            font-weight: 500;
+            font-size: 1.25rem;
+            letter-spacing: -0.3px;
+        }
+        .location {
+            font-size: 12px;
+            color: #70707a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .ref-badge {
+            display: inline-block;
+            background: #18181c;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 11px;
+            color: #b0b0bb;
             border: 1px solid #2c2c33;
+            margin-bottom: 28px;
+        }
+        /* Artist hero */
+        .artist-hero {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 36px;
+        }
+        .artist-avatar {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: #1c1c21;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 32px;
+            color: #fff;
+            border: 1.5px solid #2c2c33;
+        }
+        .artist-info h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            line-height: 1.1;
+            color: #fff;
+        }
+        .artist-info a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #3a3a45;
+        }
+        .artist-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #9a9aae;
+        }
+        .sc-tag {
+            background: #1c1c21;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            border: 1px solid #2c2c33;
+            color: #c0c0cc;
+        }
+        /* Welcome card */
+        .welcome-card {
+            background: #0f0f12;
+            border-radius: 24px;
+            padding: 36px 30px;
+            margin: 36px 0;
+            border: 1px solid #25252b;
+            text-align: center;
+        }
+        .welcome-eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #d4af37;
+            margin-bottom: 16px;
+        }
+        .welcome-title {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .welcome-sub {
+            color: #a0a0ae;
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        /* Collaborations – clean tags */
+        .collab-section { margin: 32px 0; }
+        .collab-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: #9a9aae;
+            margin-bottom: 20px;
+        }
+        .collab-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .collab-tag {
+            background: #151518;
+            border: 1px solid #2a2a30;
             border-radius: 40px;
             padding: 6px 16px;
             font-size: 13px;
             color: #d4d4dc;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
         }
-        .collab-tag span { color: #d4af37; font-weight: 500; }
-        .graph-section { margin: 24px 0 32px; }
-        .graph-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #9a9aae; margin-bottom: 20px; }
+        .collab-tag strong { color: #d4af37; font-weight: 500; }
+        /* Live stats / graph area */
+        .stats-live { margin: 40px 0 32px; }
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+        }
+        .stats-header h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: -0.2px;
+        }
+        .stats-header span {
+            font-size: 11px;
+            color: #d4af37;
+            text-transform: uppercase;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+        .stat-card {
+            background: #0f0f12;
+            border: 1px solid #25252b;
+            border-radius: 16px;
+            padding: 20px 8px;
+            text-align: center;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+        .stat-card:hover { border-color: #d4af37; }
+        .stat-num {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #d4af37;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #70707a;
+            margin-top: 8px;
+        }
+        .graph-container { margin-top: 16px; }
         .graph-item { margin-bottom: 16px; }
-        .graph-label { display: flex; justify-content: space-between; font-size: 13px; color: #c0c0cc; margin-bottom: 6px; }
-        .graph-bar { height: 4px; background: #1c1c21; border-radius: 4px; overflow: hidden; }
-        .graph-fill { height: 100%; width: 0%; background: #d4af37; border-radius: 4px; transition: width 1.5s cubic-bezier(0.2, 0.9, 0.3, 1); }
-        .curator-card { background: #111114; border: 1px solid #23232a; border-radius: 16px; padding: 24px; margin: 32px 0; }
-        .curator-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-        .curator-icon { width: 28px; height: 28px; background: #d4af37; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #0b0b0d; font-weight: 600; font-size: 14px; }
+        .graph-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #c0c0cc;
+            margin-bottom: 6px;
+        }
+        .graph-bar {
+            height: 6px;
+            background: #1c1c21;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .graph-fill {
+            height: 100%;
+            width: 0%;
+            background: #d4af37;
+            border-radius: 6px;
+            transition: width 1.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        /* Curator note */
+        .curator-card {
+            background: #0f0f12;
+            border: 1px solid #25252b;
+            border-radius: 20px;
+            padding: 26px;
+            margin: 36px 0;
+        }
+        .curator-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .curator-icon {
+            width: 30px; height: 30px;
+            background: #d4af37;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0c;
+            font-weight: 600;
+            font-size: 15px;
+        }
         .curator-title { font-weight: 500; color: #fff; }
-        .curator-sub { font-size: 11px; color: #d4af37; text-transform: uppercase; margin-left: auto; }
-        .curator-body { color: #b0b0bb; font-size: 14px; line-height: 1.7; }
-        .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #9a9aae; margin-bottom: 20px; }
-        .venue-list { margin-bottom: 32px; }
-        .venue-item { display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #1e1e23; cursor: pointer; transition: background 0.15s; }
-        .venue-item:hover { background: #111114; }
-        .venue-check { width: 20px; height: 20px; border: 1.5px solid #3a3a45; border-radius: 4px; margin-right: 18px; }
-        .venue-item.selected .venue-check { background: #d4af37; border-color: #d4af37; }
-        .venue-item.selected .venue-check::after { content: '✓'; color: #0b0b0d; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; line-height: 1; }
+        .curator-sub {
+            font-size: 11px;
+            color: #d4af37;
+            text-transform: uppercase;
+            margin-left: auto;
+        }
+        .curator-body {
+            color: #b0b0bb;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        /* Venue section – partnership focused */
+        .venue-section { margin: 32px 0; }
+        .venue-headline {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .venue-subhead {
+            color: #a0a0ae;
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+        .venue-list { display: flex; flex-direction: column; gap: 8px; }
+        .venue-card {
+            background: #0f0f12;
+            border: 1px solid #25252b;
+            border-radius: 18px;
+            padding: 20px 22px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .venue-card:hover { background: #141418; border-color: #3a3a45; }
+        .venue-check {
+            width: 22px; height: 22px;
+            border: 2px solid #3a3a45;
+            border-radius: 6px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .venue-card.selected .venue-check {
+            background: #d4af37;
+            border-color: #d4af37;
+        }
+        .venue-card.selected .venue-check::after {
+            content: '✓';
+            color: #0a0a0c;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
         .venue-info { flex: 1; }
-        .venue-name { font-weight: 500; color: #fff; }
-        .venue-detail { font-size: 12px; color: #70707a; margin-top: 2px; }
-        .venue-est { font-size: 14px; color: #b0b0bb; }
+        .venue-name { font-weight: 600; color: #fff; font-size: 1.1rem; }
+        .venue-detail { font-size: 12px; color: #70707a; margin-top: 4px; }
+        .venue-pay {
+            font-weight: 500;
+            color: #d4af37;
+            font-size: 1rem;
+            text-align: right;
+        }
+        .venue-pay small { color: #70707a; font-size: 11px; display: block; }
+        /* Form */
+        .form-section { margin-top: 48px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { margin-bottom: 28px; }
-        .form-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #9a9aae; margin-bottom: 8px; }
-        input, select { width: 100%; background: transparent; border: none; border-bottom: 1px solid #2c2c33; padding: 12px 0; color: #fff; font-size: 15px; font-family: 'Inter', sans-serif; }
+        .form-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #9a9aae;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #2c2c33;
+            padding: 12px 0;
+            color: #fff;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+        }
         input:focus, select:focus { outline: none; border-bottom-color: #d4af37; }
-        select { appearance: none; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%239a9aae" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center; }
-        .merch-card { background: #111114; border: 1px solid #23232a; border-radius: 20px; padding: 32px 28px; margin: 40px 0 32px; }
-        .merch-title { font-size: 1.5rem; font-weight: 450; color: #fff; margin-bottom: 8px; }
-        .merch-desc { color: #a0a0ae; margin-bottom: 28px; }
-        .size-chart { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 28px; font-size: 11px; color: #9a9aae; }
-        .size-chart div { background: #1a1a1f; padding: 6px; border-radius: 6px; text-align: center; }
+        select {
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%239a9aae" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center;
+        }
+        /* Free Gift */
+        .gift-card {
+            background: #0f0f12;
+            border: 1px solid #25252b;
+            border-radius: 24px;
+            padding: 32px 28px;
+            margin: 40px 0 32px;
+        }
+        .gift-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .gift-desc { color: #a0a0ae; margin-bottom: 28px; }
+        .size-chart {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 8px;
+            margin-bottom: 28px;
+            font-size: 11px;
+            color: #9a9aae;
+        }
+        .size-chart div {
+            background: #1a1a1f;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+        }
         .size-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .address-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 16px; margin-top: 20px; }
-        .merch-note { font-size: 11px; color: #70707a; margin-top: 24px; padding-top: 24px; border-top: 1px solid #1e1e23; }
-        .cta-btn { width: 100%; padding: 18px; background: #d4af37; color: #0b0b0d; border: none; border-radius: 10px; font-weight: 500; font-size: 1rem; letter-spacing: 0.3px; cursor: pointer; transition: background 0.2s; margin: 16px 0 24px; }
+        .address-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .gift-note {
+            font-size: 11px;
+            color: #70707a;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #1e1e23;
+        }
+        /* CTA */
+        .cta-btn {
+            width: 100%;
+            padding: 18px;
+            background: #d4af37;
+            color: #0a0a0c;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin: 20px 0 24px;
+        }
         .cta-btn:hover { background: #e6c34a; }
-        .legal { font-size: 10px; color: #55555e; text-align: center; line-height: 1.8; margin-top: 48px; border-top: 1px solid #1c1c21; padding-top: 32px; text-transform: uppercase; }
+        /* Legal */
+        .legal {
+            font-size: 10px;
+            color: #55555e;
+            text-align: center;
+            line-height: 1.8;
+            margin-top: 48px;
+            border-top: 1px solid #1c1c21;
+            padding-top: 32px;
+            text-transform: uppercase;
+        }
         .legal a { color: #7a7a88; text-decoration: none; border-bottom: 1px dotted #3a3a45; }
         .footer-ref { text-align: center; margin-top: 12px; font-size: 11px; color: #55555e; }
-        .popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
-        .popup-card { background: #131317; border: 1px solid #2c2c33; border-radius: 24px; padding: 36px 32px; max-width: 400px; width: 100%; text-align: center; position: relative; }
-        .popup-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #6a6a78; font-size: 24px; cursor: pointer; }
+        /* Popup */
+        .popup-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+            display: none; align-items: center; justify-content: center;
+            z-index: 1000; padding: 20px;
+        }
+        .popup-card {
+            background: #131317; border: 1px solid #2c2c33; border-radius: 28px;
+            padding: 40px 32px; max-width: 400px; width: 100%; text-align: center;
+            position: relative;
+        }
+        .popup-close {
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; color: #6a6a78; font-size: 24px; cursor: pointer;
+        }
         .popup-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #d4af37; margin-bottom: 16px; }
-        .popup-title { font-size: 1.8rem; font-weight: 450; margin-bottom: 8px; }
-        .promo-box { border: 1px dashed #3a3a45; border-radius: 14px; padding: 16px; margin: 24px 0; background: #18181c; }
-        .promo-code { font-weight: 500; font-size: 1.8rem; letter-spacing: 6px; color: #d4af37; }
-        .popup-input { width: 100%; background: #1c1c21; border: 1px solid #2c2c33; border-radius: 10px; padding: 14px; color: #fff; margin-bottom: 16px; }
-        .popup-btn { width: 100%; padding: 16px; background: #d4af37; color: #0b0b0d; border: none; border-radius: 10px; font-weight: 500; cursor: pointer; }
+        .popup-title { font-size: 2rem; font-weight: 500; margin-bottom: 8px; }
+        .promo-box {
+            border: 1px dashed #3a3a45; border-radius: 16px; padding: 18px;
+            margin: 28px 0; background: #18181c;
+        }
+        .promo-code { font-weight: 600; font-size: 2rem; letter-spacing: 8px; color: #d4af37; }
+        .popup-input {
+            width: 100%; background: #1c1c21; border: 1px solid #2c2c33;
+            border-radius: 10px; padding: 14px; color: #fff; margin-bottom: 16px;
+        }
+        .popup-btn {
+            width: 100%; padding: 16px; background: #d4af37; color: #0a0a0c;
+            border: none; border-radius: 10px; font-weight: 600; cursor: pointer;
+        }
+        /* Success */
         .success-container { text-align: center; padding: 60px 0; }
-        .success-icon { width: 72px; height: 72px; border: 1.5px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; }
-        .success-title { font-size: 2.4rem; font-weight: 450; margin-bottom: 16px; }
+        .success-icon {
+            width: 80px; height: 80px; border: 1.5px solid #d4af37; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 32px;
+        }
+        .success-title { font-size: 2.6rem; font-weight: 500; margin-bottom: 16px; }
         .success-msg { color: #a0a0ae; margin-bottom: 24px; }
         .success-code { color: #d4af37; font-size: 1rem; letter-spacing: 3px; }
         @media (max-width: 480px) {
@@ -126,150 +474,198 @@
 <body>
 <div class="container" id="app">
     <div class="header">
-        <div class="logo"><div class="logo-mark">E</div><div class="logo-text">Elevate</div></div>
+        <div class="logo">
+            <div class="logo-mark">E</div>
+            <div class="logo-text">Elevate</div>
+        </div>
         <div class="location">Tyler, TX</div>
     </div>
-    <div class="ref">REFERRAL: ETX-2026-117</div>
+    <div class="ref-badge">REFERRAL · ETX‑2026‑117</div>
 
-    <div class="artist-row">
-        <div class="artist-pfp">H</div>
+    <!-- Artist -->
+    <div class="artist-hero">
+        <div class="artist-avatar">H</div>
         <div class="artist-info">
-            <h2><a href="https://soundcloud.com/highk3yz" target="_blank">@Highk3yz</a></h2>
-            <div class="handle-badge">
+            <h1><a href="https://soundcloud.com/highk3yz" target="_blank">@Highk3yz</a></h1>
+            <div class="artist-badge">
                 <span>SoundCloud Artist</span>
                 <span class="sc-tag">Verified</span>
             </div>
         </div>
     </div>
 
+    <!-- Welcome – direct invitation -->
     <div class="welcome-card">
-        <div class="welcome-eyebrow">Emerging Artist Opportunity</div>
-        <div class="welcome-title">You're on the radar.</div>
+        <div class="welcome-eyebrow">Official Invitation</div>
+        <div class="welcome-title">You're invited.</div>
         <div class="welcome-sub">
-            Elevate Collective scouts rising talent across East Texas. 
-            Based on your recent SoundCloud activity, we'd like to discuss representation and venue placement in Tyler.
+            Elevate Collective has identified you as a priority emerging artist in East Texas.
+            We'd like to discuss representation and paid performance opportunities.
         </div>
     </div>
 
-    <!-- Featured Collaborations – authentic & social proof -->
+    <!-- Collaborations (real from SoundCloud) -->
     <div class="collab-section">
         <div class="collab-title">🎤 Featured collaborations</div>
         <div class="collab-grid">
-            <div class="collab-tag"><span>ZayOn$um</span> · "Rastas", "Say sum"</div>
-            <div class="collab-tag"><span>Rico</span> · "6 foot"</div>
-            <div class="collab-tag"><span>98baby</span> · "Dirty Money"</div>
-            <div class="collab-tag"><span>LC Purfininty</span> · "Trauma"</div>
-            <div class="collab-tag"><span>kidzeus</span> · "bender freestyle"</div>
-            <div class="collab-tag"><span>prod. Frozy</span> · "Rastas"</div>
+            <div class="collab-tag"><strong>ZayOn$um</strong> · Rastas, Say sum</div>
+            <div class="collab-tag"><strong>Rico</strong> · 6 foot</div>
+            <div class="collab-tag"><strong>98baby</strong> · Dirty Money</div>
+            <div class="collab-tag"><strong>LC Purfininty</strong> · Trauma</div>
+            <div class="collab-tag"><strong>kidzeus</strong> · bender freestyle</div>
+            <div class="collab-tag"><strong>prod. Frozy</strong> · Rastas</div>
         </div>
         <div style="font-size: 11px; color: #70707a; margin-top: 16px; letter-spacing: 0.5px;">
-            You're already working with the right people — that matters to us.
+            You're already working with the right people — we pay attention to that.
         </div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-num" id="stat1">0</div><div class="stat-label">"TMR"</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">"Splinter"</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat3">0</div><div class="stat-label">"Dirty Money"</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat4">0</div><div class="stat-label">Tracks</div></div>
-    </div>
-
-    <!-- Graph -->
-    <div class="graph-section">
-        <div class="graph-title">Your catalog performance</div>
-        <div class="graph-item"><div class="graph-label"><span>TMR</span><span>846</span></div><div class="graph-bar"><div class="graph-fill" id="bar1"></div></div></div>
-        <div class="graph-item"><div class="graph-label"><span>Splinter</span><span>464</span></div><div class="graph-bar"><div class="graph-fill" id="bar2"></div></div></div>
-        <div class="graph-item"><div class="graph-label"><span>Dirty Money</span><span>306</span></div><div class="graph-bar"><div class="graph-fill" id="bar3"></div></div></div>
-        <div class="graph-item"><div class="graph-label"><span>Rolling clouds</span><span>287</span></div><div class="graph-bar"><div class="graph-fill" id="bar4"></div></div></div>
-        <div class="graph-item"><div class="graph-label"><span>Keep up</span><span>101</span></div><div class="graph-bar"><div class="graph-fill" id="bar5"></div></div></div>
+    <!-- Live Stats + Graph -->
+    <div class="stats-live">
+        <div class="stats-header">
+            <h3>Catalog performance</h3>
+            <span>Live data</span>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-num" id="stat1">0</div><div class="stat-label">"TMR"</div></div>
+            <div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">"Splinter"</div></div>
+            <div class="stat-card"><div class="stat-num" id="stat3">0</div><div class="stat-label">"Dirty Money"</div></div>
+            <div class="stat-card"><div class="stat-num" id="stat4">0</div><div class="stat-label">Total tracks</div></div>
+        </div>
+        <div class="graph-container">
+            <div class="graph-item"><div class="graph-label"><span>TMR</span><span>846</span></div><div class="graph-bar"><div class="graph-fill" id="bar1"></div></div></div>
+            <div class="graph-item"><div class="graph-label"><span>Splinter</span><span>464</span></div><div class="graph-bar"><div class="graph-fill" id="bar2"></div></div></div>
+            <div class="graph-item"><div class="graph-label"><span>Dirty Money</span><span>306</span></div><div class="graph-bar"><div class="graph-fill" id="bar3"></div></div></div>
+            <div class="graph-item"><div class="graph-label"><span>Rolling clouds</span><span>287</span></div><div class="graph-bar"><div class="graph-fill" id="bar4"></div></div></div>
+            <div class="graph-item"><div class="graph-label"><span>Keep up</span><span>101</span></div><div class="graph-bar"><div class="graph-fill" id="bar5"></div></div></div>
+        </div>
     </div>
 
     <!-- Curator note -->
     <div class="curator-card">
-        <div class="curator-header"><div class="curator-icon">E</div><div class="curator-title">A&R Notes</div><div class="curator-sub">Internal</div></div>
+        <div class="curator-header">
+            <div class="curator-icon">E</div>
+            <div class="curator-title">A&R assessment</div>
+            <div class="curator-sub">Internal</div>
+        </div>
         <div class="curator-body">
-            “TMR” is in regional rotation. Consistent output (22+ tracks) and local collaborations 
+            "TMR" is in regional rotation. Consistent output (22+ tracks) and local collaborations 
             indicate readiness for venue placement. Recommended for Tyler network.
         </div>
     </div>
 
-    <!-- Venue interest -->
-    <div class="section-label">Venue interest</div>
-    <div class="venue-list">
-        <div class="venue-item selected" data-venue="The Foundry"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">The Foundry</div><div class="venue-detail">Downtown · 300 cap · House PA</div></div><div class="venue-est">$500–750</div></div>
-        <div class="venue-item" data-venue="True Vine Brewing"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">True Vine Brewing</div><div class="venue-detail">Earl Campbell Pkwy · 250 cap</div></div><div class="venue-est">$600–800</div></div>
-        <div class="venue-item" data-venue="Stanley's BBQ"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">Stanley's Famous BBQ</div><div class="venue-detail">S Beckham Ave · 200 cap</div></div><div class="venue-est">$750–900</div></div>
-        <div class="venue-item" data-venue="Brick Street Bar"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">Brick Street Bar</div><div class="venue-detail">Downtown · 400 cap</div></div><div class="venue-est">$900+</div></div>
+    <!-- Venue section – partnership framed -->
+    <div class="venue-section">
+        <div class="venue-headline">Partner venues in Tyler</div>
+        <div class="venue-subhead">
+            Elevate Collective maintains direct booking relationships with these rooms.
+            Each offers competitive pay per set. Select those you're interested in.
+        </div>
+        <div class="venue-list">
+            <div class="venue-card selected" data-venue="The Foundry">
+                <div class="venue-check"></div>
+                <div class="venue-info">
+                    <div class="venue-name">The Foundry</div>
+                    <div class="venue-detail">Downtown · 300 cap · House PA</div>
+                </div>
+                <div class="venue-pay">$500–750 <small>per set</small></div>
+            </div>
+            <div class="venue-card" data-venue="True Vine Brewing">
+                <div class="venue-check"></div>
+                <div class="venue-info">
+                    <div class="venue-name">True Vine Brewing</div>
+                    <div class="venue-detail">Earl Campbell Pkwy · 250 cap</div>
+                </div>
+                <div class="venue-pay">$600–800 <small>per set</small></div>
+            </div>
+            <div class="venue-card" data-venue="Stanley's Famous BBQ">
+                <div class="venue-check"></div>
+                <div class="venue-info">
+                    <div class="venue-name">Stanley's Famous BBQ</div>
+                    <div class="venue-detail">S Beckham Ave · 200 cap</div>
+                </div>
+                <div class="venue-pay">$750–900 <small>per set</small></div>
+            </div>
+            <div class="venue-card" data-venue="Brick Street Bar">
+                <div class="venue-check"></div>
+                <div class="venue-info">
+                    <div class="venue-name">Brick Street Bar</div>
+                    <div class="venue-detail">Downtown · 400 cap</div>
+                </div>
+                <div class="venue-pay">$900+ <small>per set</small></div>
+            </div>
+        </div>
     </div>
 
     <!-- Form -->
-    <div class="form-row">
-        <div class="form-group"><div class="form-label">First name</div><input type="text" id="firstNameInput" placeholder="First"></div>
-        <div class="form-group"><div class="form-label">Last name</div><input type="text" id="lastNameInput" placeholder="Last"></div>
-    </div>
-    <div class="form-group"><div class="form-label">Email</div><input type="email" id="emailInput" placeholder="address@domain.com"></div>
-    <div class="form-group"><div class="form-label">Phone</div><input type="tel" id="phoneInput" placeholder="(123) 456-7890"></div>
+    <div class="form-section">
+        <div class="form-row">
+            <div class="form-group"><div class="form-label">First name</div><input type="text" id="firstNameInput" placeholder="First"></div>
+            <div class="form-group"><div class="form-label">Last name</div><input type="text" id="lastNameInput" placeholder="Last"></div>
+        </div>
+        <div class="form-group"><div class="form-label">Email</div><input type="email" id="emailInput" placeholder="address@domain.com"></div>
+        <div class="form-group"><div class="form-label">Phone</div><input type="tel" id="phoneInput" placeholder="(123) 456-7890"></div>
 
-    <div class="form-row">
+        <div class="form-row">
+            <div class="form-group">
+                <div class="form-label">Month</div>
+                <select id="monthSelect">
+                    <option value="May 2026">May 2026</option>
+                    <option value="June 2026" selected>June 2026</option>
+                    <option value="July 2026">July 2026</option>
+                    <option value="August 2026">August 2026</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-label">Day</div>
+                <select id="daySelect">
+                    <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    <option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+                    <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15" selected>15</option>
+                    <option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                    <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
+                    <option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                </select>
+            </div>
+        </div>
         <div class="form-group">
-            <div class="form-label">Month</div>
-            <select id="monthSelect">
-                <option value="May 2026">May 2026</option>
-                <option value="June 2026" selected>June 2026</option>
-                <option value="July 2026">July 2026</option>
-                <option value="August 2026">August 2026</option>
+            <div class="form-label">Time of day</div>
+            <select id="timeSelect">
+                <option>Weekday morning</option><option selected>Weekday afternoon</option><option>Weekday evening</option><option>Weekend</option>
             </select>
         </div>
-        <div class="form-group">
-            <div class="form-label">Day</div>
-            <select id="daySelect">
-                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
-                <option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
-                <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15" selected>15</option>
-                <option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
-                <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
-                <option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-label">Time of day</div>
-        <select id="timeSelect">
-            <option>Weekday morning</option><option selected>Weekday afternoon</option><option>Weekday evening</option><option>Weekend</option>
-        </select>
-    </div>
 
-    <!-- Free Artist Gift -->
-    <div class="merch-card">
-        <div class="merch-title">Free Artist Gift</div>
-        <div class="merch-desc">Complimentary hoodie, tee, and beanie — shipped to invited artists.</div>
-        <div class="size-chart">
-            <div>Size</div><div>Chest</div><div>Length</div><div>Sleeve</div>
-            <div>M</div><div>38–40</div><div>28</div><div>34.5</div>
-            <div>L</div><div>42–44</div><div>29</div><div>35.5</div>
-            <div>XL</div><div>46–48</div><div>30</div><div>36.5</div>
-            <div>2XL</div><div>50–52</div><div>31</div><div>37.5</div>
+        <!-- Free Gift -->
+        <div class="gift-card">
+            <div class="gift-title">Free Artist Gift</div>
+            <div class="gift-desc">Complimentary hoodie, tee, and beanie — shipped to invited artists.</div>
+            <div class="size-chart">
+                <div>Size</div><div>Chest</div><div>Length</div><div>Sleeve</div>
+                <div>M</div><div>38–40</div><div>28</div><div>34.5</div>
+                <div>L</div><div>42–44</div><div>29</div><div>35.5</div>
+                <div>XL</div><div>46–48</div><div>30</div><div>36.5</div>
+                <div>2XL</div><div>50–52</div><div>31</div><div>37.5</div>
+            </div>
+            <div class="size-row">
+                <div class="form-group"><div class="form-label">Hoodie</div><select id="hoodieSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
+                <div class="form-group"><div class="form-label">Tee</div><select id="teeSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
+            </div>
+            <div class="form-group"><div class="form-label">Shipping address</div><input type="text" id="streetInput" placeholder="Street address"></div>
+            <div class="address-row">
+                <div class="form-group"><div class="form-label">City</div><input type="text" id="cityInput" placeholder="City"></div>
+                <div class="form-group"><div class="form-label">State</div><input type="text" id="stateInput" placeholder="State"></div>
+                <div class="form-group"><div class="form-label">ZIP</div><input type="text" id="zipInput" placeholder="ZIP"></div>
+            </div>
+            <div class="gift-note">Sizing up recommended for tall fits. Beanie is one size.</div>
         </div>
-        <div class="size-row">
-            <div class="form-group"><div class="form-label">Hoodie</div><select id="hoodieSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
-            <div class="form-group"><div class="form-label">Tee</div><select id="teeSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
-        </div>
-        <div class="form-group"><div class="form-label">Shipping address</div><input type="text" id="streetInput" placeholder="Street address"></div>
-        <div class="address-row">
-            <div class="form-group"><div class="form-label">City</div><input type="text" id="cityInput" placeholder="City"></div>
-            <div class="form-group"><div class="form-label">State</div><input type="text" id="stateInput" placeholder="State"></div>
-            <div class="form-group"><div class="form-label">ZIP</div><input type="text" id="zipInput" placeholder="ZIP"></div>
-        </div>
-        <div class="merch-note">Sizing up recommended for tall fits. Beanie is one size.</div>
-    </div>
 
-    <button class="cta-btn" id="submitBtn">Accept Invitation →</button>
+        <button class="cta-btn" id="submitBtn">Accept Invitation →</button>
 
-    <div class="legal">
-        This referral does not constitute a binding agreement. Elevate Collective facilitates introductions only. All booking terms are subject to separate negotiation. Free Artist Gift offered at discretion of Elevate Collective; no cash value. U.S. shipping only. <a href="#">Privacy</a> · <a href="#">Terms</a>
+        <div class="legal">
+            This referral does not constitute a binding agreement. Elevate Collective facilitates introductions only. All booking terms are subject to separate negotiation. Free Artist Gift offered at discretion of Elevate Collective; no cash value. U.S. shipping only. <a href="#">Privacy</a> · <a href="#">Terms</a>
+        </div>
+        <div class="footer-ref">Elevate Collective · Tyler, TX · Ref: ETX-2026-117</div>
     </div>
-    <div class="footer-ref">Elevate Collective · Tyler, TX · Ref: ETX-2026-117</div>
 </div>
 
 <!-- Popup -->
@@ -330,7 +726,7 @@
     observer.observe(document.querySelector('.stats-grid'));
 
     let selectedVenues = ['The Foundry'];
-    document.querySelectorAll('.venue-item').forEach(item => {
+    document.querySelectorAll('.venue-card').forEach(item => {
         item.addEventListener('click', function() {
             const venue = this.dataset.venue;
             if (this.classList.contains('selected')) {
