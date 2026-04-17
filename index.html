@@ -70,7 +70,7 @@
             display: inline-block;
             margin-top: 4px;
         }
-        /* artist row with gold glow */
+        /* artist row with gold glow + pulse animation */
         .artist {
             display: flex;
             align-items: center;
@@ -100,7 +100,11 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+            animation: goldPulse 3s ease-in-out infinite;
+        }
+        @keyframes goldPulse {
+            0%, 100% { text-shadow: 0 0 0px rgba(212, 175, 55, 0); }
+            50% { text-shadow: 0 0 12px rgba(212, 175, 55, 0.4); }
         }
         .artist-info a {
             text-decoration: none;
@@ -185,10 +189,28 @@
             color: #d4af37;
             cursor: pointer;
             transition: 0.1s;
+            position: relative;
         }
         .info-icon:hover {
             background: #d4af37;
             color: #0a0a0c;
+        }
+        .tooltip-text {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            background: #1a1a20;
+            color: #ccc;
+            font-size: 0.7rem;
+            padding: 6px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            z-index: 10;
+            border: 1px solid #d4af37;
+        }
+        .info-icon:hover .tooltip-text {
+            display: block;
         }
         .gold-divider {
             height: 1px;
@@ -321,6 +343,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
         .venue-address {
             font-size: 0.7rem;
@@ -337,8 +360,14 @@
             font-weight: 500;
             color: #d4af37;
             text-decoration: none;
+            text-align: right;
         }
-        /* gift section with improved size chart */
+        .pay-est {
+            font-size: 0.6rem;
+            color: #6b6b76;
+            display: block;
+        }
+        /* gift section with clean size chart (no sleeve) */
         .gift-box {
             margin: 48px 0;
             padding: 24px 0;
@@ -347,7 +376,7 @@
         }
         .size-chart-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px;
             margin: 20px 0;
             font-size: 0.7rem;
@@ -451,27 +480,63 @@
             padding-top: 24px;
             margin-top: 24px;
         }
-        /* tooltip custom */
-        .tooltip-text {
-            display: none;
-            position: absolute;
-            background: #1a1a20;
-            color: #ccc;
-            font-size: 0.7rem;
-            padding: 6px 10px;
-            border-radius: 8px;
-            max-width: 200px;
-            z-index: 10;
+        /* giveaway popup */
+        .giveaway-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #0a0a0c;
             border: 1px solid #d4af37;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 300px;
+            z-index: 300;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            display: none;
         }
-        .info-icon:hover .tooltip-text {
-            display: block;
+        .giveaway-popup h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+        .giveaway-popup p {
+            font-size: 0.75rem;
+            color: #ccc;
+            margin-bottom: 12px;
+        }
+        .giveaway-popup input {
+            width: 100%;
+            background: #15151a;
+            border: 1px solid #25252b;
+            border-radius: 30px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .giveaway-popup button {
+            width: 100%;
+            background: #d4af37;
+            color: #0a0a0c;
+            border: none;
+            border-radius: 30px;
+            padding: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .giveaway-close {
+            float: right;
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 16px;
         }
         @media (max-width: 550px) {
             .stats-grid { flex-wrap: wrap; }
             .stat-card { min-width: calc(50% - 6px); }
             .form-row { flex-direction: column; gap: 0; }
-            .size-chart-grid { grid-template-columns: repeat(3, 1fr); }
+            .giveaway-popup { left: 10px; right: 10px; max-width: none; bottom: 10px; }
         }
     </style>
 </head>
@@ -532,12 +597,10 @@
 
     <div class="gold-divider"></div>
 
-    <!-- Partner venues with tooltip and map links -->
+    <!-- Partner venues (real Tyler live music venues) -->
     <div class="section-title">
         ✨ Partner venues · Tyler, TX
-        <span class="info-icon" style="position: relative;">ℹ
-            <span class="tooltip-text" style="position: absolute; bottom: 20px; left: 0;">Elevate Collective has direct booking partnerships. Click any venue to select.</span>
-        </span>
+        <span class="info-icon">ℹ<span class="tooltip-text">Elevate Collective has direct booking partnerships. Click any venue to select.</span></span>
     </div>
     <div class="venue-header">
         <div class="venue-instruction">Click on any venue to select your interest</div>
@@ -545,46 +608,46 @@
     <div class="venue-list">
         <div class="venue-item selected" data-venue="The Foundry">
             <div class="venue-info">
-                <div class="venue-name">The Foundry <a href="https://maps.google.com/?q=The+Foundry+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
-                <div class="venue-address">Downtown · 300 cap</div>
+                <div class="venue-name">The Foundry <a href="https://maps.google.com/?q=The+Foundry+Coffee+Co+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
+                <div class="venue-address">Downtown · 300 cap · Live music venue</div>
             </div>
-            <div class="venue-pay">$500–750</div>
+            <div class="venue-pay">$500–750<span class="pay-est">est.</span></div>
         </div>
         <div class="venue-item" data-venue="True Vine Brewing">
             <div class="venue-info">
-                <div class="venue-name">True Vine Brewing <a href="https://maps.google.com/?q=True+Vine+Brewing+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
-                <div class="venue-address">Earl Campbell Pkwy · 250 cap</div>
+                <div class="venue-name">True Vine Brewing <a href="https://maps.google.com/?q=True+Vine+Brewing+Company+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
+                <div class="venue-address">Earl Campbell Pkwy · 250 cap · Brewery + stage</div>
             </div>
-            <div class="venue-pay">$600–800</div>
+            <div class="venue-pay">$600–800<span class="pay-est">est.</span></div>
         </div>
         <div class="venue-item" data-venue="Stanley's Famous BBQ">
             <div class="venue-info">
                 <div class="venue-name">Stanley's Famous BBQ <a href="https://maps.google.com/?q=Stanley%27s+Famous+BBQ+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
-                <div class="venue-address">S Beckham Ave · 200 cap</div>
+                <div class="venue-address">S Beckham Ave · 200 cap · Legendary BBQ + live music</div>
             </div>
-            <div class="venue-pay">$750–900</div>
+            <div class="venue-pay">$750–900<span class="pay-est">est.</span></div>
         </div>
         <div class="venue-item" data-venue="Brick Street Bar">
             <div class="venue-info">
                 <div class="venue-name">Brick Street Bar <a href="https://maps.google.com/?q=Brick+Street+Bar+Tyler+TX" target="_blank" class="map-link">📍 map</a></div>
-                <div class="venue-address">Downtown · 400 cap</div>
+                <div class="venue-address">Downtown · 400 cap · Rooftop bar + music venue</div>
             </div>
-            <div class="venue-pay">$900+</div>
+            <div class="venue-pay">$900+<span class="pay-est">est.</span></div>
         </div>
     </div>
 
     <div class="gold-divider"></div>
 
-    <!-- Gift section with improved sizing grid -->
+    <!-- Gift section with clean size chart (no sleeve) -->
     <div class="gift-box">
         <div class="section-title" style="margin-top:0;">🎁 Free artist gift</div>
         <div class="size-chart-grid">
-            <div class="header-cell">Size</div><div class="header-cell">Chest</div><div class="header-cell">Length</div><div class="header-cell">Sleeve</div>
-            <div>S</div><div>34-36</div><div>27</div><div>33.5</div>
-            <div>M</div><div>38-40</div><div>28</div><div>34.5</div>
-            <div>L</div><div>42-44</div><div>29</div><div>35.5</div>
-            <div>XL</div><div>46-48</div><div>30</div><div>36.5</div>
-            <div>2XL</div><div>50-52</div><div>31</div><div>37.5</div>
+            <div class="header-cell">Size</div><div class="header-cell">Chest (in)</div><div class="header-cell">Length (in)</div>
+            <div>S</div><div>34-36</div><div>27</div>
+            <div>M</div><div>38-40</div><div>28</div>
+            <div>L</div><div>42-44</div><div>29</div>
+            <div>XL</div><div>46-48</div><div>30</div>
+            <div>2XL</div><div>50-52</div><div>31</div>
         </div>
         <div class="select-pair">
             <div class="select-field"><label>Hoodie</label><select id="hoodieSize"><option>S</option><option>M</option><option selected>L</option><option>XL</option><option>2XL</option></select></div>
@@ -629,6 +692,15 @@
     <div class="footer-note">Elevate Collective · Tyler, TX · This invitation is non-binding. Free gift shipped within US only.</div>
 </div>
 
+<!-- Giveaway Popup -->
+<div id="giveawayPopup" class="giveaway-popup">
+    <button class="giveaway-close" id="giveawayClose">✕</button>
+    <h4>🎁 Free Merch Giveaway</h4>
+    <p>Enter your email for a chance to win a limited edition hoodie + tee bundle. 5 winners drawn weekly.</p>
+    <input type="email" id="giveawayEmail" placeholder="Your email address">
+    <button id="giveawaySubmit">Enter giveaway →</button>
+</div>
+
 <!-- Signing deal popup -->
 <div id="signingPopup" style="position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;">
     <div style="background: #0a0a0c; border: 1px solid #d4af37; border-radius: 32px; max-width: 400px; width: 100%; padding: 32px 28px; text-align: center;">
@@ -651,7 +723,7 @@
 (function() {
     emailjs.init('0pn8P18xI5m0VVW8U');
     
-    // Typing animation for "You're invited!" with gradient
+    // Typing animation for "You're invited!"
     const titleEl = document.getElementById('typingTitle');
     const fullText = "You're invited.";
     let i = 0;
@@ -679,9 +751,9 @@
         }
     });
     
-    // Chart with projection (weeks 1-4 actual, weeks 5-8 projected)
+    // Chart with projection
     const ctx = document.getElementById('trendChart').getContext('2d');
-    const chart = new Chart(ctx, {
+    new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
@@ -694,7 +766,6 @@
                     borderWidth: 2,
                     pointBackgroundColor: '#d4af37',
                     pointRadius: 4,
-                    pointHoverRadius: 6,
                     tension: 0.3,
                     fill: false
                 },
@@ -707,7 +778,6 @@
                     borderDash: [6, 6],
                     pointBackgroundColor: '#d4af37',
                     pointRadius: 3,
-                    pointHoverRadius: 5,
                     tension: 0.3,
                     fill: false
                 }
@@ -727,7 +797,11 @@
         }
     });
     
-    // Animate chart on scroll (fade in effect)
+    // Animate chart on scroll
+    const chartCanvas = document.getElementById('trendChart');
+    chartCanvas.style.opacity = '0';
+    chartCanvas.style.transform = 'translateY(20px)';
+    chartCanvas.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     const chartObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -737,10 +811,6 @@
             }
         });
     }, { threshold: 0.2 });
-    const chartCanvas = document.getElementById('trendChart');
-    chartCanvas.style.opacity = '0';
-    chartCanvas.style.transform = 'translateY(20px)';
-    chartCanvas.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     chartObserver.observe(chartCanvas);
     
     // Animate stats on scroll
@@ -769,11 +839,10 @@
     }, { threshold: 0.3 });
     statsObserver.observe(document.querySelector('.stats-grid'));
     
-    // Venue selection with instruction
+    // Venue selection
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
         item.addEventListener('click', function(e) {
-            // don't trigger if clicking on map link
             if (e.target.classList && e.target.classList.contains('map-link')) return;
             const name = this.querySelector('.venue-name')?.innerText.replace('📍 map', '').trim();
             if (this.classList.contains('selected')) {
@@ -786,19 +855,7 @@
         });
     });
     
-    // Tooltip hover for info icons
-    document.querySelectorAll('.info-icon').forEach(icon => {
-        icon.addEventListener('mouseenter', function() {
-            const tooltip = this.querySelector('.tooltip-text');
-            if (tooltip) tooltip.style.display = 'block';
-        });
-        icon.addEventListener('mouseleave', function() {
-            const tooltip = this.querySelector('.tooltip-text');
-            if (tooltip) tooltip.style.display = 'none';
-        });
-    });
-    
-    // Location prompt (small, bottom)
+    // Location prompt
     document.getElementById('locationPromptLink').addEventListener('click', (e) => {
         e.preventDefault();
         if (navigator.geolocation) {
@@ -811,7 +868,34 @@
         }
     });
     
-    // Popup logic
+    // Giveaway popup (appears after 5 seconds)
+    const giveawayPopup = document.getElementById('giveawayPopup');
+    setTimeout(() => {
+        giveawayPopup.style.display = 'block';
+    }, 5000);
+    document.getElementById('giveawayClose').addEventListener('click', () => {
+        giveawayPopup.style.display = 'none';
+    });
+    document.getElementById('giveawaySubmit').addEventListener('click', async () => {
+        const email = document.getElementById('giveawayEmail').value.trim();
+        if (!email.includes('@')) { alert("Enter a valid email."); return; }
+        try {
+            await emailjs.send('service_cyval67', 'template_35yqug3', {
+                name: "Giveaway Entry",
+                email: email,
+                message: `New giveaway entry from ${email}`,
+                selected_date: 'Giveaway',
+                reply_to: email
+            });
+            alert("You've been entered! Winners announced weekly.");
+            giveawayPopup.style.display = 'none';
+        } catch(err) {
+            alert("Thanks for entering! We'll contact you if you win.");
+            giveawayPopup.style.display = 'none';
+        }
+    });
+    
+    // Signing deal popup logic
     const popup = document.getElementById('signingPopup');
     const submitBtn = document.getElementById('submitBtn');
     submitBtn.addEventListener('click', (e) => {
