@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Elevate Collective · Artist Referral</title>
+    <title>Elevate Collective · East Texas Artist Referral</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -21,7 +21,6 @@
             margin: 0 auto;
             padding: 48px 24px 64px;
         }
-        /* Typography */
         h1, h2, h3 {
             font-weight: 500;
             letter-spacing: -0.02em;
@@ -82,7 +81,7 @@
             border: 1px solid #2c2c33;
             margin-bottom: 24px;
         }
-        /* Artist info – clean and minimal */
+        /* Artist row */
         .artist-row {
             display: flex;
             align-items: center;
@@ -153,10 +152,10 @@
         }
         .welcome-sub {
             color: #a0a0ae;
-            max-width: 420px;
+            max-width: 480px;
             margin: 0 auto;
         }
-        /* Stats – subtle cards */
+        /* Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -183,7 +182,70 @@
             color: #70707a;
             margin-top: 6px;
         }
-        /* Graph – clean bars */
+        /* Rising in the Region section */
+        .rising-section {
+            margin: 32px 0;
+        }
+        .rising-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #9a9aae;
+            margin-bottom: 20px;
+        }
+        .artist-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .rising-artist {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #1e1e23;
+        }
+        .rising-artist:last-child { border-bottom: none; }
+        .rising-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .rising-avatar {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: #1a1a1f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 14px;
+            color: #d4af37;
+            border: 1px solid #2c2c33;
+        }
+        .rising-details h4 {
+            font-weight: 500;
+            color: #fff;
+            font-size: 14px;
+        }
+        .rising-details .sc-handle {
+            font-size: 11px;
+            color: #70707a;
+        }
+        .rising-stats {
+            text-align: right;
+        }
+        .rising-plays {
+            font-weight: 500;
+            color: #d4af37;
+            font-size: 14px;
+        }
+        .rising-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            color: #55555e;
+        }
+        /* Graph */
         .graph-section { margin: 24px 0 32px; }
         .graph-title {
             font-size: 11px;
@@ -213,7 +275,7 @@
             border-radius: 4px;
             transition: width 1.5s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
-        /* Curator note – professional */
+        /* Curator card */
         .curator-card {
             background: #111114;
             border: 1px solid #23232a;
@@ -320,7 +382,7 @@
             appearance: none;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%239a9aae" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center;
         }
-        /* Merch card – understated */
+        /* Merch card */
         .merch-card {
             background: #111114;
             border: 1px solid #23232a;
@@ -460,12 +522,90 @@
 
     <!-- Welcome / Invitation -->
     <div class="welcome-card">
-        <div class="welcome-eyebrow">Invitation</div>
-        <div class="welcome-title">You're invited.</div>
-        <div class="welcome-sub">Elevate Collective would like to discuss artist representation and venue placement opportunities in Tyler, TX.</div>
+        <div class="welcome-eyebrow">Emerging Artist Opportunity</div>
+        <div class="welcome-title">You're on the radar.</div>
+        <div class="welcome-sub">
+            Elevate Collective scouts rising talent across East Texas. 
+            Based on your recent SoundCloud activity, we'd like to discuss representation and venue placement in Tyler.
+        </div>
     </div>
 
-    <!-- Stats -->
+    <!-- Rising in the Region: Comparative Peers -->
+    <div class="rising-section">
+        <div class="rising-title">📈 Rising in East Texas · SoundCloud Activity</div>
+        <div class="artist-list">
+            <div class="rising-artist">
+                <div class="rising-info">
+                    <div class="rising-avatar">K</div>
+                    <div class="rising-details">
+                        <h4>@highk3yz</h4>
+                        <div class="sc-handle">Tyler, TX</div>
+                    </div>
+                </div>
+                <div class="rising-stats">
+                    <div class="rising-plays">846</div>
+                    <div class="rising-label">top play</div>
+                </div>
+            </div>
+            <div class="rising-artist">
+                <div class="rising-info">
+                    <div class="rising-avatar">Z</div>
+                    <div class="rising-details">
+                        <h4>@zay.on.sum</h4>
+                        <div class="sc-handle">Tyler, TX</div>
+                    </div>
+                </div>
+                <div class="rising-stats">
+                    <div class="rising-plays">1.2k</div>
+                    <div class="rising-label">top play</div>
+                </div>
+            </div>
+            <div class="rising-artist">
+                <div class="rising-info">
+                    <div class="rising-avatar">R</div>
+                    <div class="rising-details">
+                        <h4>@rico_956</h4>
+                        <div class="sc-handle">Longview, TX</div>
+                    </div>
+                </div>
+                <div class="rising-stats">
+                    <div class="rising-plays">2.1k</div>
+                    <div class="rising-label">top play</div>
+                </div>
+            </div>
+            <div class="rising-artist">
+                <div class="rising-info">
+                    <div class="rising-avatar">L</div>
+                    <div class="rising-details">
+                        <h4>@lc.purfininty</h4>
+                        <div class="sc-handle">Tyler, TX</div>
+                    </div>
+                </div>
+                <div class="rising-stats">
+                    <div class="rising-plays">980</div>
+                    <div class="rising-label">top play</div>
+                </div>
+            </div>
+            <div class="rising-artist">
+                <div class="rising-info">
+                    <div class="rising-avatar">98</div>
+                    <div class="rising-details">
+                        <h4>@98.babyy</h4>
+                        <div class="sc-handle">Tyler, TX</div>
+                    </div>
+                </div>
+                <div class="rising-stats">
+                    <div class="rising-plays">3.4k</div>
+                    <div class="rising-label">top play</div>
+                </div>
+            </div>
+        </div>
+        <div style="font-size: 11px; color: #70707a; margin-top: 16px; text-align: center; letter-spacing: 0.5px;">
+            You're in good company — these artists are on our watchlist too.
+        </div>
+    </div>
+
+    <!-- Personal Stats -->
     <div class="stats-grid">
         <div class="stat-card"><div class="stat-num" id="stat1">0</div><div class="stat-label">"TMR"</div></div>
         <div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">"Splinter"</div></div>
@@ -475,7 +615,7 @@
 
     <!-- Graph -->
     <div class="graph-section">
-        <div class="graph-title">Catalog Performance</div>
+        <div class="graph-title">Your catalog performance</div>
         <div class="graph-item"><div class="graph-label"><span>TMR</span><span>846</span></div><div class="graph-bar"><div class="graph-fill" id="bar1"></div></div></div>
         <div class="graph-item"><div class="graph-label"><span>Splinter</span><span>464</span></div><div class="graph-bar"><div class="graph-fill" id="bar2"></div></div></div>
         <div class="graph-item"><div class="graph-label"><span>Dirty Money</span><span>306</span></div><div class="graph-bar"><div class="graph-fill" id="bar3"></div></div></div>
@@ -491,12 +631,14 @@
             <div class="curator-sub">Internal</div>
         </div>
         <div class="curator-body">
-            “TMR” is in regional rotation. Consistent output (22+ tracks) and local collaborations (ZayOn$um, Rico, 98baby) indicate readiness for venue placement. Recommended for Tyler network.
+            “TMR” is in regional rotation. Consistent output (22+ tracks) and local collaborations 
+            (ZayOn$um, Rico, 98baby) indicate readiness for venue placement. 
+            Recommended for Tyler network alongside other rising East Texas acts.
         </div>
     </div>
 
     <!-- Venue interest -->
-    <div class="section-label">Venue Interest</div>
+    <div class="section-label">Venue interest</div>
     <div class="venue-list">
         <div class="venue-item selected" data-venue="The Foundry"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">The Foundry</div><div class="venue-detail">Downtown · 300 cap · House PA</div></div><div class="venue-est">$500–750</div></div>
         <div class="venue-item" data-venue="True Vine Brewing"><div class="venue-check"></div><div class="venue-info"><div class="venue-name">True Vine Brewing</div><div class="venue-detail">Earl Campbell Pkwy · 250 cap</div></div><div class="venue-est">$600–800</div></div>
@@ -515,9 +657,15 @@
 
     <!-- Merch -->
     <div class="merch-card">
-        <div class="merch-title">Welcome Package</div>
+        <div class="merch-title">Welcome package</div>
         <div class="merch-desc">Complimentary hoodie, tee, and beanie — shipped to invited artists.</div>
-        <div class="size-chart"><div>Size</div><div>Chest</div><div>Length</div><div>Sleeve</div><div>M</div><div>38–40</div><div>28</div><div>34.5</div><div>L</div><div>42–44</div><div>29</div><div>35.5</div><div>XL</div><div>46–48</div><div>30</div><div>36.5</div><div>2XL</div><div>50–52</div><div>31</div><div>37.5</div></div>
+        <div class="size-chart">
+            <div>Size</div><div>Chest</div><div>Length</div><div>Sleeve</div>
+            <div>M</div><div>38–40</div><div>28</div><div>34.5</div>
+            <div>L</div><div>42–44</div><div>29</div><div>35.5</div>
+            <div>XL</div><div>46–48</div><div>30</div><div>36.5</div>
+            <div>2XL</div><div>50–52</div><div>31</div><div>37.5</div>
+        </div>
         <div class="size-row">
             <div class="form-group"><div class="form-label">Hoodie</div><select id="hoodieSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
             <div class="form-group"><div class="form-label">Tee</div><select id="teeSize"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option><option value="2XL">2XL</option></select></div>
