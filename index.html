@@ -21,469 +21,98 @@
             margin: 0 auto;
             padding: 48px 24px 64px;
         }
-        h1, h2, h3 {
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-        .badge {
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: #9a9aae;
-        }
-        .divider {
-            height: 1px;
-            background: #222226;
-            margin: 32px 0;
-        }
-        /* Header */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-mark {
-            width: 28px; height: 28px;
-            background: #d4af37;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 16px;
-            color: #0b0b0d;
-        }
-        .logo-text {
-            font-weight: 500;
-            font-size: 1.2rem;
-            letter-spacing: -0.3px;
-        }
-        .location {
-            font-size: 12px;
-            color: #70707a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .ref {
-            display: inline-block;
-            background: #18181c;
-            padding: 4px 12px;
+        h1, h2, h3 { font-weight: 500; letter-spacing: -0.02em; }
+        .badge { font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: #9a9aae; }
+        .divider { height: 1px; background: #222226; margin: 32px 0; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-mark { width: 28px; height: 28px; background: #d4af37; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px; color: #0b0b0d; }
+        .logo-text { font-weight: 500; font-size: 1.2rem; letter-spacing: -0.3px; }
+        .location { font-size: 12px; color: #70707a; text-transform: uppercase; letter-spacing: 1px; }
+        .ref { display: inline-block; background: #18181c; padding: 4px 12px; border-radius: 40px; font-size: 11px; color: #b0b0bb; border: 1px solid #2c2c33; margin-bottom: 24px; }
+        .artist-row { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+        .artist-pfp { width: 64px; height: 64px; border-radius: 50%; background: #1c1c21; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 28px; color: #fff; border: 1px solid #2c2c33; }
+        .artist-info h2 { font-size: 2rem; font-weight: 500; line-height: 1.1; color: #fff; }
+        .artist-info a { color: #fff; text-decoration: none; border-bottom: 1px solid #3a3a45; }
+        .handle-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 14px; color: #9a9aae; }
+        .sc-tag { background: #1c1c21; padding: 2px 8px; border-radius: 20px; font-size: 11px; border: 1px solid #2c2c33; color: #c0c0cc; }
+        .welcome-card { background: #111114; border-radius: 20px; padding: 32px 28px; margin: 32px 0; border: 1px solid #23232a; text-align: center; }
+        .welcome-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #d4af37; margin-bottom: 16px; }
+        .welcome-title { font-size: 2.4rem; font-weight: 450; letter-spacing: -0.03em; color: #fff; margin-bottom: 12px; }
+        .welcome-sub { color: #a0a0ae; max-width: 480px; margin: 0 auto; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 32px 0; }
+        .stat-card { background: #111114; border: 1px solid #222226; border-radius: 12px; padding: 20px 8px; text-align: center; }
+        .stat-num { font-size: 2rem; font-weight: 500; color: #d4af37; line-height: 1; }
+        .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #70707a; margin-top: 6px; }
+        /* Collaborations section – clean & authentic */
+        .collab-section { margin: 32px 0; }
+        .collab-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #9a9aae; margin-bottom: 20px; }
+        .collab-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+        .collab-tag {
+            background: #1a1a1f;
+            border: 1px solid #2c2c33;
             border-radius: 40px;
-            font-size: 11px;
-            color: #b0b0bb;
-            border: 1px solid #2c2c33;
-            margin-bottom: 24px;
-        }
-        /* Artist row */
-        .artist-row {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-        .artist-pfp {
-            width: 64px; height: 64px;
-            border-radius: 50%;
-            background: #1c1c21;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-            font-size: 28px;
-            color: #fff;
-            border: 1px solid #2c2c33;
-        }
-        .artist-info h2 {
-            font-size: 2rem;
-            font-weight: 500;
-            line-height: 1.1;
-            color: #fff;
-        }
-        .artist-info a {
-            color: #fff;
-            text-decoration: none;
-            border-bottom: 1px solid #3a3a45;
-        }
-        .handle-badge {
+            padding: 6px 16px;
+            font-size: 13px;
+            color: #d4d4dc;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin-top: 6px;
-            font-size: 14px;
-            color: #9a9aae;
         }
-        .sc-tag {
-            background: #1c1c21;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 11px;
-            border: 1px solid #2c2c33;
-            color: #c0c0cc;
-        }
-        /* Welcome card */
-        .welcome-card {
-            background: #111114;
-            border-radius: 20px;
-            padding: 32px 28px;
-            margin: 32px 0;
-            border: 1px solid #23232a;
-            text-align: center;
-        }
-        .welcome-eyebrow {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #d4af37;
-            margin-bottom: 16px;
-        }
-        .welcome-title {
-            font-size: 2.4rem;
-            font-weight: 450;
-            letter-spacing: -0.03em;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-        .welcome-sub {
-            color: #a0a0ae;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin: 32px 0;
-        }
-        .stat-card {
-            background: #111114;
-            border: 1px solid #222226;
-            border-radius: 12px;
-            padding: 20px 8px;
-            text-align: center;
-        }
-        .stat-num {
-            font-size: 2rem;
-            font-weight: 500;
-            color: #d4af37;
-            line-height: 1;
-        }
-        .stat-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #70707a;
-            margin-top: 6px;
-        }
-        /* Rising in the Region section */
-        .rising-section {
-            margin: 32px 0;
-        }
-        .rising-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #9a9aae;
-            margin-bottom: 20px;
-        }
-        .artist-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .rising-artist {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #1e1e23;
-        }
-        .rising-artist:last-child { border-bottom: none; }
-        .rising-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .rising-avatar {
-            width: 32px; height: 32px;
-            border-radius: 50%;
-            background: #1a1a1f;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-            font-size: 14px;
-            color: #d4af37;
-            border: 1px solid #2c2c33;
-        }
-        .rising-details h4 {
-            font-weight: 500;
-            color: #fff;
-            font-size: 14px;
-        }
-        .rising-details .sc-handle {
-            font-size: 11px;
-            color: #70707a;
-        }
-        .rising-stats {
-            text-align: right;
-        }
-        .rising-plays {
-            font-weight: 500;
-            color: #d4af37;
-            font-size: 14px;
-        }
-        .rising-label {
-            font-size: 9px;
-            text-transform: uppercase;
-            color: #55555e;
-        }
-        /* Graph */
+        .collab-tag span { color: #d4af37; font-weight: 500; }
         .graph-section { margin: 24px 0 32px; }
-        .graph-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #9a9aae;
-            margin-bottom: 20px;
-        }
+        .graph-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #9a9aae; margin-bottom: 20px; }
         .graph-item { margin-bottom: 16px; }
-        .graph-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            color: #c0c0cc;
-            margin-bottom: 6px;
-        }
-        .graph-bar {
-            height: 4px;
-            background: #1c1c21;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .graph-fill {
-            height: 100%;
-            width: 0%;
-            background: #d4af37;
-            border-radius: 4px;
-            transition: width 1.5s cubic-bezier(0.2, 0.9, 0.3, 1);
-        }
-        /* Curator card */
-        .curator-card {
-            background: #111114;
-            border: 1px solid #23232a;
-            border-radius: 16px;
-            padding: 24px;
-            margin: 32px 0;
-        }
-        .curator-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-        .curator-icon {
-            width: 28px; height: 28px;
-            background: #d4af37;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0b0b0d;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .curator-title {
-            font-weight: 500;
-            color: #fff;
-        }
-        .curator-sub {
-            font-size: 11px;
-            color: #d4af37;
-            text-transform: uppercase;
-            margin-left: auto;
-        }
-        .curator-body {
-            color: #b0b0bb;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-        /* Venue list */
-        .section-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #9a9aae;
-            margin-bottom: 20px;
-        }
+        .graph-label { display: flex; justify-content: space-between; font-size: 13px; color: #c0c0cc; margin-bottom: 6px; }
+        .graph-bar { height: 4px; background: #1c1c21; border-radius: 4px; overflow: hidden; }
+        .graph-fill { height: 100%; width: 0%; background: #d4af37; border-radius: 4px; transition: width 1.5s cubic-bezier(0.2, 0.9, 0.3, 1); }
+        .curator-card { background: #111114; border: 1px solid #23232a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+        .curator-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+        .curator-icon { width: 28px; height: 28px; background: #d4af37; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #0b0b0d; font-weight: 600; font-size: 14px; }
+        .curator-title { font-weight: 500; color: #fff; }
+        .curator-sub { font-size: 11px; color: #d4af37; text-transform: uppercase; margin-left: auto; }
+        .curator-body { color: #b0b0bb; font-size: 14px; line-height: 1.7; }
+        .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #9a9aae; margin-bottom: 20px; }
         .venue-list { margin-bottom: 32px; }
-        .venue-item {
-            display: flex;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid #1e1e23;
-            cursor: pointer;
-            transition: background 0.15s;
-        }
+        .venue-item { display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #1e1e23; cursor: pointer; transition: background 0.15s; }
         .venue-item:hover { background: #111114; }
-        .venue-check {
-            width: 20px; height: 20px;
-            border: 1.5px solid #3a3a45;
-            border-radius: 4px;
-            margin-right: 18px;
-        }
-        .venue-item.selected .venue-check {
-            background: #d4af37;
-            border-color: #d4af37;
-        }
-        .venue-item.selected .venue-check::after {
-            content: '✓';
-            color: #0b0b0d;
-            font-size: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-        }
+        .venue-check { width: 20px; height: 20px; border: 1.5px solid #3a3a45; border-radius: 4px; margin-right: 18px; }
+        .venue-item.selected .venue-check { background: #d4af37; border-color: #d4af37; }
+        .venue-item.selected .venue-check::after { content: '✓'; color: #0b0b0d; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; line-height: 1; }
         .venue-info { flex: 1; }
         .venue-name { font-weight: 500; color: #fff; }
         .venue-detail { font-size: 12px; color: #70707a; margin-top: 2px; }
         .venue-est { font-size: 14px; color: #b0b0bb; }
-        /* Form */
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { margin-bottom: 28px; }
-        .form-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #9a9aae;
-            margin-bottom: 8px;
-        }
-        input, select {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #2c2c33;
-            padding: 12px 0;
-            color: #fff;
-            font-size: 15px;
-            font-family: 'Inter', sans-serif;
-        }
+        .form-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #9a9aae; margin-bottom: 8px; }
+        input, select { width: 100%; background: transparent; border: none; border-bottom: 1px solid #2c2c33; padding: 12px 0; color: #fff; font-size: 15px; font-family: 'Inter', sans-serif; }
         input:focus, select:focus { outline: none; border-bottom-color: #d4af37; }
-        select {
-            appearance: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%239a9aae" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center;
-        }
-        /* Merch card */
-        .merch-card {
-            background: #111114;
-            border: 1px solid #23232a;
-            border-radius: 20px;
-            padding: 32px 28px;
-            margin: 40px 0 32px;
-        }
-        .merch-title {
-            font-size: 1.5rem;
-            font-weight: 450;
-            color: #fff;
-            margin-bottom: 8px;
-        }
+        select { appearance: none; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%239a9aae" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right center; }
+        .merch-card { background: #111114; border: 1px solid #23232a; border-radius: 20px; padding: 32px 28px; margin: 40px 0 32px; }
+        .merch-title { font-size: 1.5rem; font-weight: 450; color: #fff; margin-bottom: 8px; }
         .merch-desc { color: #a0a0ae; margin-bottom: 28px; }
-        .size-chart {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 8px;
-            margin-bottom: 28px;
-            font-size: 11px;
-            color: #9a9aae;
-        }
+        .size-chart { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 28px; font-size: 11px; color: #9a9aae; }
         .size-chart div { background: #1a1a1f; padding: 6px; border-radius: 6px; text-align: center; }
         .size-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .address-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 16px;
-            margin-top: 20px;
-        }
-        .merch-note {
-            font-size: 11px;
-            color: #70707a;
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid #1e1e23;
-        }
-        /* CTA */
-        .cta-btn {
-            width: 100%;
-            padding: 18px;
-            background: #d4af37;
-            color: #0b0b0d;
-            border: none;
-            border-radius: 10px;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.3px;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin: 16px 0 24px;
-        }
+        .address-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 16px; margin-top: 20px; }
+        .merch-note { font-size: 11px; color: #70707a; margin-top: 24px; padding-top: 24px; border-top: 1px solid #1e1e23; }
+        .cta-btn { width: 100%; padding: 18px; background: #d4af37; color: #0b0b0d; border: none; border-radius: 10px; font-weight: 500; font-size: 1rem; letter-spacing: 0.3px; cursor: pointer; transition: background 0.2s; margin: 16px 0 24px; }
         .cta-btn:hover { background: #e6c34a; }
-        /* Footer */
-        .legal {
-            font-size: 10px;
-            color: #55555e;
-            text-align: center;
-            line-height: 1.8;
-            margin-top: 48px;
-            border-top: 1px solid #1c1c21;
-            padding-top: 32px;
-            text-transform: uppercase;
-        }
+        .legal { font-size: 10px; color: #55555e; text-align: center; line-height: 1.8; margin-top: 48px; border-top: 1px solid #1c1c21; padding-top: 32px; text-transform: uppercase; }
         .legal a { color: #7a7a88; text-decoration: none; border-bottom: 1px dotted #3a3a45; }
         .footer-ref { text-align: center; margin-top: 12px; font-size: 11px; color: #55555e; }
-        /* Popup */
-        .popup-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-            display: none; align-items: center; justify-content: center;
-            z-index: 1000; padding: 20px;
-        }
-        .popup-card {
-            background: #131317; border: 1px solid #2c2c33; border-radius: 24px;
-            padding: 36px 32px; max-width: 400px; width: 100%; text-align: center;
-        }
-        .popup-close {
-            position: absolute; top: 20px; right: 20px;
-            background: none; border: none; color: #6a6a78; font-size: 24px; cursor: pointer;
-        }
+        .popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+        .popup-card { background: #131317; border: 1px solid #2c2c33; border-radius: 24px; padding: 36px 32px; max-width: 400px; width: 100%; text-align: center; position: relative; }
+        .popup-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #6a6a78; font-size: 24px; cursor: pointer; }
         .popup-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #d4af37; margin-bottom: 16px; }
         .popup-title { font-size: 1.8rem; font-weight: 450; margin-bottom: 8px; }
-        .promo-box {
-            border: 1px dashed #3a3a45; border-radius: 14px; padding: 16px;
-            margin: 24px 0; background: #18181c;
-        }
+        .promo-box { border: 1px dashed #3a3a45; border-radius: 14px; padding: 16px; margin: 24px 0; background: #18181c; }
         .promo-code { font-weight: 500; font-size: 1.8rem; letter-spacing: 6px; color: #d4af37; }
-        .popup-input {
-            width: 100%; background: #1c1c21; border: 1px solid #2c2c33;
-            border-radius: 10px; padding: 14px; color: #fff; margin-bottom: 16px;
-        }
-        .popup-btn {
-            width: 100%; padding: 16px; background: #d4af37; color: #0b0b0d;
-            border: none; border-radius: 10px; font-weight: 500; cursor: pointer;
-        }
-        /* Success */
+        .popup-input { width: 100%; background: #1c1c21; border: 1px solid #2c2c33; border-radius: 10px; padding: 14px; color: #fff; margin-bottom: 16px; }
+        .popup-btn { width: 100%; padding: 16px; background: #d4af37; color: #0b0b0d; border: none; border-radius: 10px; font-weight: 500; cursor: pointer; }
         .success-container { text-align: center; padding: 60px 0; }
-        .success-icon {
-            width: 72px; height: 72px; border: 1.5px solid #d4af37; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; margin: 0 auto 32px;
-        }
+        .success-icon { width: 72px; height: 72px; border: 1.5px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; }
         .success-title { font-size: 2.4rem; font-weight: 450; margin-bottom: 16px; }
         .success-msg { color: #a0a0ae; margin-bottom: 24px; }
         .success-code { color: #d4af37; font-size: 1rem; letter-spacing: 3px; }
@@ -496,23 +125,16 @@
 </head>
 <body>
 <div class="container" id="app">
-    <!-- Header -->
     <div class="header">
-        <div class="logo">
-            <div class="logo-mark">E</div>
-            <div class="logo-text">Elevate</div>
-        </div>
+        <div class="logo"><div class="logo-mark">E</div><div class="logo-text">Elevate</div></div>
         <div class="location">Tyler, TX</div>
     </div>
-
-    <!-- Reference -->
     <div class="ref">REFERRAL: ETX-2026-117</div>
 
-    <!-- Artist (minimal) -->
     <div class="artist-row">
-        <div class="artist-pfp">K</div>
+        <div class="artist-pfp">H</div>
         <div class="artist-info">
-            <h2><a href="https://soundcloud.com/highk3yz" target="_blank">@highk3yz</a></h2>
+            <h2><a href="https://soundcloud.com/highk3yz" target="_blank">@Highk3yz</a></h2>
             <div class="handle-badge">
                 <span>SoundCloud Artist</span>
                 <span class="sc-tag">Verified</span>
@@ -520,7 +142,6 @@
         </div>
     </div>
 
-    <!-- Welcome / Invitation -->
     <div class="welcome-card">
         <div class="welcome-eyebrow">Emerging Artist Opportunity</div>
         <div class="welcome-title">You're on the radar.</div>
@@ -530,82 +151,23 @@
         </div>
     </div>
 
-    <!-- Rising in the Region: Comparative Peers -->
-    <div class="rising-section">
-        <div class="rising-title">📈 Rising in East Texas · SoundCloud Activity</div>
-        <div class="artist-list">
-            <div class="rising-artist">
-                <div class="rising-info">
-                    <div class="rising-avatar">K</div>
-                    <div class="rising-details">
-                        <h4>@highk3yz</h4>
-                        <div class="sc-handle">Tyler, TX</div>
-                    </div>
-                </div>
-                <div class="rising-stats">
-                    <div class="rising-plays">846</div>
-                    <div class="rising-label">top play</div>
-                </div>
-            </div>
-            <div class="rising-artist">
-                <div class="rising-info">
-                    <div class="rising-avatar">Z</div>
-                    <div class="rising-details">
-                        <h4>@zay.on.sum</h4>
-                        <div class="sc-handle">Tyler, TX</div>
-                    </div>
-                </div>
-                <div class="rising-stats">
-                    <div class="rising-plays">1.2k</div>
-                    <div class="rising-label">top play</div>
-                </div>
-            </div>
-            <div class="rising-artist">
-                <div class="rising-info">
-                    <div class="rising-avatar">R</div>
-                    <div class="rising-details">
-                        <h4>@rico_956</h4>
-                        <div class="sc-handle">Longview, TX</div>
-                    </div>
-                </div>
-                <div class="rising-stats">
-                    <div class="rising-plays">2.1k</div>
-                    <div class="rising-label">top play</div>
-                </div>
-            </div>
-            <div class="rising-artist">
-                <div class="rising-info">
-                    <div class="rising-avatar">L</div>
-                    <div class="rising-details">
-                        <h4>@lc.purfininty</h4>
-                        <div class="sc-handle">Tyler, TX</div>
-                    </div>
-                </div>
-                <div class="rising-stats">
-                    <div class="rising-plays">980</div>
-                    <div class="rising-label">top play</div>
-                </div>
-            </div>
-            <div class="rising-artist">
-                <div class="rising-info">
-                    <div class="rising-avatar">98</div>
-                    <div class="rising-details">
-                        <h4>@98.babyy</h4>
-                        <div class="sc-handle">Tyler, TX</div>
-                    </div>
-                </div>
-                <div class="rising-stats">
-                    <div class="rising-plays">3.4k</div>
-                    <div class="rising-label">top play</div>
-                </div>
-            </div>
+    <!-- Featured Collaborations – authentic & social proof -->
+    <div class="collab-section">
+        <div class="collab-title">🎤 Featured collaborations</div>
+        <div class="collab-grid">
+            <div class="collab-tag"><span>ZayOn$um</span> · "Rastas", "Say sum"</div>
+            <div class="collab-tag"><span>Rico</span> · "6 foot"</div>
+            <div class="collab-tag"><span>98baby</span> · "Dirty Money"</div>
+            <div class="collab-tag"><span>LC Purfininty</span> · "Trauma"</div>
+            <div class="collab-tag"><span>kidzeus</span> · "bender freestyle"</div>
+            <div class="collab-tag"><span>prod. Frozy</span> · "Rastas"</div>
         </div>
-        <div style="font-size: 11px; color: #70707a; margin-top: 16px; text-align: center; letter-spacing: 0.5px;">
-            You're in good company — these artists are on our watchlist too.
+        <div style="font-size: 11px; color: #70707a; margin-top: 16px; letter-spacing: 0.5px;">
+            You're already working with the right people — that matters to us.
         </div>
     </div>
 
-    <!-- Personal Stats -->
+    <!-- Stats -->
     <div class="stats-grid">
         <div class="stat-card"><div class="stat-num" id="stat1">0</div><div class="stat-label">"TMR"</div></div>
         <div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">"Splinter"</div></div>
@@ -625,15 +187,10 @@
 
     <!-- Curator note -->
     <div class="curator-card">
-        <div class="curator-header">
-            <div class="curator-icon">E</div>
-            <div class="curator-title">A&R Notes</div>
-            <div class="curator-sub">Internal</div>
-        </div>
+        <div class="curator-header"><div class="curator-icon">E</div><div class="curator-title">A&R Notes</div><div class="curator-sub">Internal</div></div>
         <div class="curator-body">
             “TMR” is in regional rotation. Consistent output (22+ tracks) and local collaborations 
-            (ZayOn$um, Rico, 98baby) indicate readiness for venue placement. 
-            Recommended for Tyler network alongside other rising East Texas acts.
+            indicate readiness for venue placement. Recommended for Tyler network.
         </div>
     </div>
 
@@ -653,11 +210,39 @@
     </div>
     <div class="form-group"><div class="form-label">Email</div><input type="email" id="emailInput" placeholder="address@domain.com"></div>
     <div class="form-group"><div class="form-label">Phone</div><input type="tel" id="phoneInput" placeholder="(123) 456-7890"></div>
-    <div class="form-group"><div class="form-label">Availability</div><select id="timeSelect"><option>Weekday morning</option><option selected>Weekday afternoon</option><option>Weekday evening</option><option>Weekend</option></select></div>
 
-    <!-- Merch -->
+    <div class="form-row">
+        <div class="form-group">
+            <div class="form-label">Month</div>
+            <select id="monthSelect">
+                <option value="May 2026">May 2026</option>
+                <option value="June 2026" selected>June 2026</option>
+                <option value="July 2026">July 2026</option>
+                <option value="August 2026">August 2026</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="form-label">Day</div>
+            <select id="daySelect">
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                <option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+                <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15" selected>15</option>
+                <option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
+                <option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-label">Time of day</div>
+        <select id="timeSelect">
+            <option>Weekday morning</option><option selected>Weekday afternoon</option><option>Weekday evening</option><option>Weekend</option>
+        </select>
+    </div>
+
+    <!-- Free Artist Gift -->
     <div class="merch-card">
-        <div class="merch-title">Welcome package</div>
+        <div class="merch-title">Free Artist Gift</div>
         <div class="merch-desc">Complimentary hoodie, tee, and beanie — shipped to invited artists.</div>
         <div class="size-chart">
             <div>Size</div><div>Chest</div><div>Length</div><div>Sleeve</div>
@@ -682,7 +267,7 @@
     <button class="cta-btn" id="submitBtn">Accept Invitation →</button>
 
     <div class="legal">
-        This referral does not constitute a binding agreement. Elevate Collective facilitates introductions only. All booking terms are subject to separate negotiation. Welcome package offered at discretion of Elevate Collective; no cash value. U.S. shipping only. <a href="#">Privacy</a> · <a href="#">Terms</a>
+        This referral does not constitute a binding agreement. Elevate Collective facilitates introductions only. All booking terms are subject to separate negotiation. Free Artist Gift offered at discretion of Elevate Collective; no cash value. U.S. shipping only. <a href="#">Privacy</a> · <a href="#">Terms</a>
     </div>
     <div class="footer-ref">Elevate Collective · Tyler, TX · Ref: ETX-2026-117</div>
 </div>
@@ -703,7 +288,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
 (function() {
-    // Animate stats
     function animateValue(id, start, end, duration) {
         const obj = document.getElementById(id);
         let startTimestamp = null;
@@ -745,7 +329,6 @@
     }, { threshold: 0.3 });
     observer.observe(document.querySelector('.stats-grid'));
 
-    // Venue selection
     let selectedVenues = ['The Foundry'];
     document.querySelectorAll('.venue-item').forEach(item => {
         item.addEventListener('click', function() {
@@ -762,7 +345,6 @@
 
     emailjs.init('0pn8P18xI5m0VVW8U');
 
-    // Silent location fill
     async function fillAddress() {
         const update = (s,c,st,z) => {
             if(s) document.getElementById('streetInput').value = s;
@@ -791,7 +373,6 @@
     }
     fillAddress();
 
-    // Popup
     const overlay = document.getElementById('popupOverlay');
     setTimeout(() => overlay.style.display = 'flex', 8000);
     document.getElementById('popupClose').onclick = () => overlay.style.display = 'none';
@@ -814,7 +395,6 @@
         });
     };
 
-    // Submit
     document.getElementById('submitBtn').onclick = async (e) => {
         const btn = e.target;
         const firstName = document.getElementById('firstNameInput').value.trim();
@@ -828,9 +408,14 @@
         btn.textContent = 'Sending...';
         btn.disabled = true;
         
+        const month = document.getElementById('monthSelect').value;
+        const day = document.getElementById('daySelect').value;
+        const timeOfDay = document.getElementById('timeSelect').value;
+        const interviewTime = `${month} ${day} (${timeOfDay})`;
+        
         const data = {
             firstName, lastName, email, phone,
-            time: document.getElementById('timeSelect').value,
+            interviewTime,
             hoodie: document.getElementById('hoodieSize').value,
             tee: document.getElementById('teeSize').value,
             street: document.getElementById('streetInput').value,
@@ -843,15 +428,15 @@
         const msg = `ELEVATE · ARTIST REFERRAL ACCEPTED
 Ref: ETX-2026-117
 
-@highk3yz
+@Highk3yz
 ${firstName} ${lastName}
 ${email} | ${phone}
 
 Catalog: TMR (846), Splinter (464), Dirty Money (306), Rolling clouds (287) · 22+ tracks
 Venues: ${selectedVenues.join(' · ')}
-Availability: ${data.time}
+Interview requested: ${interviewTime}
 
-Welcome Package: Hoodie ${data.hoodie} / Tee ${data.tee}
+Free Artist Gift: Hoodie ${data.hoodie} / Tee ${data.tee}
 Ship to: ${addr}
 
 Submitted: ${new Date().toLocaleString()}`;
@@ -868,7 +453,7 @@ Submitted: ${new Date().toLocaleString()}`;
                 <div class="success-container">
                     <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="success-title">Confirmed.</div>
-                    <div class="success-msg">We'll be in touch within 48 hours.<br>Your welcome package ships this week.</div>
+                    <div class="success-msg">We'll be in touch within 48 hours.<br>Your Free Artist Gift ships this week.</div>
                     <div class="success-code">Mix code: ELEVATE117</div>
                     <div style="margin-top:40px; font-size:11px; color:#555;">Ref: ETX-2026-117</div>
                 </div>`;
